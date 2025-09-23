@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_striteri.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/21 12:43:06 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2024/10/24 11:35:10 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
-#include "libft.h"
-
-int	main(/*int argc, char *argv[]*/)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	ft_printf("hello world");
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, s + i);
+		i++;
+	}
 }

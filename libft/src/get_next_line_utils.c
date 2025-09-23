@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   get_next_line_utils.c                              :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/31 16:03:18 by w0ffel        #+#    #+#                 */
+/*   Updated: 2025/06/13 18:32:46 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
 #include "libft.h"
 
-int	main(/*int argc, char *argv[]*/)
+char	*ft_join_and_free(char *str, char *buffer)
 {
-	ft_printf("hello world");
+	char	*temp;
+
+	temp = ft_strjoin(str, buffer);
+	free(str);
+	str = NULL;
+	if (!temp)
+		return (NULL);
+	return (temp);
 }

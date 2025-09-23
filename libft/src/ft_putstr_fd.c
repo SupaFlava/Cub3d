@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/21 13:12:32 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2024/10/24 11:49:56 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
 #include "libft.h"
+#include <unistd.h>
 
-int	main(/*int argc, char *argv[]*/)
+void	ft_putstr_fd(char *s, int fd)
 {
-	ft_printf("hello world");
+	write(fd, s, ft_strlen(s));
 }

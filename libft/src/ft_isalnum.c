@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_isalnum.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/08 12:20:57 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2024/10/15 14:18:26 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
 #include "libft.h"
 
-int	main(/*int argc, char *argv[]*/)
+int	ft_isalnum(int c)
 {
-	ft_printf("hello world");
+	return (ft_isdigit(c) || ft_isalpha(c));
 }

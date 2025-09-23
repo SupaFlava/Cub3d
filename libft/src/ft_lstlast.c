@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_lstlast.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: w0ffel <w0ffel@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/26 16:06:55 by w0ffel        #+#    #+#                 */
+/*   Updated: 2024/10/28 17:52:25 by w0ffel        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
 #include "libft.h"
 
-int	main(/*int argc, char *argv[]*/)
+t_list	*ft_lstlast(t_list *lst)
 {
-	ft_printf("hello world");
+	t_list	*temp;
+
+	temp = lst;
+	if (!temp)
+		return (NULL);
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }

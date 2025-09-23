@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_lstdelone.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/28 18:00:01 by w0ffel        #+#    #+#                 */
+/*   Updated: 2025/06/13 18:32:33 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
 #include "libft.h"
 
-int	main(/*int argc, char *argv[]*/)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	ft_printf("hello world");
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

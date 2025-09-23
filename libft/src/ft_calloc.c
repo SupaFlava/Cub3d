@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_calloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/14 15:29:35 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2024/10/24 12:19:47 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
 #include "libft.h"
 
-int	main(/*int argc, char *argv[]*/)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	ft_printf("hello world");
+	size_t	total;
+	void	*ptr;
+
+	total = nmemb * size;
+	if (total != 0 && size > (size_t)-1 / size)
+	{
+		return (NULL);
+	}
+	ptr = malloc(total);
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	ft_bzero(ptr, total);
+	return (ptr);
 }

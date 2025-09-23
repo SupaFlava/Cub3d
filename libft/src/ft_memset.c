@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/08 13:22:33 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2024/10/24 11:33:35 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
-#include "libft.h"
+#include <stdlib.h>
 
-int	main(/*int argc, char *argv[]*/)
+void	*ft_memset(void *ptr, int c, size_t n)
 {
-	ft_printf("hello world");
+	unsigned char	*p;
+	size_t			i;
+
+	i = 0;
+	p = (unsigned char *)ptr;
+	while (i < n)
+	{
+		p[i] = (unsigned char)c;
+		i++;
+	}
+	return (ptr);
 }

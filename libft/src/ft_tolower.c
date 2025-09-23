@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_tolower.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Created: 2024/10/14 15:28:02 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2024/10/24 11:39:01 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "cub3d.h"
-#include "libft.h"
-
-int	main(/*int argc, char *argv[]*/)
+int	ft_tolower(int c)
 {
-	ft_printf("hello world");
+	if (c >= 'A' && c <= 'Z')
+	{
+		return (c + 32);
+	}
+	else
+	{
+		return (c);
+	}
 }
