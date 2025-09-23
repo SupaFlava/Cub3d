@@ -1,0 +1,47 @@
+# =========================
+#     Compiled Objects
+# =========================
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+cub3d
+
+# =========================
+#     Executables
+# =========================
+cub3d
+a.out
+
+# =========================
+#     Build Folders
+# =========================
+obj/
+mlx42/build/
+build/
+
+# =========================
+#     CMake Files
+# =========================
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile.cmake
+
+# =========================
+#     IDE / Editor files
+# =========================
+*.swp
+*.swo
+*.tmp
+*.log
+*.DS_Store
+*.vscode/
+.idea/
+*.code-workspace
+
+# =========================
+#     Mac / Linux temp files
+# =========================
+*~

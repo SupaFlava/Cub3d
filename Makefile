@@ -6,44 +6,59 @@
 #    By: jbaetsen <jbaetsen@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/09/23 15:07:10 by jbaetsen      ########   odam.nl          #
+#    Updated: 2025/09/23 15:41:54 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # ===================== #
-#     Configuration     #
+#      Configuration    #
 # ===================== #
 CC      = cc
 CFLAGS  = -Wall -Wextra -Werror -Iincludes \
-          -Ilibraries/libft \
-          -Ilibraries/mlx42/include
+          -Ilibft \
+          -IMLX42/include
 
-LDFLAGS = -Llibraries/mlx42/build -lmlx42 \
-          -Llibraries/libft -lft \
+LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
           -lglfw -ldl -pthread -lm
 
 NAME    = cub3d
 
 SRC_DIR = src
 OBJ_DIR = obj
-LIB_DIR = libraries
 
 # ===================== #
-#         Files         #
+#        Files          #
 # ===================== #
-SRC = $(shell find $(SRC_DIR) -name "*.c")
+SRC_MAIN = src/main.c
+
+SRC_PARSE = 
+
+SRC_MAP = 
+
+SRC_RENDER = 
+
+SRC_PLAYER = 
+
+SRC_UTILS = 
+
+SRC_ASSETS = 
+
+
+SRC = $(SRC_MAIN) $(SRC_PARSE) $(SRC_MAP) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-LIBFT = /libft/libft.a
-MLX42 = /mlx42/build/libmlx42.a
+LIBFT = libft/libft.a
+
+
+
 
 # ===================== #
-#         Rules         #
+#        Rules          #
 # ===================== #
 
 all: submodules $(NAME)
 
-# --- Update and build submodules ---
+# --- Update submodules and build libraries ---
 submodules:
 	@git submodule update --init --recursive --remote
 	@$(MAKE) -C libft
@@ -51,8 +66,8 @@ submodules:
 	@cmake --build MLX42/build -j4 > /dev/null
 	@echo "✅ Submodules updated and built"
 
-# --- Final binary ---
-$(NAME): $(OBJ) $(LIBFT) $(MLX42)
+# --- Build final binary ---
+$(NAME): $(OBJ) $(LIBFT) submodules
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 	@echo "✅ Build complete: $(NAME)"
 

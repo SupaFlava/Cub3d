@@ -6,15 +6,13 @@
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 15:12:02 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/09/23 15:33:23 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include "cub3d.h"
-#include "libft.h"
 
 int	main(/*int argc, char *argv[]*/)
 {
-	ft_printf("hello world");
+	ft_printf("Hello World\n");
 }
