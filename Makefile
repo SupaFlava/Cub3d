@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: jbaetsen <jbaetsen@student.codam.nl>         +#+                      #
-#                                                    +#+                       #
-#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/09/23 15:41:54 by jbaetsen      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
+#    Updated: 2025/09/23 20:13:28 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,18 @@
 #      Configuration    #
 # ===================== #
 CC      = cc
+BREW_PREFIX = /opt/homebrew
+#this is for apple silicon please dont remove it only comment it out
+
 CFLAGS  = -Wall -Wextra -Werror -Iincludes \
           -Ilibft \
-          -IMLX42/include
-
+          -IMLX42/include\
+		  -I$(BREW_PREFIX)/opt/glfw/include
+#this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
-          -lglfw -ldl -pthread -lm
+          -lglfw -ldl -pthread -lm -L$(BREW_PREFIX)/opt/glfw/lib \
+	 	  -framework Cocoa -framework OpenGL -framework IOKit
+#this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3d
 
@@ -31,7 +37,7 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
-SRC_PARSE = 
+SRC_PARSE = src/parsing/arg_checker.c
 
 SRC_MAP = 
 
@@ -60,7 +66,7 @@ all: submodules $(NAME)
 
 # --- Update submodules and build libraries ---
 submodules:
-	@git submodule update --init --recursive --remote
+	@git submodule update --init --recursive
 	@$(MAKE) -C libft
 	@cmake -S MLX42 -B MLX42/build > /dev/null
 	@cmake --build MLX42/build -j4 > /dev/null

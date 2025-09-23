@@ -1,21 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/23 21:36:42 by rmhazres         ###   ########.fr       */
+/*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/09/23 21:34:37 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-int	main(int argc, char *argv[])
-{
-	if(arg_checker(argc, argv) == FAILURE)
-        return (FAILURE);
-    if(parse_cub(argv[1]))
-    
-}

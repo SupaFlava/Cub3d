@@ -1,21 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/23 21:36:42 by rmhazres         ###   ########.fr       */
+/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/09/23 21:44:35 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef TYPEDEFS_H
+# define TYPEDEFS_H
+
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
-{
-	if(arg_checker(argc, argv) == FAILURE)
-        return (FAILURE);
-    if(parse_cub(argv[1]))
-    
-}
+typedef struct s_color {
+    int r;
+    int g;
+    int b;
+} t_color;
+
+typedef struct s_map{
+    char **grid;
+    int  width;
+    int  height;
+}   t_map;
+
+typedef struct s_config {
+    char *no_tex;
+    char *so_tex;
+    char *we_tex;
+    char *ea_tex;
+    t_color floor;
+    t_color ceiling;
+    t_map   map;
+    int player_x;
+    int player_y;
+    char player_dir;
+} t_config;
+
+#endif
