@@ -6,7 +6,7 @@
 #    By: jbaetsen <jbaetsen@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/09/23 15:41:54 by jbaetsen      ########   odam.nl          #
+#    Updated: 2025/09/23 16:55:12 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,14 +43,10 @@ SRC_UTILS =
 
 SRC_ASSETS = 
 
-
 SRC = $(SRC_MAIN) $(SRC_PARSE) $(SRC_MAP) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft/libft.a
-
-
-
 
 # ===================== #
 #        Rules          #

@@ -1,29 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   image.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/23 16:37:58 by jbaetsen      ########   odam.nl         */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/09/23 16:48:14 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include "cub3d.h"
 
-int	main(/*int argc, char *argv[]*/)
-{
-	mlx_t *mlx;
-
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx = mlx_init(WIDTH, HEIGHT, "w0ffelstein", true);
-	if (!mlx)
-	{
-		ft_printf("mlx_init failed\n");
-		return (1);
-	}
-	mlx_loop(mlx);
-	return (0);
-}
