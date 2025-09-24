@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/23 21:44:35 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:40:23 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map{
 }   t_map;
 
 typedef struct s_config {
+    char **setting;
     char *no_tex;
     char *so_tex;
     char *we_tex;

@@ -4,7 +4,14 @@
 #include "MLX42.h"
 #include "libft.h"
 #include "parsing.h"
+#include "typedefs.h"
+#include <fcntl.h>
+#include <stdio.h>
+
+
 
 # define FAILURE 0
 # define SUCCESS 1
+# define BUFF 1024
+
 #endif // CUB3D_H
