@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/26 14:32:50 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:05:24 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef enum e_dir_type
 	DIR_EA,	//EA
 	DIR_F,	//F
 	DIR_C,	//C
+    DIR_INV, //invalid
 } t_dir_type;
 
 typedef struct s_color {
@@ -43,7 +44,7 @@ typedef struct s_config {
     char *so_tex;
     char *we_tex;
     char *ea_tex;
-	char **identifiers;
+	bool in_config;
 	int		dubplicate;
     t_color floor;
     t_color ceiling;

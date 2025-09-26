@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/26 14:39:01 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:20:43 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,70 +26,72 @@ int ft_isspace(char *string)
 	}
 	return(SUCCESS);
 }
+int classify_directive(char *dir)
+{
+    char *identifier[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
+    int   i;
 
-void	*extract_config(t_config *config, char *line)
+    i = 0;
+    while(identifier[i])
+    {
+        if(ft_strncmp(identifier[i], dir, ft_strlen(identifier[i])) == 0)
+            return(i);
+        i++;
+    }
+    return (DIR_INV);
+}
+int	extract_config(t_config *config, char *line , bool *seen)
 {
 	char **result;
-	
+	int   dir;
+
 	result = ft_split(line, ' ');
-	if(!result)
-		return(NULL);
-	if (ft_strncmp(result[0] ,"NO",ft_strlen(result[0])) == 0)
-	{
-		//config->identifiers[config->dubplicate] = result[0];
+	if (!result)
+		return(FAILURE);
+	dir = classify_directive(result[0]);
+	if(seen[dir])
+		return (FAILURE);
+	if (dir == DIR_NO)
 		config->no_tex = result[1];
-	}
-	else if (ft_strncmp(result[0] ,"SO",ft_strlen(result[0])) == 0)
-	{
-	//	config->identifiers[config->dubplicate] = result[0];
+	else if (dir == DIR_SO)
 		config->so_tex = result[1];
-	}
-	else if (ft_strncmp(result[0] ,"WE",ft_strlen(result[0])) == 0)
-	{
-	//	config->identifiers[config->dubplicate] = result[0];
+	else if (dir == DIR_WE)
 		config->we_tex = result[1];
-	}
-	else if (ft_strncmp(result[0] ,"EA",ft_strlen(result[0])) == 0)
-	{
-	//	result[0] = config->identifiers[config->dubplicate];
+    else if (dir == DIR_EA)
 		config->ea_tex = result[1];
-	}
-	else if (ft_strncmp(result[0] ,"F",ft_strlen(result[0])) == 0)
-	{
-	//	config->identifiers[config->dubplicate] = result[0] ;
-	//	result[1] = config->floor.;
-	}
-	else if (ft_strncmp(result[0] ,"C",ft_strlen(result[0])) == 0)
-	{
-	//	config->identifiers[config->dubplicate] = result[0];
-	//	result[1] = config->ceiling;
-	}
-	else
-		return NULL;
-	config->dubplicate++;
-	return NULL;
+    else if (dir == DIR_F)
+		ft_printf("floor\n");
+    else if (dir == DIR_C)
+		ft_printf("flooor\n");
+	seen[dir] = true;
+	return SUCCESS;
 }
 int	parse_config(t_config *config)
 {
 	int	i;
 	int config_len;
-	i = 0;
+	bool seen[6] = {false, false, false, false, false, false};
 
-	config_len = 6;
-	config->dubplicate = 0;
-	while(i < config_len)
+	i = 0;
+	config_len = 0;
+	config->in_config = true;
+	while(config->setting[i] && config->in_config)
 	{
 		if(ft_isspace(config->setting[i]) == SUCCESS)
-		{
 			i++;
-			config_len++;
-		}
 		else
 		{
-			extract_config(config,config->setting[i]);
+			if (extract_config(config,config->setting[i], seen) == FAILURE)
+            {
+                ft_printf("Error\n duplicate detected\n");
+                    return(FAILURE);    
+            }
+			config_len++;
 			i++;
+			if (config_len == 6)
+				config->in_config = false;
 		}
 	}
-	ft_printf("%s\n",config->ea_tex);
+	extrat_map(config, i);
 	return (0);
 }
