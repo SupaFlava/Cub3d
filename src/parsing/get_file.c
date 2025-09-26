@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cub.c                                          :+:      :+:    :+:   */
+/*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/24 18:44:04 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:47:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*read_map_file(int fd)
 	return (map_str);
 }
 
-int	get_cub(char *path, t_config *config)
+int	get_file(char *path, t_config *config)
 {
 	int		fd;
 	char	*map_str;

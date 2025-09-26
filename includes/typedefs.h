@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/24 18:40:23 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/26 14:32:50 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 # define TYPEDEFS_H
 
 #include "cub3d.h"
+
+typedef enum e_dir_type
+{
+	DIR_NO,	//NO
+	DIR_SO,	//SO
+	DIR_WE,	//WE
+	DIR_EA,	//EA
+	DIR_F,	//F
+	DIR_C,	//C
+} t_dir_type;
 
 typedef struct s_color {
     int r;
@@ -33,6 +43,8 @@ typedef struct s_config {
     char *so_tex;
     char *we_tex;
     char *ea_tex;
+	char **identifiers;
+	int		dubplicate;
     t_color floor;
     t_color ceiling;
     t_map   map;

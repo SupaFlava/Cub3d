@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/24 18:43:25 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/09/26 12:49:07 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,17 @@
 #      Configuration    #
 # ===================== #
 CC      = cc
-BREW_PREFIX = /opt/homebrew
+#BREW_PREFIX = /opt/homebrew
 #this is for apple silicon please dont remove it only comment it out
 
 CFLAGS  = -Wall -Wextra -Werror -Iincludes \
           -Ilibft \
-          -IMLX42/include\
-		  -I$(BREW_PREFIX)/opt/glfw/include
+          -IMLX42/include
+#		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
-          -lglfw -ldl -pthread -lm -L$(BREW_PREFIX)/opt/glfw/lib \
+          -lglfw -ldl -pthread -lm 
+#		  -L$(BREW_PREFIX)/opt/glfw/lib \
 	 	  -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
 
@@ -37,7 +38,7 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
-SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_cub.c
+SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c
 
 SRC_MAP = 
 

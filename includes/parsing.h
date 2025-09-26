@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:59:19 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/24 18:43:34 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:48:41 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include "typedefs.h"
 
 int arg_checker(int argc, char *argv[]);
-int	get_cub(char *path, t_config *config);
+int	get_file(char *path, t_config *config);
+int	parse_config(t_config *config);
+
 
 
 
