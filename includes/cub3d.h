@@ -5,6 +5,9 @@
 #include "MLX42_Int.h"
 #include "libft.h"
 
+#include "typedefs.h"
+#include "utils.h"
+
 
 // defines
 #define WIDTH 1920
@@ -12,7 +15,7 @@
 
 #define INIT_FAILURE 2
 #define EXIT_FAILURE 1
-#define EXIT_SUCCES 0
+#define EXIT_SUCCESS 0
 
 
 

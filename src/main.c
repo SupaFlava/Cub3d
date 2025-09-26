@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/25 17:32:58 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/09/26 15:09:54 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,19 @@ int		print_and_exit(int code) // make this into a clean exit function later inst
 	return (0);
 }
 
-void	keyhook(mlx_key_data_t keydata, void* param) // registers escape key only for now
+int	main(/*int argc, char *argv[]*/) //no parameters given yet
 {
-	(void)param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	t_game	game;
+	
+
+	if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
 	{
-		ft_printf("escape key pressed\n");
-		exit(EXIT_SUCCES);
+		ft_printf("error initializing game\n");
+		return (EXIT_FAILURE); // no proper cleanup function made yet
 	}
-}
+	mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
 
-int	main(/*int argc, char *argv[]*/) //no parameters given yet at launch
-{
-	mlx_t *mlx;
-	mlx_image_t *img;
-
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx = mlx_init(WIDTH, HEIGHT, "w0ffelstein", true);
-	if (!mlx)
-		return (print_and_exit(INIT_FAILURE));
-
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	memset(img->pixels, 255, img->width * img->height * BPP);
-	mlx_image_to_window(mlx, img, 0, 0);
-
-	mlx_key_hook(mlx, &keyhook, NULL);
-
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	return (EXIT_SUCCES);
+	mlx_loop(game.mlx); //game loop
+	mlx_terminate(game.mlx); //closes game loop
+	return (EXIT_SUCCESS);
 }

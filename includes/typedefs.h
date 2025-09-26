@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/09/25 17:30:54 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/09/26 15:10:37 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,26 @@ typedef struct s_player
 
 typedef struct s_assets //pointers to the actual loaded images in memory
 {
-	void	*tex_no;
-	void	*tex_so;
-	void	*tex_we;
-	void	*tex_ea;
+	mlx_image_t *background; // mlx_image_t types are temporary for testing purposes
+	mlx_image_t *player;
+	
+	// void	*tex_no;
+	// void	*tex_so;
+	// void	*tex_we;
+	// void	*tex_ea;
 
-	int		floor_color;
-	int		ceiling_color;
+	// int		floor_color;
+	// int		ceiling_color;
 } t_assets;
 
 typedef struct s_game
 {
-	void	*mlx;
+	void		*mlx;
 
 	t_map		map;
 	t_player	player;
 	t_assets	assets;
+	t_config	config;
 
 } t_game;
 

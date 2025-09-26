@@ -1,14 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   image.c                                            :+:    :+:            */
+/*   utils.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/26 14:30:39 by jbaetsen      ########   odam.nl         */
+/*   Created: 2025/09/26 12:48:06 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/09/26 14:36:11 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef UTILS_H
+#define UTILS_H
 
+#include "cub3d.h"
+#include "libft.h"
+
+void	keyhook(mlx_key_data_t keydata, void* param);
+
+// utils.c
+void	init_player(t_player *player);
+int		init_assets(t_game *game);
+int		init_game(t_game *game);
+
+
+
+#endif // UTILS_H

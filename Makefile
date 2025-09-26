@@ -6,7 +6,7 @@
 #    By: jbaetsen <jbaetsen@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/09/23 16:55:12 by jbaetsen      ########   odam.nl          #
+#    Updated: 2025/09/26 14:39:20 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,11 @@ SRC_PARSE =
 
 SRC_MAP = 
 
-SRC_RENDER = 
+SRC_RENDER = src/render/image.c
 
 SRC_PLAYER = 
 
-SRC_UTILS = 
+SRC_UTILS = src/utils/init.c src/utils/cleanup.c
 
 SRC_ASSETS = 
 
