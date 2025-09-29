@@ -6,40 +6,48 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/26 18:20:43 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:00:19 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int ft_isspace(char *string)
+void	extract_map(t_config *config, int i)
 {
-	int i;
-	
-	i =0;
-	while(string[i])
-	{
-		if(string[i] == ' ' || string[i] == '\t')
-			i++;
-		else
-			return(FAILURE); 
-	}
-	return(SUCCESS);
-}
-int classify_directive(char *dir)
-{
-    char *identifier[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
-    int   i;
+	int j;
 
-    i = 0;
-    while(identifier[i])
-    {
-        if(ft_strncmp(identifier[i], dir, ft_strlen(identifier[i])) == 0)
-            return(i);
-        i++;
-    }
-    return (DIR_INV);
+	j = 0;
+
+	while(config->setting[i])
+	{
+		config->map.grid[j] = config->setting[i];
+		i++;
+		j++;
+	}
 }
+
+int	assign_config(t_config *config, int dir, char **arr)
+{
+	if (dir == DIR_NO)
+		config->no_tex = safe_assign(arr[1], config->err_flag);
+	else if (dir == DIR_SO)
+		config->so_tex = safe_assign(arr[1], config->err_flag);
+	else if (dir == DIR_WE)
+		config->we_tex = safe_assign(arr[1], config->err_flag);
+	else if (dir == DIR_EA)
+		config->ea_tex = safe_assign(arr[1], config->err_flag);
+	else if (dir == DIR_F || dir == DIR_C)
+	{
+		if (parse_color(config ,arr[1],dir) == FAILURE)
+			return (FAILURE);	
+	}
+	else if (dir == DIR_INV)
+		return (FAILURE);
+	if (config->err_flag)
+	  	return(FAILURE);
+	return (SUCCESS);
+}
+
 int	extract_config(t_config *config, char *line , bool *seen)
 {
 	char **result;
@@ -51,21 +59,16 @@ int	extract_config(t_config *config, char *line , bool *seen)
 	dir = classify_directive(result[0]);
 	if(seen[dir])
 		return (FAILURE);
-	if (dir == DIR_NO)
-		config->no_tex = result[1];
-	else if (dir == DIR_SO)
-		config->so_tex = result[1];
-	else if (dir == DIR_WE)
-		config->we_tex = result[1];
-    else if (dir == DIR_EA)
-		config->ea_tex = result[1];
-    else if (dir == DIR_F)
-		ft_printf("floor\n");
-    else if (dir == DIR_C)
-		ft_printf("flooor\n");
+	if (assign_config(config, dir, result) == FAILURE)
+	{
+		clean_config(config);
+		return (FAILURE);
+	}
 	seen[dir] = true;
-	return SUCCESS;
+	clean_split(result);
+	return (SUCCESS);
 }
+
 int	parse_config(t_config *config)
 {
 	int	i;
@@ -82,16 +85,17 @@ int	parse_config(t_config *config)
 		else
 		{
 			if (extract_config(config,config->setting[i], seen) == FAILURE)
-            {
-                ft_printf("Error\n duplicate detected\n");
-                    return(FAILURE);    
-            }
+			{
+				ft_printf("Error\n Map is uncorrecttly formated!\n");
+					return(FAILURE);    
+			}
 			config_len++;
 			i++;
 			if (config_len == 6)
 				config->in_config = false;
 		}
 	}
-	extrat_map(config, i);
-	return (0);
+	ft_printf("wat the helly %i \n", config->ceiling.r);
+	extract_map(config, i);
+	return (SUCCESS);
 }

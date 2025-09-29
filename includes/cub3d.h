@@ -5,6 +5,7 @@
 #include "libft.h"
 #include "parsing.h"
 #include "typedefs.h"
+#include "utils.h"
 #include <fcntl.h>
 #include <stdio.h>
 

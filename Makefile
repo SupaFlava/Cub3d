@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/26 16:05:21 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/09/29 17:31:20 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC_RENDER =
 
 SRC_PLAYER = 
 
-SRC_UTILS = 
+SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c
 
 SRC_ASSETS = 
 

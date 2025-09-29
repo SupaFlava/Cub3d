@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/26 18:05:24 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:17:11 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_config {
     char *we_tex;
     char *ea_tex;
 	bool in_config;
-	int		dubplicate;
+    bool *err_flag;
     t_color floor;
     t_color ceiling;
     t_map   map;
