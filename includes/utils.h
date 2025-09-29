@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
+/*   utils.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/29 23:02:13 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/29 23:02:17 by jbaetsen      ########   odam.nl         */
+/*   Created: 2025/09/26 12:48:06 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/09/29 23:07:29 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef UTILS_H
+# define UTILS_H
 
-# include "MLX42.h"
-# include "MLX42_Int.h"
+# include "cub3d.h"
 # include "libft.h"
 
-# include "game.h"
-# include "typedefs.h"
-# include "utils.h"
-# include "render.h"
+// utils.c
+void	init_player(t_player *player);
+int		init_assets(t_game *game);
+int		init_game(t_game *game);
 
-// defines
-# define WIDTH 1920
-# define HEIGHT 1080
-
-# define INIT_FAILURE 2
-# define EXIT_FAILURE 1
-# define EXIT_SUCCESS 0
-#endif // CUB3D_H
+#endif // UTILS_H
