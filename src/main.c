@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/29 18:01:47 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:39:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int init_config(t_config *config)
 	config->map.grid = (char **)malloc(sizeof(char * ));
 	if(!config->map.grid)
 		return (FAILURE);
+	return (SUCCESS);
 }
 
 int	main(int argc, char *argv[])

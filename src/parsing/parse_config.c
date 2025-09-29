@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/29 18:00:19 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:52:36 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	parse_config(t_config *config)
 				config->in_config = false;
 		}
 	}
-	ft_printf("wat the helly %i \n", config->ceiling.r);
+	ft_printf("wat the helly %s \n", config->no_tex);
 	extract_map(config, i);
 	return (SUCCESS);
 }

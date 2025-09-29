@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/29 17:31:20 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/09/29 18:41:24 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ SRC_MAIN = src/main.c
 
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c
 
+SRC_VALIDATION = src/validation/validate.c
+
 SRC_MAP = 
 
 SRC_RENDER = 
@@ -50,7 +52,7 @@ SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup
 SRC_ASSETS = 
 
 
-SRC = $(SRC_MAIN) $(SRC_PARSE) $(SRC_MAP) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
+SRC = $(SRC_MAIN) $(SRC_PARSE) $(SRC_MAP) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft/libft.a
