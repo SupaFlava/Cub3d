@@ -1,13 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cleanup.c                                          :+:    :+:            */
+/*   game.h                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/26 12:46:41 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/29 23:01:01 by jbaetsen      ########   odam.nl         */
+/*   Created: 2025/09/29 11:25:04 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/09/29 23:02:39 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef GAME_H
+# define GAME_H
+
+# include "cub3d.h"
+
+void	keyhook(mlx_key_data_t keydata, void *param);
+void	game_loop(void *param);
+
+#endif // GAME_H
