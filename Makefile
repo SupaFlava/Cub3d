@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: jbaetsen <jbaetsen@student.codam.nl>         +#+                      #
-#                                                    +#+                       #
-#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/09/26 14:39:20 by jbaetsen      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
+#    Updated: 2025/09/29 12:07:05 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
+SRC_CONTROLS = src/controls/movement.c
+
 SRC_PARSE = 
 
 SRC_MAP = 
@@ -43,7 +45,7 @@ SRC_UTILS = src/utils/init.c src/utils/cleanup.c
 
 SRC_ASSETS = 
 
-SRC = $(SRC_MAIN) $(SRC_PARSE) $(SRC_MAP) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
+SRC = $(SRC_MAIN) $(SRC_CONTROLS) $(SRC_PARSE) $(SRC_MAP) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft/libft.a

@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 11:23:55 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/29 13:40:07 by jbaetsen         ###   ########.fr       */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/09/29 13:40:23 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	move_loop(void *param)
+void	render_player(t_game *game)
 {
-	t_game *game;
-
-	game = param;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		game->player.pos_y -= game->player.move_speed;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		game->player.pos_x += game->player.move_speed;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		game->player.pos_y -= game->player.move_speed;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		game->player.pos_y += game->player.move_speed;
+	mlx_clear_window(game->mlx);
 
 	
 }

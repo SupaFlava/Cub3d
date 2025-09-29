@@ -7,6 +7,7 @@
 
 #include "typedefs.h"
 #include "utils.h"
+#include "controls.h"
 
 
 // defines

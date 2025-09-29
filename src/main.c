@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/26 15:09:54 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/09/29 12:13:47 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(/*int argc, char *argv[]*/) //no parameters given yet
 		ft_printf("error initializing game\n");
 		return (EXIT_FAILURE); // no proper cleanup function made yet
 	}
+	mlx_loop_hook(game.mlx, move_loop, &game);
 	mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
 
 	mlx_loop(game.mlx); //game loop

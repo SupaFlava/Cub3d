@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   init.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/09/26 14:38:49 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/09/29 14:10:54 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,20 @@ void	init_player(t_player *player) //initializes player position and angle + FOV
 
 int	init_assets(t_game *game)
 {
-	mlx_image_t *background; // mlx_image_t types are temporary for testing purposes
-    mlx_image_t *player;
-	
+	if (!game->assets)
+		game->assets = malloc(sizeof(t_assets));
+	if (!game->assets)
+		return (EXIT_FAILURE);
+		
+	game->assets->background = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	memset(game->assets->background->pixels, 0, background->width * background->height * BPP);
 
-	background = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	memset(background->pixels, 0, background->width * background->height * BPP);
-	if (mlx_image_to_window(game->mlx, background, 0, 0) < 0)
-	{
-		// mlx_delete_image(game->mlx, background);
-		return (EXIT_FAILURE);
-	}
-	player = mlx_new_image(game->mlx, 50, 50);
-	if (!player)
-	{
-		// mlx_delete_image(game->mlx, background); // move image deletion outside tihs function, if this function returns failure
-		return (EXIT_FAILURE);
-	}
-	memset(player->pixels, 255, player->width * player->height * BPP);
+	game->assets->player = mlx_new_image(game->mlx, 50, 50); //temp function, creates white square as player
+	memset(game->assets->player->pixels, 255, player->width * player->height * BPP);
+
 	if (mlx_image_to_window(game->mlx, player, 0, 0) < 0)
-	{
-		// mlx_delete_image(game->mlx, background);
-		// mlx_delete_image(mlx, player);
 		return(EXIT_FAILURE);
-	}
+
 	// void	*tex_no;
 	// void	*tex_so;
 	// void	*tex_we;
@@ -70,7 +60,7 @@ int		init_game(t_game *game)
 		ft_printf("mlx_init failure\n");
 		return (EXIT_FAILURE);
 	}
-		
+	game->assets = NULL;
 	init_player(&game->player);
 	init_assets(game);
 	return (EXIT_SUCCESS);
