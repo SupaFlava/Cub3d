@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/29 18:41:24 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/09/30 11:38:29 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,18 @@
 #      Configuration    #
 # ===================== #
 CC      = cc
-BREW_PREFIX = /opt/homebrew
 #this is for apple silicon please dont remove it only comment it out
+#BREW_PREFIX = /opt/homebrew
 
 CFLAGS  = -Wall -Wextra -Werror -Iincludes \
           -Ilibft \
           -IMLX42/include \
-		  -I$(BREW_PREFIX)/opt/glfw/include
+#		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
-          -lglfw -ldl -pthread -lm -L$(BREW_PREFIX)/opt/glfw/lib \
-	 	  -framework Cocoa -framework OpenGL -framework IOKit
+          -lglfw -ldl -pthread -lm 
+#		  -L$(BREW_PREFIX)/opt/glfw/lib \
+#	 	  -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3d
@@ -37,28 +38,26 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
+SRC_GAME = src/game/game.c
+
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c
 
 SRC_VALIDATION = src/validation/validate.c
 
-SRC_MAP = 
+SRC_MAP =
 
-SRC_RENDER = 
+SRC_RENDER = src/render/image.c
 
-SRC_PLAYER = 
+SRC_PLAYER =
 
-SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c
+SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c
 
-SRC_ASSETS = 
+SRC_ASSETS =
 
-
-SRC = $(SRC_MAIN) $(SRC_PARSE) $(SRC_MAP) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
+SRC = $(SRC_MAIN) $(SRC_GAME) $(SRC_PARSE) $(SRC_MAP) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft/libft.a
-
-
-
 
 # ===================== #
 #        Rules          #

@@ -20,6 +20,7 @@ a.out
 obj/
 mlx42/build/
 build/
+libft/obj/
 
 # =========================
 #     CMake Files
