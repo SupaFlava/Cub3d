@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   typedefs.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/09/29 23:06:56 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/09/30 11:26:34 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,44 @@
 # include "cub3d.h"
 
 // structs
-typedef struct s_color
+typedef enum e_dir_type
 {
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
+	DIR_NO,	//NO
+	DIR_SO,	//SO
+	DIR_WE,	//WE
+	DIR_EA,	//EA
+	DIR_F,	//F
+	DIR_C,	//C
+    DIR_INV, //invalid
+} t_dir_type;
 
-typedef struct s_map
-{
-	char	**grid;
-	int		width;
-	int		height;
-}	t_map;
+typedef struct s_color {
+    int r;
+    int g;
+    int b;
+} t_color;
 
-typedef struct s_config
-{
-	char	**setting;
-	char	*no_tex;
-	char	*so_tex;
-	char	*we_tex;
-	char	*ea_tex;
-	t_color	floor;
-	t_color	ceiling;
-	t_map	map;
-	int		player_x;
-	int		player_y;
-	char	player_dir;
-}	t_config;
+typedef struct s_map{
+    char **grid;
+    int  width;
+    int  height;
+}   t_map;
+
+typedef struct s_config {
+    char **setting;
+    char *no_tex;
+    char *so_tex;
+    char *we_tex;
+    char *ea_tex;
+	bool in_config;
+    bool *err_flag;
+    t_color floor;
+    t_color ceiling;
+    t_map   map;
+    int player_x;
+    int player_y;
+    char player_dir;
+} t_config;
 
 typedef struct s_player
 {
@@ -83,4 +93,5 @@ typedef struct s_game
 	t_assets	*assets;
 
 }	t_game;
+
 #endif
