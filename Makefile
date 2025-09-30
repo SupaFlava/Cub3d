@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/30 11:38:29 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/09/30 12:52:32 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,16 @@
 # ===================== #
 CC      = cc
 #this is for apple silicon please dont remove it only comment it out
-#BREW_PREFIX = /opt/homebrew
+BREW_PREFIX = /opt/homebrew
 
-CFLAGS  = -Wall -Wextra -Werror -Iincludes \
+CFLAGS  = -Wall -Wextra -Werror -Iincludes -fsanitize=address \
           -Ilibft \
           -IMLX42/include \
-#		  -I$(BREW_PREFIX)/opt/glfw/include
+		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
-          -lglfw -ldl -pthread -lm 
-#		  -L$(BREW_PREFIX)/opt/glfw/lib \
-#	 	  -framework Cocoa -framework OpenGL -framework IOKit
+          -lglfw -ldl -pthread -lm -L$(BREW_PREFIX)/opt/glfw/lib \
+	 	  -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3d
@@ -50,7 +49,8 @@ SRC_RENDER = src/render/image.c
 
 SRC_PLAYER =
 
-SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c
+SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c \
+			src/utils/validate_utils.c
 
 SRC_ASSETS =
 

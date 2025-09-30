@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/30 11:25:24 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/30 12:13:58 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ char *safe_assign(char *src, bool *err_flag);
 void clean_split(char **alloc);
 void	clean_config(t_config *config);
 
+//validate utils
+int	open_and_close_file(char *path);
+
 
 // utils.c
 void	init_player(t_player *player);
 int		init_assets(t_game *game);
 int		init_game(t_game *game);
+
 
 #endif // UTILS_H

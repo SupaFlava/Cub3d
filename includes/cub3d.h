@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:02:13 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/30 11:21:03 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/30 12:05:33 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "MLX42.h"
-# include "MLX42_Int.h"
+// # include "MLX42_Int.h"
 # include "libft.h"
 
 #include "parsing.h"
