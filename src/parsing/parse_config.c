@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/30 13:31:41 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:17:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int	assign_config(t_config *config, int dir, char **arr)
 			return (FAILURE);
 	}
 	else if (dir == DIR_INV)
+	{
+		ft_printf("Error\nInvalid dir\n");
 		return (FAILURE);
+	}
 	if (config->err_flag)
 	  	return(FAILURE);
 	return (SUCCESS);
@@ -72,10 +75,7 @@ int	extract_config(t_config *config, char *line , bool *seen)
 		return (FAILURE);
 	}
 	if (assign_config(config, dir, result) == FAILURE)
-	{
-		ft_printf("Error\n");
 		return (FAILURE);
-	}
 	seen[dir] = true;
 	clean_split(result);
 	return (SUCCESS);
