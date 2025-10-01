@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/30 14:18:56 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:34:36 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ int	extract_map(t_config *config, int i)
 		return (FAILURE);
 	while(config->setting[i])
 	{
-		config->map.grid[j] = config->setting[i];
+		config->map.grid[j] = ft_strdup(config->setting[i]);
+		if(!config->map.grid[j])
+			return(FAILURE);
 		i++;
 		j++;
 	}
 	config->map.grid[j] = NULL;
 	config->map.height = count;
+
 	return (SUCCESS);
 }
 
