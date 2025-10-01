@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/10/01 11:05:12 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/10/01 13:04:52 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC      = cc
 #this is for apple silicon please dont remove it only comment it out
 BREW_PREFIX = /opt/homebrew
 
-CFLAGS  = -Wall -Wextra -Werror -Iincludes -fsanitize=address \
+CFLAGS  = -Wall -Wextra -Werror -Iincludes \
           -Ilibft \
           -IMLX42/include \
 #		  -I$(BREW_PREFIX)/opt/glfw/include

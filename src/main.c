@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/01 11:08:12 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:23:39 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int init_config(t_config *config)
 	config->we_tex = NULL;
 	config->ea_tex = NULL;
     config->err_flag = false;
-
+	config->map.height = -1;
+	config->map.width = -1;
 	return (SUCCESS);
 }
 
@@ -39,7 +40,8 @@ int	main(int argc, char *argv[])
 	init_config(&config);	
     if (parse_config(&config) == FAILURE)
 		return(clean_config(&config),FAILURE);
-	validate(&config);
+	if(validate(&config) == FAILURE)
+		return (clean_config(&config),FAILURE);
 	clean_config(&config);
 
 	// ####################PARSING BLOCK#################################//

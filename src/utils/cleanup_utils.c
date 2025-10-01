@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/01 11:21:32 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:23:53 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	clean_config(t_config *config)
 		clean_split(config->setting);
 		config->setting = NULL;
 	}
-	if (config->map.height)
+	if (config->map.height != -1)
 	{
 		clean_split(config->map.grid);
 		config->map.grid = NULL;
