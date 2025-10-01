@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 23:02:13 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/30 11:21:03 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 23:02:13 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/01 21:22:29 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@
 # include "MLX42_Int.h"
 # include "libft.h"
 
-#include "parsing.h"
-#include "typedefs.h"
-#include "validate.c"
-# include "game.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include <math.h>
+
 # include "typedefs.h"
+# include "parsing.h"
+# include "validate.c"
+# include "game.h"
 # include "utils.h"
 # include "render.h"
-#include "utils.h"
-#include <fcntl.h>
-#include <stdio.h>
+# include "utils.h"
 
 
 
@@ -38,6 +39,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
+# define TILE_SIZE 64
 # define INIT_FAILURE 2
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0

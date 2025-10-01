@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/30 11:38:29 by rmhazres         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: rmhazres <rmhazres@student.codam.nl>         +#+                      #
+#                                                    +#+                       #
+#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
+#    Updated: 2025/10/01 15:32:53 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS  = -Wall -Wextra -Werror -Iincludes \
 #		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
-          -lglfw -ldl -pthread -lm 
+          -lglfw -ldl -pthread -lm
 #		  -L$(BREW_PREFIX)/opt/glfw/lib \
 #	 	  -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
@@ -46,7 +46,7 @@ SRC_VALIDATION = src/validation/validate.c
 
 SRC_MAP =
 
-SRC_RENDER = src/render/image.c
+SRC_RENDER = src/render/image.c src/render/render.c
 
 SRC_PLAYER =
 

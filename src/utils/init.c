@@ -1,16 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/30 11:37:45 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/01 21:27:09 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//dummy map for testing - remove later
+static const char *raw_map[] = {
+    "111111111111111111111111111111",
+	"100000000000000000000000000001",
+	"100000111111111110000000000001",
+	"100000000000000000000000100001",
+	"100000000000000000001000000001",
+	"100000000111111000000010000001",
+	"100000000000001000000000000001",
+	"100000000000001000000000010001",
+	"10000000000N001000000000000001",
+	"100000000000001111110000000001",
+	"100000000000000000000000000001",
+	"100001110000000000000000000001",
+	"100000000000000000000100000001",
+	"100000000011100000000100000001",
+    "101000110000000000000100000001",
+    "100000000000000000000000000001",
+    "111111111111111111111111111111",
+    NULL
+};
+
+int	init_map(t_game *game)
+{
+	int	y;
+	int h;
+
+	y = 0;
+	h = 0;
+	while (raw_map[h])
+		h++;
+
+	game->map.height = h;
+	game->map.width = ft_strlen(raw_map[0]);
+	game->map.grid = malloc(sizeof(char *) * (h + 1));
+	if (!game->map.grid)
+		return (0);
+	while (y < h)
+	{
+		game->map.grid[y] = ft_strdup(raw_map[y]);
+		y++;
+	}
+	game->map.grid[h] = NULL;
+	return (1);
+}
 
 void	init_player(t_player *player)
 {
@@ -18,8 +64,8 @@ void	init_player(t_player *player)
 	player->pos_y = 100;
 	player->dir_x = 1.0;
 	player->dir_y = 0.0;
-	player->plane_x = 0.0;
-	player->plane_y = 0.66;
+	player->plane_y = 0.0;
+	player->plane_x = 0.66;
 	player->move_speed = 200.0;
 	player->rot_speed = 1.00;
 }
@@ -29,13 +75,29 @@ int	init_assets(t_game *game)
 	game->assets = malloc(sizeof(t_assets));
 	if (!game->assets)
 		return (0);
-	create_background_image(game);
+
+	game->assets->background = make_tile(game->mlx, 0x808080FF);
 	if (!game->assets->background)
 		return (0);
-	create_player_image(game);
+	game->assets->wall = make_tile(game->mlx, 0xFF0000FF);
+	if (!game->assets->wall)
+		return (0);
+	game->assets->player = make_tile(game->mlx, 0x0000FFFF);
 	if (!game->assets->player)
 		return (0);
+
+
+	// create_background_image(game);
+	// if (!game->assets->background)
+	// 	return (0);
+	// create_player_image(game);
+	// if (!game->assets->player)
+	// 	return (0);
+	// create_wall_image(game);
+	// if (!game->assets->wall)
+	// 	return (0);
 	return (1);
+
 }
 
 int	init_game(t_game *game)
@@ -52,6 +114,13 @@ int	init_game(t_game *game)
 		ft_printf("init_assets failure\n");
 		return (EXIT_FAILURE);
 	}
-	images_to_window(game);
+	if (!init_map(game))
+	{
+		ft_printf("map init failure\n");
+		return (EXIT_FAILURE);
+	}
+
+	render_map(game);
+	// images_to_window(game);
 	return (EXIT_SUCCESS);
 }
