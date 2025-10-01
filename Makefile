@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/09/30 12:52:32 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/09/30 14:32:22 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRC_GAME = src/game/game.c
 
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c
 
-SRC_VALIDATION = src/validation/validate.c
+SRC_VALIDATION = src/validation/validate.c src/validation/validate_map.c
 
 SRC_MAP =
 

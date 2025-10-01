@@ -8,7 +8,7 @@ WE ./Makefile
 
 EA ./Makefile
 
-F 220,100,45,2
+F 220,100,45
 
 C 225,30,0
 
