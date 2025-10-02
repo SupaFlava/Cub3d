@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/02 15:56:19 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/02 16:06:00 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	init_map(t_game *game)
 	return (1);
 }
 
- // units are tiles per second, not pixels per second anymore
+ // units are tiles per second, pos_x * TILE_SIZE == pixel value
 void	init_player(t_player *player)
 {
 	player->pos_x = 1.5;
@@ -67,8 +67,8 @@ void	init_player(t_player *player)
 	player->dir_y = -1.0; 
 	player->plane_y = 0.0;
 	player->plane_x = 0.66; // fov 
-	player->move_speed = 1.5;
-	player->rot_speed = 2.5;
+	player->move_speed = 3.0;
+	player->rot_speed = 3.0;
 
 	// direction vectors:// 
 	// (dir_x, dir_y)
