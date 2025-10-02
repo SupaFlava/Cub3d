@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/30 11:26:34 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/02 10:55:52 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ typedef struct s_color {
 
 typedef struct s_map{
     char **grid;
-    int  width;
-    int  height;
+    int	width;
+    int	height;
+	int	p_count;
 }   t_map;
 
 typedef struct s_config {

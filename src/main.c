@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/01 13:23:39 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:19:21 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int init_config(t_config *config)
     config->err_flag = false;
 	config->map.height = -1;
 	config->map.width = -1;
+	config->map.p_count = 0;
+	config->player_x = 0;
+	config->player_y = 0;
 	return (SUCCESS);
 }
 
