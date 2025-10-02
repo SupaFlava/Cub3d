@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 15:57:02 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/02 13:55:21 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_player_pos(t_game *game, int x, int y)
 {
-	game->player.pos_x = x * TILE_SIZE + (TILE_SIZE - TILE_SIZE) / 2;
-	game->player.pos_y = y * TILE_SIZE + (TILE_SIZE - TILE_SIZE) / 2;
+	game->player.pos_x = x +0.5;
+	game->player.pos_y = y +0.5;
 }
 
 void	render_map(t_game *game)

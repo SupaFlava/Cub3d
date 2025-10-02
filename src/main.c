@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/09/30 11:36:29 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/02 13:22:35 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ int init_config(t_config *config)
 int	main(/*int argc, char *argv[]*/)
 {
 	t_game	game;
-//	t_config config;
+	// t_config config;
 
 	// parsing logic comment this whole block if needed 
 	
 	// if(arg_checker(argc, argv) == FAILURE)
-    //     return (FAILURE);
-    // if(get_file(argv[1], &config) == FAILURE)
-    //     return(FAILURE);
+	// 	return (FAILURE);
+	// if(get_file(argv[1], &config) == FAILURE)
+	// 	return(FAILURE);
 	// init_config(&config);
-    // parse_config(&config);
+	// parse_config(&config);
 	// validate(&config);
 	
 	// parsing logic comment this whole block if needed ^^^^
@@ -50,7 +50,7 @@ int	main(/*int argc, char *argv[]*/)
 	}
 
 	mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
-	mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
+	mlx_key_hook(game.mlx, keyhook, &game); //only checks ESC key
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx); //closes game loop
 	return (EXIT_SUCCESS);

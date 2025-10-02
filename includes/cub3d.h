@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 23:02:13 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 21:22:29 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/02 13:10:58 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # include "typedefs.h"
 # include "parsing.h"
-# include "validate.c"
+# include "validate.h"
 # include "game.h"
 # include "utils.h"
 # include "render.h"

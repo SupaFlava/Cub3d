@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 21:27:09 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/02 15:56:19 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,24 @@ int	init_map(t_game *game)
 	return (1);
 }
 
+ // units are tiles per second, not pixels per second anymore
 void	init_player(t_player *player)
 {
-	player->pos_x = 100;
-	player->pos_y = 100;
-	player->dir_x = 1.0;
-	player->dir_y = 0.0;
+	player->pos_x = 1.5;
+	player->pos_y = 1.5;
+	player->dir_x = 0.0;
+	player->dir_y = -1.0; 
 	player->plane_y = 0.0;
-	player->plane_x = 0.66;
-	player->move_speed = 200.0;
-	player->rot_speed = 1.00;
+	player->plane_x = 0.66; // fov 
+	player->move_speed = 1.5;
+	player->rot_speed = 2.5;
+
+	// direction vectors:// 
+	// (dir_x, dir_y)
+	// (1, 0) = facing east
+	// (-1, 0) = facing west
+	// (0, 1) = facing south
+	// (0, -1) = facing north
 }
 
 int	init_assets(t_game *game)
@@ -86,7 +94,6 @@ int	init_assets(t_game *game)
 	if (!game->assets->player)
 		return (0);
 
-
 	// create_background_image(game);
 	// if (!game->assets->background)
 	// 	return (0);
@@ -97,7 +104,6 @@ int	init_assets(t_game *game)
 	// if (!game->assets->wall)
 	// 	return (0);
 	return (1);
-
 }
 
 int	init_game(t_game *game)
@@ -121,6 +127,6 @@ int	init_game(t_game *game)
 	}
 
 	render_map(game);
-	// images_to_window(game);
+	// draw_ray(game);
 	return (EXIT_SUCCESS);
 }
