@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/02 15:24:53 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:40:26 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,22 @@ int	flood_fill(t_config *config , int y, int x)
 {
 	int row_len;
 
-	row_len = ft_strlen(&config->map.grid[y][x]);
+	row_len = ft_strlen(config->map.grid[y]);
+
+	
 	if(x < 0 || y < 0 || y >= config->map.height || x >=row_len)
 		return(FAILURE);
 	if (config->map.grid[y][x] == '1' || config->map.grid[y][x] == 'V')
 		return(SUCCESS);
 	config->map.grid[y][x] = 'V';
-	flood_fill(config, y - 1, x);
-	flood_fill(config, y + 1, x);
-	flood_fill(config, y ,x - 1);
-	flood_fill(config, y, x + 1);
+	if (flood_fill(config, y - 1, x) == FAILURE)
+		return (FAILURE);
+	if (flood_fill(config, y + 1, x) == FAILURE)
+		return (FAILURE);
+	if (flood_fill(config, y ,x - 1) == FAILURE)
+		return (FAILURE);
+	if (flood_fill(config, y,  x + 1) == FAILURE)
+		return (FAILURE);
 	
 	return (SUCCESS);	
 }
