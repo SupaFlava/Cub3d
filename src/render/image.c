@@ -1,43 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   image.c                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 20:57:20 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/03 17:09:51 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	create_background_image(t_game *game)
-// {
-// 	game->assets->background = mlx_new_image(game->mlx, 1920, 1080);
-// 	if (!game->assets->background)
-// 		return (0);
-// 	memset(game->assets->background->pixels, 0, 1920 * 1080 * BPP);
-// 	return (1);
-// }
+void	clear_image_overlay(t_game *game)
+{
+	if (!game->assets->fov)
+		return ;
+	ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
+}
 
-// int	create_wall_image(t_game *game)
-// {
-// 	game->assets->wall = mlx_new_image(game->mlx, 1920, 1080);
-// 	if (!game->assets->wall)
-// 		return (0);
-// 	memset(game->assets->wall->pixels, 30, 64 * 64 * BPP);
-// 	return (1);
-// }
+void draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
+{
+    int dx = abs(end.x - start.x);
+    int dy = -abs(end.y - start.y);
+    int sx = start.x < end.x ? 1 : -1;
+    int sy = start.y < end.y ? 1 : -1;
+    int err = dx + dy;
+    int e2;
 
-// int	create_player_image(t_game *game)
-// {
-// 	game->assets->player = mlx_new_image(game->mlx, 50, 50);
-// 	if (!game->assets->player)
-// 		return (0);
-// 	memset(game->assets->player->pixels, 255, 50 * 50 * BPP);
-// 	return (1);
-// }
+    while (1)
+    {
+        if (start.x >= 0 && start.x < WIDTH && start.y >= 0 && start.y < HEIGHT)
+            ((uint32_t *)img->pixels)[start.y * WIDTH + start.x] = color;
+        if (start.x == end.x && start.y == end.y)
+            break;
+        e2 = 2 * err;
+        if (e2 >= dy)
+        {
+            err += dy;
+            start.x += sx;
+        }
+        if (e2 <= dx)
+        {
+            err += dx;
+            start.y += sy;
+        }
+    }
+}
 
 mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color)
 {

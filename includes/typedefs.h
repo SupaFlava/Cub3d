@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   typedefs.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/01 21:01:05 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/03 16:35:26 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,18 @@
 
 # include "cub3d.h"
 
-// structs
+// defines
+# define WIDTH 1920
+# define HEIGHT 1080
+# define FOV 60.0
+# define NUM_RAYS 60
+
+# define TILE_SIZE 64
+# define INIT_FAILURE 2
+# define EXIT_FAILURE 1
+# define EXIT_SUCCESS 0
+
+// enums
 typedef enum e_dir_type
 {
 	DIR_NO,	//NO
@@ -27,11 +38,18 @@ typedef enum e_dir_type
     DIR_INV, //invalid
 } t_dir_type;
 
+// structs
 typedef struct s_color {
     int r;
     int g;
     int b;
 } t_color;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+} t_point;
 
 typedef struct s_map{
     char **grid;
@@ -59,15 +77,15 @@ typedef struct s_ray
 {
 	double	ray_dir_x;
 	double	ray_dir_y;
-	int		map_x;
-	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	int		step_x;
-	int		step_y;
-	int		hit;
+	// int		map_x;
+	// int		map_y;
+	// double	side_dist_x;
+	// double	side_dist_y;
+	// double	delta_dist_x;
+	// double	delta_dist_y;
+	// int		step_x;
+	// int		step_y;
+	// int		hit;
 } t_ray;
 
 typedef struct s_player
@@ -83,6 +101,8 @@ typedef struct s_player
 
 	double	move_speed;
 	double	rot_speed;
+
+	t_ray	rays[NUM_RAYS];
 }	t_player;
 
 typedef struct s_assets //pointers to the actual loaded images in memory
@@ -90,6 +110,7 @@ typedef struct s_assets //pointers to the actual loaded images in memory
 	mlx_image_t	*background; // mlx_image_t types are temporary for testing
 	mlx_image_t	*player;
 	mlx_image_t	*wall;
+	mlx_image_t	*fov;
 
 
 	// void	*tex_no;

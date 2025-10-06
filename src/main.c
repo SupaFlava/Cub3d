@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/02 13:22:35 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/03 15:33:53 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,11 @@ int	main(/*int argc, char *argv[]*/)
 	// validate(&config);
 	
 	// parsing logic comment this whole block if needed ^^^^
-
-
 	if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
 	{
 		ft_printf("error initializing game\n");
 		return (EXIT_FAILURE); // no proper cleanup function made yet
 	}
-
 	mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
 	mlx_key_hook(game.mlx, keyhook, &game); //only checks ESC key
 	mlx_loop(game.mlx);
