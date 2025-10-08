@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/10/01 15:32:53 by jbaetsen      ########   odam.nl          #
+#    Updated: 2025/10/07 16:05:45 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
-SRC_GAME = src/game/game.c
+SRC_GAME = src/game/game.c src/game/controls.c
 
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c
 

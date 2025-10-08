@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/03 17:26:56 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/08 13:51:33 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,24 @@ void	draw_player_rays(t_game *game)
 	t_point	end;
 
 	i = 0;
-	ray_len = 100.0;
-	start.x = (int)(game->player.pos_x * TILE_SIZE); 
-    start.y = (int)(game->player.pos_y * TILE_SIZE);
-	
+	ray_len = 15 * TILE_SIZE;
+
+	start.x = (int)(game->player.pos_x  * TILE_SIZE);
+	start.y = (int)(game->player.pos_y * TILE_SIZE);
+
 	while (i < NUM_RAYS)
 	{
 		end.x = (int)(start.x + game->player.rays[i].ray_dir_x * ray_len);
-        end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
+		end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
 		draw_line(game->assets->fov, start, end, 0xFFFFFFFF);
 		i++;
 	}
 }
 
-void	set_player_pos(t_game *game, int x, int y)
+void	set_player_start(t_game *game, int x, int y)
 {
-	game->player.pos_x = x +0.5;
-	game->player.pos_y = y +0.5;
+	game->player.pos_x = x + 0.5;
+	game->player.pos_y = y + 0.5;
 }
 
 void	render_map(t_game *game)
@@ -72,12 +73,12 @@ void	render_map(t_game *game)
 			else
 				mlx_image_to_window(game->mlx, game->assets->background, x * TILE_SIZE, y * TILE_SIZE);
 			if (c == 'N')
-				set_player_pos(game, x, y);
+				set_player_start(game, x, y);
 			x++;
 		}
 		y++;
 	}
 	mlx_image_to_window(game->mlx, game->assets->player,
-							(int)game->player.pos_x,
-							(int)game->player.pos_y);
+							(int)game->player.pos_x * TILE_SIZE - game->assets->player->width / 2,
+							(int)game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
 }

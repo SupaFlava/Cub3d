@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/03 17:20:27 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/08 13:36:28 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 static const char *raw_map[] = {
     "111111111111111111111111111111",
 	"100000000000000000000000000001",
-	"100000111111111110000000000001",
+	"10000N111111111110000000000001",
 	"100000000000000000000000100001",
 	"100000000000000000001000000001",
 	"100000000111111000000010000001",
 	"100000000000001000000000000001",
 	"100000000000001000000000010001",
-	"10000000000N001000000000000001",
+	"100000000000001000000000000001",
 	"100000000000001111110000000001",
 	"100000000000000000000000000001",
 	"100001110000000000000000000001",
@@ -58,24 +58,25 @@ int	init_map(t_game *game)
 	return (1);
 }
 
- // units are tiles per second, pos_x * TILE_SIZE == pixel value
+// units are tiles per second, pos_x * TILE_SIZE == pixel value
+// direction vectors://
+// (dir_x, dir_y)
+// (1, 0) = facing east
+// (-1, 0) = facing west
+// (0, 1) = facing south
+// (0, -1) = facing north
 void	init_player(t_player *player)
 {
-	player->pos_x = 1.5;
-	player->pos_y = 1.5;
+	player->pos_x = 1.0;
+	player->pos_y = 1.0;
 	player->dir_x = 0.0;
-	player->dir_y = -1.0; 
+	player->dir_y = -1.0;
 	player->plane_y = 0.0;
-	player->plane_x = 0.66; // fov 
+	player->plane_x = 0.66; // fov
 	player->move_speed = 3.0;
 	player->rot_speed = 3.0;
 
-	// direction vectors:// 
-	// (dir_x, dir_y)
-	// (1, 0) = facing east
-	// (-1, 0) = facing west
-	// (0, 1) = facing south
-	// (0, -1) = facing north
+
 }
 
 int	init_assets(t_game *game)
@@ -96,18 +97,9 @@ int	init_assets(t_game *game)
 
 	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT); // overlay image size of entire screen for the rays/fov
 	if (!game->assets->fov)
-    	return 0;
+		return 0;
 
 
-	// create_background_image(game);
-	// if (!game->assets->background)
-	// 	return (0);
-	// create_player_image(game);
-	// if (!game->assets->player)
-	// 	return (0);
-	// create_wall_image(game);
-	// if (!game->assets->wall)
-	// 	return (0);
 	return (1);
 }
 
@@ -132,6 +124,5 @@ int	init_game(t_game *game)
 	}
 
 	render_map(game);
-	// draw_ray(game);
 	return (EXIT_SUCCESS);
 }
