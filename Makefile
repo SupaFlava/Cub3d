@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/10/07 16:05:45 by jbaetsen      ########   odam.nl          #
+#    Updated: 2025/10/09 14:47:59 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRC_VALIDATION = src/validation/validate.c
 
 SRC_MAP =
 
+SRC_RAYS = src/raycasting/rays.c
+
 SRC_RENDER = src/render/image.c src/render/render.c
 
 SRC_PLAYER =
@@ -54,7 +56,7 @@ SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup
 
 SRC_ASSETS =
 
-SRC = $(SRC_MAIN) $(SRC_GAME) $(SRC_PARSE) $(SRC_MAP) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
+SRC = $(SRC_MAIN) $(SRC_GAME) $(SRC_PARSE) $(SRC_MAP) $(SRC_RAYS) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft/libft.a

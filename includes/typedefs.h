@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/03 16:35:26 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   typedefs.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/09 17:11:13 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ typedef enum e_dir_type
 
 // structs
 typedef struct s_color {
-    int r;
-    int g;
-    int b;
+	int r;
+	int g;
+	int b;
 } t_color;
 
 typedef struct s_point
@@ -52,25 +52,25 @@ typedef struct s_point
 } t_point;
 
 typedef struct s_map{
-    char **grid;
-    int  width;
-    int  height;
-}   t_map;
+	char	**grid;
+	int		width;
+	int		height;
+}	t_map;
 
 typedef struct s_config {
-    char **setting;
-    char *no_tex;
-    char *so_tex;
-    char *we_tex;
-    char *ea_tex;
-	bool in_config;
-    bool *err_flag;
-    t_color floor;
-    t_color ceiling;
-    t_map   map;
-    int player_x;
-    int player_y;
-    char player_dir;
+	char	**setting;
+	char	*no_tex;
+	char	*so_tex;
+	char	*we_tex;
+	char	*ea_tex;
+	bool	in_config;
+	bool	*err_flag;
+	t_color	floor;
+	t_color	ceiling;
+	t_map	map;
+	int		player_x;
+	int		player_y;
+	char	player_dir;
 } t_config;
 
 typedef struct s_ray
@@ -107,12 +107,13 @@ typedef struct s_player
 
 typedef struct s_assets //pointers to the actual loaded images in memory
 {
-	mlx_image_t	*background; // mlx_image_t types are temporary for testing
-	mlx_image_t	*player;
-	mlx_image_t	*wall;
-	mlx_image_t	*fov;
+	mlx_image_t		*background; // mlx_image_t types are temporary for testing
+	mlx_image_t		*player;
+	mlx_image_t		*wall;
+	mlx_image_t		*fov;
 
-
+	mlx_texture_t	*brick_wall;
+	mlx_texture_t	*crack_wall;
 	// void	*tex_no;
 	// void	*tex_so;
 	// void	*tex_we;

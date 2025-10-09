@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/08 13:36:28 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/09 17:13:31 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	init_player(t_player *player)
 	player->dir_x = 0.0;
 	player->dir_y = -1.0;
 	player->plane_y = 0.0;
-	player->plane_x = 0.66; // fov
+	player->plane_x = 0.90; // fov
 	player->move_speed = 3.0;
 	player->rot_speed = 3.0;
 
@@ -85,6 +85,8 @@ int	init_assets(t_game *game)
 	if (!game->assets)
 		return (0);
 
+
+	//tiles are temp/ 2d view of map & player
 	game->assets->background = make_tile(game->mlx, 0x808080FF);
 	if (!game->assets->background)
 		return (0);
@@ -99,7 +101,20 @@ int	init_assets(t_game *game)
 	if (!game->assets->fov)
 		return 0;
 
+	// init textures here
+	game->assets->brick_wall = mlx_load_png("./src/textures/Brick_Wall_64x64.png");
+	if (!game->assets->brick_wall)
+	{
+		ft_printf("wall texture didn't load\n");
+		return (0);
+	}
 
+	game->assets->crack_wall = mlx_load_png("./src/textures/Brick_Wall_Cracked_64x64.png");
+	if (!game->assets->crack_wall)
+	{
+		ft_printf("cracked wall texture didn't load\n");
+		return (0);
+	}
 	return (1);
 }
 
