@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/02 11:19:21 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/10 14:08:55 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	main(int argc, char *argv[])
 	}
 	init_config(&config);	
     if (parse_config(&config) == FAILURE)
+	{
+		ft_printf("Error\nin parsing\n");
 		return(clean_config(&config),FAILURE);
+	}
 	if(validate(&config) == FAILURE)
 		return (clean_config(&config),FAILURE);
 	clean_config(&config);
