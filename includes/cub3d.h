@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 23:02:13 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 21:22:29 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 23:02:13 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/10 15:13:55 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "MLX42.h"
-# include "MLX42_Int.h"
+// # include "MLX42_Int.h"
 # include "libft.h"
 
 # include <fcntl.h>

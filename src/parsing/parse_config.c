@@ -6,24 +6,36 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/29 18:52:36 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:54:17 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	extract_map(t_config *config, int i)
+int	extract_map(t_config *config, int i)
 {
 	int j;
-
+	int	count;
+	
+	count = 0;
 	j = 0;
-
+	while(config->setting[i + count])
+		count++;
+	config->map.grid = malloc(sizeof(char *) *(count + 1));
+	if(!config->map.grid)
+		return (FAILURE);
 	while(config->setting[i])
 	{
-		config->map.grid[j] = config->setting[i];
+		config->map.grid[j] = ft_strdup(config->setting[i]);
+		if(!config->map.grid[j])
+			return(FAILURE);
 		i++;
 		j++;
 	}
+	config->map.grid[j] = NULL;
+	config->map.height = count;
+
+	return (SUCCESS);
 }
 
 int	assign_config(t_config *config, int dir, char **arr)
@@ -39,10 +51,13 @@ int	assign_config(t_config *config, int dir, char **arr)
 	else if (dir == DIR_F || dir == DIR_C)
 	{
 		if (parse_color(config ,arr[1],dir) == FAILURE)
-			return (FAILURE);	
+			return (FAILURE);
 	}
 	else if (dir == DIR_INV)
+	{
+		ft_printf("Error\nInvalid dir\n");
 		return (FAILURE);
+	}
 	if (config->err_flag)
 	  	return(FAILURE);
 	return (SUCCESS);
@@ -54,14 +69,21 @@ int	extract_config(t_config *config, char *line , bool *seen)
 	int   dir;
 
 	result = ft_split(line, ' ');
-	if (!result)
+	if (!result || result[2])
+	{
+		
 		return(FAILURE);
+	}
 	dir = classify_directive(result[0]);
 	if(seen[dir])
+	{
+		clean_split(result);
+		ft_printf("Error\nDuplicate in config\n");
 		return (FAILURE);
+	}
 	if (assign_config(config, dir, result) == FAILURE)
 	{
-		clean_config(config);
+		clean_split(result);
 		return (FAILURE);
 	}
 	seen[dir] = true;
@@ -85,17 +107,14 @@ int	parse_config(t_config *config)
 		else
 		{
 			if (extract_config(config,config->setting[i], seen) == FAILURE)
-			{
-				ft_printf("Error\n Map is uncorrecttly formated!\n");
-					return(FAILURE);    
-			}
+					return(FAILURE);
 			config_len++;
 			i++;
 			if (config_len == 6)
 				config->in_config = false;
 		}
 	}
-	ft_printf("wat the helly %s \n", config->no_tex);
-	extract_map(config, i);
+	if(extract_map(config, i) == FAILURE)
+		return(FAILURE);
 	return (SUCCESS);
 }

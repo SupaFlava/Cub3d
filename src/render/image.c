@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   image.c                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 20:57:20 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/10 15:15:00 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//this define is temp for rami to remove an error 
+#define BPP 1
 
 // int	create_background_image(t_game *game)
 // {

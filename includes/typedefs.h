@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   typedefs.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/01 21:01:05 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/10 15:14:04 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ typedef struct s_color {
 
 typedef struct s_map{
     char **grid;
-    int  width;
-    int  height;
+    int	width;
+    int	height;
+	int	p_count;
 }   t_map;
 
 typedef struct s_config {

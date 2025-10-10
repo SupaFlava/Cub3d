@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: rmhazres <rmhazres@student.codam.nl>         +#+                      #
-#                                                    +#+                       #
-#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/10/01 15:32:53 by jbaetsen      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
+#    Updated: 2025/10/10 15:13:47 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # ===================== #
 CC      = cc
 #this is for apple silicon please dont remove it only comment it out
-#BREW_PREFIX = /opt/homebrew
+BREW_PREFIX = /opt/homebrew
 
 CFLAGS  = -Wall -Wextra -Werror -Iincludes \
           -Ilibft \
@@ -42,7 +42,7 @@ SRC_GAME = src/game/game.c
 
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c
 
-SRC_VALIDATION = src/validation/validate.c
+SRC_VALIDATION = src/validation/validate.c src/validation/validate_map.c
 
 SRC_MAP =
 
@@ -50,7 +50,8 @@ SRC_RENDER = src/render/image.c src/render/render.c
 
 SRC_PLAYER =
 
-SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c
+SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c \
+			src/utils/validate_utils.c
 
 SRC_ASSETS =
 

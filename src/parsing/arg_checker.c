@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:03:14 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/23 21:33:53 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/10 14:05:18 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	check_extention(char *file)
 	}
 	return(SUCCESS);
 }
-
 
 int arg_checker(int argc, char *argv[])
 {

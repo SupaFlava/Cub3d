@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/29 18:51:17 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:34:04 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,63 @@
 
 int	check_assets(t_config *config)
 {
-	int	fd;
-	
-	fd = open(config->no_tex, O_RDONLY);
-	if(fd < 0)
+	if(open_and_close_file(config->no_tex) == FAILURE)
 	{
-		ft_printf("%s \n", config->no_tex);
-		ft_printf("failed for NORTH TEXT '%i' \n", fd);
+		ft_printf("noth asset not found\n");
 		return(FAILURE);
 	}
-	ft_printf("what sucess ??? '%i' TEXT\n", fd);
-
-	close(fd);
+	if(open_and_close_file(config->ea_tex) == FAILURE)
+	{
+		ft_printf("east asset not found\n");
+		return(FAILURE);
+	}
+	if(open_and_close_file(config->we_tex) == FAILURE)
+	{
+		ft_printf("west asset not found\n");
+		return(FAILURE);
+	}
+	if(open_and_close_file(config->so_tex) == FAILURE)
+	{
+		ft_printf("south asset not found\n");
+		return(FAILURE);
+	}
+	return(SUCCESS);
+}
+int	check_colors(t_config *config)
+{
+	if(config->floor.r > 255 || config->floor.g < 0)
+		return(FAILURE);
+	if(config->floor.g > 255 || config->floor.g < 0)
+		return(FAILURE);
+	if(config->floor.b > 255 || config->floor.g < 0)
+		return(FAILURE);
+	if(config->ceiling.r > 255 || config->ceiling.g < 0)
+		return(FAILURE);
+	if(config->ceiling.g > 255 || config->ceiling.g < 0)
+		return(FAILURE);
+	if(config->ceiling.b > 255 || config->ceiling.g < 0)
+		return(FAILURE);
 	return(SUCCESS);
 }
 
 int	validate_config(t_config *config)
 {
-	check_assets(config);
+	if (check_assets(config) == FAILURE)
+		return(FAILURE);
+	if (check_colors(config) == FAILURE)
+	{
+		ft_printf("Error\n colors malformated\n");
+	 	return(FAILURE);
+	}
 	return (SUCCESS);
 }
 
 
 int	validate(t_config *config)
 {
-	validate_config(config);
-	// validate_map();
+	if (validate_config(config) == FAILURE)
+		return (FAILURE);
+	if (validate_map(config) == FAILURE)
+		return(FAILURE);
 	return(SUCCESS);
 }
