@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 23:02:13 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/03 16:20:54 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/09 21:29:02 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@
 # include "utils.h"
 
 
-
 # define FAILURE 0
 # define SUCCESS 1
 # define BUFF 1024
-
-
 
 #endif // CUB3D_H

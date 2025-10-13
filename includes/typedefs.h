@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   typedefs.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/09 17:11:13 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/10 17:15:05 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,23 @@ typedef struct s_config {
 
 typedef struct s_ray
 {
-	double	ray_dir_x;
+	double	ray_dir_x; //current direction
 	double	ray_dir_y;
-	// int		map_x;
-	// int		map_y;
-	// double	side_dist_x;
-	// double	side_dist_y;
-	// double	delta_dist_x;
-	// double	delta_dist_y;
-	// int		step_x;
-	// int		step_y;
-	// int		hit;
+	int		map_x; //current location
+	int		map_y;
+	double	side_dist_x; //distance to next X tile side
+	double	side_dist_y; //distance to next Y tile side
+	double	delta_dist_x; //how far in map units to go from 1 x_side to the next
+	double	delta_dist_y; 
+	int		step_x; // can be +1 or -1
+	int		step_y;
+	int		hit;  // 1 if ray hit a wall
+	int		side; //0 = hit vertical (x) side, 1 = hit horizontal (y) side
+	
+	double	dist_to_wall; //distance between player and wall. (tile units)
 } t_ray;
+
+INFINITY 
 
 typedef struct s_player
 {
@@ -113,7 +118,7 @@ typedef struct s_assets //pointers to the actual loaded images in memory
 	mlx_image_t		*fov;
 
 	mlx_texture_t	*brick_wall;
-	mlx_texture_t	*crack_wall;
+	mlx_texture_t	*crack_wall; //adapt these later to tex_so & tex_no etc
 	// void	*tex_no;
 	// void	*tex_so;
 	// void	*tex_we;

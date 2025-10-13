@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   rays.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/09 13:31:59 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   rays.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/02 14:13:11 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/10 17:16:14 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	differential_analysis(t_game *game, t_ray *ray)
+{
+	t_player *p;
+
+	p = &game->player;
+	ray->map_x = (int)p->pos_x
+	ray->map_y = (int)p->pos_y
+
+	if (ray->ray_dir_x == 0.0)
+		ray->delta_dist
+}
 
 void	update_player_rays(t_player *player)
 {
