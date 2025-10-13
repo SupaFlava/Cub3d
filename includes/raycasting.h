@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parsing.h                                          :+:    :+:            */
+/*   raycasting.h                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/23 19:59:19 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/13 13:00:41 by jbaetsen      ########   odam.nl         */
+/*   Created: 2025/10/13 14:37:38 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/13 17:55:25 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef RAYCASTING_H
+# define RAYCASTING_H
 
-#include "cub3d.h"
-#include "typedefs.h"
+# include "cub3d.h"
 
-int arg_checker(int argc, char *argv[]);
-int	get_file(char *path, t_config *config);
-int	parse_config(t_config *config);
+// rays.c
 
 
+// casting.c
+void	cast_rays(t_game *game);
+void	diferential_analysis(t_game *game, t_ray *ray);
 
-
-#endif // PARSING_H
+#endif // RAYCASTING_H

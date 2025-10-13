@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/10/09 14:47:59 by jbaetsen      ########   odam.nl          #
+#    Updated: 2025/10/13 14:42:59 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC_VALIDATION = src/validation/validate.c
 
 SRC_MAP =
 
-SRC_RAYS = src/raycasting/rays.c
+SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c
 
 SRC_RENDER = src/render/image.c src/render/render.c
 
