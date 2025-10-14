@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 23:02:13 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 13:55:44 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/14 14:06:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "MLX42.h"
-// # include "MLX42_Int.h"
+# include "MLX42_Int.h"
 # include "libft.h"
 
 # include <fcntl.h>
