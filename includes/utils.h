@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 12:28:28 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:31:08 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	open_and_close_file(char *path);
 
 
 // utils.c
-void	init_player(t_player *player, t_config *config);
+void	init_player(t_player *player);
 int		init_assets(t_game *game);
-int		init_game(t_game *game , t_config *config);
+int		init_game(t_game *game);
 
 
 #endif // UTILS_H

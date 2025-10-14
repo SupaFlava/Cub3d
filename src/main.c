@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/14 14:29:32 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:35:37 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int init_config(t_config *config)
 	config->so_tex = NULL;
 	config->we_tex = NULL;
 	config->ea_tex = NULL;
-    config->err_flag = false;
+	config->err_flag = false;
 	config->map.height = -1;
 	config->map.width = -1;
 	config->map.p_count = 0;
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 	//####################PARSING BLOCK#################################//
 
 	//####################GAME BLOCK#################################//
-	if (init_game(&game, &config) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
+	if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
 	 {
 			ft_printf("error initializing game\n");
 	 		return (EXIT_FAILURE); // no proper cleanup function made yet
@@ -56,21 +56,5 @@ int	main(int argc, char *argv[])
 	//####################GAME BLOCK#################################//
 
 	clean_config(&config);
-
-	// ####################PARSING BLOCK#################################//
-
-	// ####################GAME BLOCK#################################//
-	// if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
-	//  {
-	// 		ft_printf("error initializing game\n");
-	//  		return (EXIT_FAILURE); // no proper cleanup function made yet
- 	// }
-	// mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
-	// mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
-	// mlx_loop(game.mlx);
-	// mlx_terminate(game.mlx); //closes game loop
-	// ####################GAME BLOCK#################################//
-
-
 	return (EXIT_SUCCESS);
 }
