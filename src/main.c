@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/10 15:16:10 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 12:08:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,33 @@ int init_config(t_config *config)
 
 int	main(int argc, char *argv[])
 {
-//	t_game	game;
-	t_config config;
+	t_game	game;
+	t_config	config;
 
 	// ####################PARSING BLOCK#################################//
-	// parsing logic comment this whole block if needed 
-	if(arg_checker(argc, argv) == FAILURE)
-        return (FAILURE);
-    if(get_file(argv[1], &config) == FAILURE)
-	{
-        return(FAILURE);	
-	}
-	init_config(&config);	
-    if (parse_config(&config) == FAILURE)
-	{
-		ft_printf("Error\nin parsing\n");
-		return(clean_config(&config),FAILURE);
-	}
-	if(validate(&config) == FAILURE)
-		return (clean_config(&config),FAILURE);
+	if (arg_checker(argc, argv) == FAILURE)
+		return (FAILURE);
+	if (get_file(argv[1], &config) == FAILURE)
+		return (FAILURE);
+	init_config(&config);
+
+	if (parse_game(&config) == FAILURE)
+		return (FAILURE);
+	//####################PARSING BLOCK#################################//
+
+	//####################GAME BLOCK#################################//
+	if (init_game(&game, &config) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
+	 {
+			ft_printf("error initializing game\n");
+	 		return (EXIT_FAILURE); // no proper cleanup function made yet
+ 	}
+	mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
+	mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
+	mlx_loop(game.mlx);
+	mlx_terminate(game.mlx); //closes game loop
+	//####################GAME BLOCK#################################//
+
 	clean_config(&config);
 
-	// ####################PARSING BLOCK#################################//
-
-	// ####################GAME BLOCK#################################//
-	// if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
-	//  {
-	// 		ft_printf("error initializing game\n");s
-	//  		return (EXIT_FAILURE); // no proper cleanup function made yet
- 	// }
-	// mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
-	// mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
-	// mlx_loop(game.mlx);
-	// mlx_terminate(game.mlx); //closes game loop
-	// ####################GAME BLOCK#################################//
-
-	
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/01 13:23:53 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:57:12 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void clean_split(char **alloc)
 {
-    int i;
-    i = 0;
-    while(alloc[i])
-    {
-        free(alloc[i]);
-        i++;
-    }
-    free(alloc);
+	int i;
+
+	i = 0;
+	while (alloc[i])
+	{
+		free(alloc[i]);
+		i++;
+	}
+	free(alloc);
 	alloc = NULL;
 }
 
@@ -57,6 +58,5 @@ void	clean_config(t_config *config)
 		clean_split(config->map.grid);
 		config->map.grid = NULL;
 	}
-		
 
 }

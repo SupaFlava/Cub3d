@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parse_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 19:59:19 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 11:15:46 by rmhazres         ###   ########.fr       */
+/*   Created: 2025/10/14 11:10:49 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/14 12:05:03 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
-
 #include "cub3d.h"
-#include "typedefs.h"
 
-int	parse_game(t_config *config);
-int arg_checker(int argc, char *argv[]);
-int	get_file(char *path, t_config *config);
-int	parse_config(t_config *config);
-
-
-
-
-#endif
+int	parse_game(t_config *config)
+{
+	if (parse_config(config) == FAILURE)
+	{
+		ft_printf("Error\nin parsing\n");
+		return (clean_config(config),FAILURE);
+	}
+	if (validate(config) == FAILURE)
+		return (clean_config(config),FAILURE);
+	return (SUCCESS);
+}

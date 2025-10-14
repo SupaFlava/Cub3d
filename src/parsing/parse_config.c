@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/10 13:54:17 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:54:41 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,24 @@ int	extract_map(t_config *config, int i)
 {
 	int j;
 	int	count;
-	
+
 	count = 0;
 	j = 0;
-	while(config->setting[i + count])
+	while (config->setting[i + count])
 		count++;
 	config->map.grid = malloc(sizeof(char *) *(count + 1));
-	if(!config->map.grid)
+	if (!config->map.grid)
 		return (FAILURE);
-	while(config->setting[i])
+	while (config->setting[i])
 	{
 		config->map.grid[j] = ft_strdup(config->setting[i]);
-		if(!config->map.grid[j])
-			return(FAILURE);
+		if (!config->map.grid[j])
+			return (FAILURE);
 		i++;
 		j++;
 	}
 	config->map.grid[j] = NULL;
 	config->map.height = count;
-
 	return (SUCCESS);
 }
 
@@ -59,23 +58,20 @@ int	assign_config(t_config *config, int dir, char **arr)
 		return (FAILURE);
 	}
 	if (config->err_flag)
-	  	return(FAILURE);
+		return (FAILURE);
 	return (SUCCESS);
 }
 
 int	extract_config(t_config *config, char *line , bool *seen)
 {
 	char **result;
-	int   dir;
+	int	dir;
 
 	result = ft_split(line, ' ');
 	if (!result || result[2])
-	{
-		
-		return(FAILURE);
-	}
+		return (FAILURE);
 	dir = classify_directive(result[0]);
-	if(seen[dir])
+	if (seen[dir])
 	{
 		clean_split(result);
 		ft_printf("Error\nDuplicate in config\n");
@@ -100,21 +96,21 @@ int	parse_config(t_config *config)
 	i = 0;
 	config_len = 0;
 	config->in_config = true;
-	while(config->setting[i] && config->in_config)
+	while (config->setting[i] && config->in_config)
 	{
-		if(ft_isspace(config->setting[i]) == SUCCESS)
+		if (ft_isspace(config->setting[i]) == SUCCESS)
 			i++;
 		else
 		{
 			if (extract_config(config,config->setting[i], seen) == FAILURE)
-					return(FAILURE);
+				return (FAILURE);
 			config_len++;
 			i++;
 			if (config_len == 6)
 				config->in_config = false;
 		}
 	}
-	if(extract_map(config, i) == FAILURE)
-		return(FAILURE);
+	if (extract_map(config, i) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }

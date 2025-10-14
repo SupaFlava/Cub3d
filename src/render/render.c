@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 15:57:02 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/14 12:42:28 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ void	set_player_pos(t_game *game, int x, int y)
 
 void	render_map(t_game *game)
 {
-	int	x;
+	size_t	x;
 	int	y;
 	char c;
+
 	y = 0;
 	x = 0;
 	while (y < game->map.height)
 	{
 		x = 0;
-		while (x < game->map.width)
+		while (x < ft_strlen(game->map.grid[x]))
 		{
 			c = game->map.grid[y][x];
 			if (c == '1')
@@ -42,6 +43,6 @@ void	render_map(t_game *game)
 		y++;
 	}
 	mlx_image_to_window(game->mlx, game->assets->player,
-							(int)game->player.pos_x,
-							(int)game->player.pos_y);
+			(int)game->player.pos_x,
+			(int)game->player.pos_y);
 }

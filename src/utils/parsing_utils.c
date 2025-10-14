@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/01 12:57:46 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:00:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 int    parse_color(t_config *config ,char *colors, int dir)
 {
 	char **c_array;
-    int	i;
-	
+	int	i;
+
 	c_array = ft_split(colors, ',');
-	if(!c_array)
+	if (!c_array)
 		return (FAILURE);
 	i = 0;		
-	while(c_array[i])
+	while (c_array[i])
 		i++;
-	if(i != 3)
+	if (i != 3)
 	{
 		clean_split(c_array);
 		return (ft_printf("Error\nColors malformated!\n"),FAILURE);
 	}
-	if(dir == DIR_F)
+	if (dir == DIR_F)
 	{
 		config->floor.r = ft_atoi(c_array[0]);
 		config->floor.g = ft_atoi(c_array[1]);
@@ -47,28 +47,28 @@ int    parse_color(t_config *config ,char *colors, int dir)
 int ft_isspace(char *string)
 {
 	int i;
-	
+
 	i = 0;
-	while(string[i])
+	while (string[i])
 	{
-		if(string[i] == ' ' || string[i] == '\t')
+		if (string[i] == ' ' || string[i] == '\t')
 			i++;
 		else
-			return(FAILURE); 
+			return (FAILURE); 
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
 int classify_directive(char *dir)
 {
 	char *identifier[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
-	int   i;
+	int	i;
 
 	i = 0;
-	while(identifier[i])
+	while (identifier[i])
 	{
-		if(ft_strncmp(identifier[i], dir, ft_strlen(identifier[i])) == 0)
-			return(i);
+		if (ft_strncmp(identifier[i], dir, ft_strlen(identifier[i])) == 0)
+			return (i);
 		i++;
 	}
 	return (DIR_INV);

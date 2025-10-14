@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   init.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 21:27:09 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/14 12:35:00 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	init_map(t_game *game)
 
 	y = 0;
 	h = 0;
-	while (raw_map[h])
+	while (game->map.grid[h])
 		h++;
 
 	game->map.height = h;
@@ -58,10 +58,12 @@ int	init_map(t_game *game)
 	return (1);
 }
 
-void	init_player(t_player *player)
+void	init_player(t_player *player, t_config *config)
 {
-	player->pos_x = 100;
-	player->pos_y = 100;
+	player->pos_x = config->player_x;
+	player->pos_y = config->player_y;
+	ft_printf("position of the player x is '%i' and y is '%i'\n",player->pos_x ,player->pos_y);
+
 	player->dir_x = 1.0;
 	player->dir_y = 0.0;
 	player->plane_y = 0.0;
@@ -100,7 +102,7 @@ int	init_assets(t_game *game)
 
 }
 
-int	init_game(t_game *game)
+int	init_game(t_game *game, t_config *config)
 {
 	game->mlx = mlx_init(WIDTH, HEIGHT, "w0ffelstein", true);
 	if (!game->mlx)
@@ -108,18 +110,15 @@ int	init_game(t_game *game)
 		ft_printf("mlx_init failure\n");
 		return (EXIT_FAILURE);
 	}
-	init_player(&game->player);
+	ft_printf("position of the player x is '%i' and y is '%i'\n",config->player_x , config->player_y);
+	init_player(&game->player, config);
 	if (!init_assets(game))
 	{
 		ft_printf("init_assets failure\n");
 		return (EXIT_FAILURE);
 	}
-	if (!init_map(game))
-	{
-		ft_printf("map init failure\n");
-		return (EXIT_FAILURE);
-	}
-
+	game->map.grid = config->map.grid;
+	game->map.height = config->map.height;
 	render_map(game);
 	// images_to_window(game);
 	return (EXIT_SUCCESS);

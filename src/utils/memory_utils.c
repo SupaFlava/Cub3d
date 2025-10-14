@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:12:00 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/29 18:55:45 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:58:30 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 char *safe_assign(char *src, bool *err_flag)
 {
-    char *tmp;
-    
-    tmp = ft_strdup(src);
-    if(tmp == NULL)
+	char *tmp;
+
+	tmp = ft_strdup(src);
+	if (tmp == NULL)
 	{
-        *err_flag = true;
-		return(NULL);
+		*err_flag = true;
+		return (NULL);
 	}
 
-    return (tmp);
+	return (tmp);
 }
