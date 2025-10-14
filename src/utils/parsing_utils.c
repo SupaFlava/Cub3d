@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/09/29 14:37:12 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:57:46 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 int    parse_color(t_config *config ,char *colors, int dir)
 {
 	char **c_array;
-    
+    int	i;
+	
 	c_array = ft_split(colors, ',');
 	if(!c_array)
 		return (FAILURE);
+	i = 0;		
+	while(c_array[i])
+		i++;
+	if(i != 3)
+	{
+		clean_split(c_array);
+		return (ft_printf("Error\nColors malformated!\n"),FAILURE);
+	}
 	if(dir == DIR_F)
 	{
 		config->floor.r = ft_atoi(c_array[0]);

@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/13 16:46:14 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/14 13:59:19 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ typedef struct s_point
 } t_point;
 
 typedef struct s_map{
-	char	**grid;
-	int		width;
-	int		height;
-}	t_map;
+    char **grid;
+    int	width;
+    int	height;
+	int	p_count;
+}   t_map;
 
 typedef struct s_config {
 	char	**setting;
