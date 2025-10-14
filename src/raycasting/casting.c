@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/13 14:21:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/13 17:55:25 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/14 13:40:52 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	cast_rays(t_game *game)
 {
 	int	i;
 
+	i = 0;
 	while (i < NUM_RAYS)
 	{
 		diferential_analysis(game, &game->player.rays[i]);

@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/13 19:52:51 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/14 13:39:28 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,21 +139,23 @@ void draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
 void	draw_player_rays(t_game *game)
 {
 	int		i;
-	double	ray_len;
 	t_point	start;
 	t_point	end;
+	double	ray_len;
 
-	i = 0;
-	ray_len = 15 * TILE_SIZE;
-
-	start.x = (int)(game->player.pos_x  * TILE_SIZE);
+	start.x = (int)(game->player.pos_x * TILE_SIZE);
 	start.y = (int)(game->player.pos_y * TILE_SIZE);
 
-	while (i < NUM_RAYS)
+	for (i = 0; i < NUM_RAYS; i++)
 	{
-		end.x = (int)(start.x + game->player.rays[i].ray_dir_x * ray_len);
-		end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
-		draw_line(game->assets->fov, start, end, 0xFFFFFFFF);
-		i++;
+		// Only draw if perp_dist is valid and positive
+		ray_len = game->player.rays[i].perp_dist;
+		if (ray_len > 0.0 && ray_len != INFINITY)
+		{
+			ray_len *= TILE_SIZE;
+			end.x = (int)(start.x + game->player.rays[i].ray_dir_x * ray_len);
+			end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
+			draw_line(game->assets->fov, start, end, 0xFFFFFFFF);
+		}
 	}
 }
