@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/14 14:10:19 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/14 15:43:19 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	render_map(t_game *game)
 	while (y < game->map.height)
 	{
 		x = 0;
-		while (x < ft_strlen(game->map.grid[x]))
+		while (x < ft_strlen(game->map.grid[y]))
 		{
 			c = game->map.grid[y][x];
 			if (c == '1')

@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/13 14:21:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 13:40:52 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/14 15:29:57 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	diferential_analysis(t_game *game, t_ray *ray)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->side += ray->delta_dist_x;
+			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
 			ray->side = 0;
 		}
@@ -84,10 +84,10 @@ void	diferential_analysis(t_game *game, t_ray *ray)
 		}
 		if (ray->map_x < 0 || ray->map_x >= game->map.width ||
 			ray->map_y < 0 || ray->map_y >= game->map.height)
-			{
-				ray->hit = 1;
-				break;
-			}
+		{
+			ray->hit = 1;
+			break;
+		}
 		if (game->map.grid[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}

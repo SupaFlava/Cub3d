@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/14 14:39:42 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/14 15:38:28 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,6 @@ int	init_map(t_game *game)
 	return (1);
 }
 
-// units are tiles per second, pos_x * TILE_SIZE == pixel value
-// direction vectors://
-// (dir_x, dir_y)
-// (1, 0) = facing east
-// (-1, 0) = facing west
-// (0, 1) = facing south
-// (0, -1) = facing north
 void	init_player(t_player *player)
 {
 	player->pos_x = 1.0;
