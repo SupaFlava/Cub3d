@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/14 12:08:16 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:09:41 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,21 @@ int	main(int argc, char *argv[])
 	//####################GAME BLOCK#################################//
 
 	clean_config(&config);
+
+	// ####################PARSING BLOCK#################################//
+
+	// ####################GAME BLOCK#################################//
+	// if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
+	//  {
+	// 		ft_printf("error initializing game\n");s
+	//  		return (EXIT_FAILURE); // no proper cleanup function made yet
+ 	// }
+	// mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
+	// mlx_key_hook(game.mlx, keyhook, NULL); //only checks ESC key
+	// mlx_loop(game.mlx);
+	// mlx_terminate(game.mlx); //closes game loop
+	// ####################GAME BLOCK#################################//
+
 
 	return (EXIT_SUCCESS);
 }

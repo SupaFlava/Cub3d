@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/10/14 11:16:40 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/10/14 14:08:28 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,15 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
-SRC_GAME = src/game/game.c
+SRC_GAME = src/game/game.c src/game/controls.c
 
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c src/parsing/parse_game.c
 
 SRC_VALIDATION = src/validation/validate.c src/validation/validate_map.c
 
 SRC_MAP =
+
+SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c
 
 SRC_RENDER = src/render/image.c src/render/render.c
 
@@ -55,7 +57,7 @@ SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup
 
 SRC_ASSETS =
 
-SRC = $(SRC_MAIN) $(SRC_GAME) $(SRC_PARSE) $(SRC_MAP) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
+SRC = $(SRC_MAIN) $(SRC_GAME) $(SRC_PARSE) $(SRC_MAP) $(SRC_RAYS) $(SRC_VALIDATION) $(SRC_RENDER) $(SRC_PLAYER) $(SRC_UTILS) $(SRC_ASSETS)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft/libft.a

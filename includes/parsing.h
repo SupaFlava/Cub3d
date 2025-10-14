@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:59:19 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 11:15:46 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:08:47 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,4 @@ int	parse_config(t_config *config);
 
 
 
-#endif
+#endif // PARSING_H
