@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 13:57:59 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/14 14:08:28 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int init_config(t_config *config)
 
 int	main(int argc, char *argv[])
 {
-//	t_game	game;
+	t_game	game;
 	t_config config;
 
 	// ####################PARSING BLOCK#################################//
@@ -55,7 +55,7 @@ int	main(int argc, char *argv[])
 	// ####################GAME BLOCK#################################//
 	// if (init_game(&game) != EXIT_SUCCESS) // sets up game struct and creates assets, and sets player variables
 	//  {
-	// 		ft_printf("error initializing game\n");s
+	// 		ft_printf("error initializing game\n");
 	//  		return (EXIT_FAILURE); // no proper cleanup function made yet
  	// }
 	// mlx_loop_hook(game.mlx, game_loop, &game); //game loop - keydown registration and refresh player image
