@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/01 16:06:53 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/13 14:37:05 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	keyhook(mlx_key_data_t keydata, void *param)
 {
-	(void)param;
+	t_game *game;
+
+	game = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		ft_printf("CLOSING\nescape key pressed\n");
+		// delete_images(game);
+		mlx_terminate(game->mlx);
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -26,23 +30,24 @@ void	game_loop(void *param)
 {
 	t_game	*game;
 	double	move_step;
+	double	rot_step;
 
 	game = param;
 	move_step = game->player.move_speed * game->mlx->delta_time;
+	rot_step = game->player.rot_speed * game->mlx->delta_time;
 
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		game->player.pos_y -= move_step;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		game->player.pos_x -= move_step;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		game->player.pos_y += move_step;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		game->player.pos_x += move_step;
+	//movement & rotation
+	check_movement(game, move_step);
+	check_rotation(game, rot_step);
+
+	// ray overlay // - clears fov img, - updates direction of all rays, - draws rays on fov img again
+	memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
+	update_player_rays(&game->player);
+	cast_rays(game);
+	draw_player_rays(game);
 
 
-
-
-
-	game->assets->player->instances[0].x = (int32_t)game->player.pos_x;
-	game->assets->player->instances[0].y = (int32_t)game->player.pos_y;
+	// updates player image locationm (temp)
+	game->assets->player->instances[0].x = (int32_t)(game->player.pos_x * TILE_SIZE - game->assets->player->width / 2);
+	game->assets->player->instances[0].y = (int32_t)(game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/10 15:16:10 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/14 13:57:59 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	main(int argc, char *argv[])
 	t_config config;
 
 	// ####################PARSING BLOCK#################################//
-	// parsing logic comment this whole block if needed 
+	// parsing logic comment this whole block if needed
 	if(arg_checker(argc, argv) == FAILURE)
         return (FAILURE);
     if(get_file(argv[1], &config) == FAILURE)
 	{
-        return(FAILURE);	
+        return(FAILURE);
 	}
-	init_config(&config);	
+	init_config(&config);
     if (parse_config(&config) == FAILURE)
 	{
 		ft_printf("Error\nin parsing\n");
@@ -64,6 +64,6 @@ int	main(int argc, char *argv[])
 	// mlx_terminate(game.mlx); //closes game loop
 	// ####################GAME BLOCK#################################//
 
-	
+
 	return (EXIT_SUCCESS);
 }
