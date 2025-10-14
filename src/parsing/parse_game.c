@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_utils.c                                   :+:      :+:    :+:   */
+/*   parse_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 18:23:52 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 11:00:35 by rmhazres         ###   ########.fr       */
+/*   Created: 2025/10/14 11:10:49 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/14 12:05:03 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	open_and_close_file(char *path)
+int	parse_game(t_config *config)
 {
-	int fd;
-
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	if (parse_config(config) == FAILURE)
 	{
-		ft_printf("ERROR\n");
-		close(fd);
-		return (FAILURE);
+		ft_printf("Error\nin parsing\n");
+		return (clean_config(config),FAILURE);
 	}
-	close(fd);
+	if (validate(config) == FAILURE)
+		return (clean_config(config),FAILURE);
 	return (SUCCESS);
 }
- 

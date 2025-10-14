@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/01 11:14:58 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:54:53 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ int	get_file(char *path, t_config *config)
 	int		fd;
 	char	*map_str;
 	char	**map;
-	
+
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_printf("Error\n");
-		return(FAILURE);
+		return (FAILURE);
 	}
 	map_str = read_map_file(fd);
 	if (!map_str)

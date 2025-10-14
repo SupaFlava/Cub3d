@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/09 21:13:25 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:10:19 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,16 @@ void	set_player_start(t_game *game, int x, int y,  char dir)
 
 void	render_map(t_game *game)
 {
-	int	x;
+	size_t	x;
 	int	y;
 	char c;
+
 	y = 0;
 	x = 0;
 	while (y < game->map.height)
 	{
 		x = 0;
-		while (x < game->map.width)
+		while (x < ft_strlen(game->map.grid[x]))
 		{
 			c = game->map.grid[y][x];
 			if (c == '1')

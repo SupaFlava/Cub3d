@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/10 16:42:59 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:39:42 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ int	init_game(t_game *game)
 		ft_printf("map init failure\n");
 		return (EXIT_FAILURE);
 	}
-
 	render_map(game);
 	return (EXIT_SUCCESS);
 }

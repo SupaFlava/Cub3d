@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing.h                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 19:59:19 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/13 13:00:41 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 19:59:19 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/14 14:08:47 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "cub3d.h"
 #include "typedefs.h"
 
+int	parse_game(t_config *config);
 int arg_checker(int argc, char *argv[]);
 int	get_file(char *path, t_config *config);
 int	parse_config(t_config *config);
