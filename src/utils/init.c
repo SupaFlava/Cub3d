@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/14 14:11:00 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:11:14 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	init_game(t_game *game, t_config *config)
 		return (EXIT_FAILURE);
 	}
 	ft_printf("position of the player x is '%i' and y is '%i'\n",config->player_x , config->player_y);
-	init_player(&game->player, config);
+	init_player(&game->player);
 	if (!init_assets(game))
 	{
 		ft_printf("init_assets failure\n");
