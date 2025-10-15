@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:10:49 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 12:05:03 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:18:10 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	parse_game(t_config *config)
 		return (clean_config(config),FAILURE);
 	}
 	if (validate(config) == FAILURE)
+	{
+		ft_printf("validate not triggared ???\\n");
 		return (clean_config(config),FAILURE);
+	}
 	return (SUCCESS);
 }

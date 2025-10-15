@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 15:43:19 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/15 13:14:07 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 // (-1, 0) = facing west
 // (0, 1) = facing south
 // (0, -1) = facing north
-void	set_player_start(t_game *game, int x, int y,  char dir)
+void	set_player_start(t_game *game, char dir)
 {
-	game->player.pos_x = x + 0.5;
-	game->player.pos_y = y + 0.5;
+	game->player.pos_x += 0.5;
+	game->player.pos_y += 0.5;
 
 	if (dir == 'N')
 	{
@@ -71,11 +71,12 @@ void	render_map(t_game *game)
 			else
 				mlx_image_to_window(game->mlx, game->assets->background, x * TILE_SIZE, y * TILE_SIZE);
 			if (c == 'N' || c == 'W' || c == 'E' || c == 'S')
-				set_player_start(game, x, y, c);
+				set_player_start(game, c);
 			x++;
 		}
 		y++;
 	}
+	ft_printf("player position x is '%i' player position y is '%i'\n",game->player.pos_x , game->player.pos_y);
 	mlx_image_to_window(game->mlx, game->assets->player,
 							(int)game->player.pos_x * TILE_SIZE - game->assets->player->width / 2,
 							(int)game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
