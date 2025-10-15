@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/10 15:10:22 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:19:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ int validate_map(t_config *config)
 	if (map_char_check(config) == FAILURE)
 		return (FAILURE);
 	if (flood_fill(config, config->player_y , config->player_x) == FAILURE)
+	{
 		ft_printf("map is busted\n");
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
