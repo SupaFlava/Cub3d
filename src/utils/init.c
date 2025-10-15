@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/15 13:27:15 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:00:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ int	init_game(t_game *game, t_config *config)
 	// 	ft_printf("map init failure\n");
 	// 	return (EXIT_FAILURE);
 	// }
+	ft_printf("width is %i \n",config->map.width);
 	render_map(game);
 	return (EXIT_SUCCESS);
 }
