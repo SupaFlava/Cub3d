@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 11:08:36 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 21:58:51 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_assets(t_config *config)
 {
 	if (open_and_close_file(config->no_tex) == FAILURE)
 	{
-		ft_printf("noth asset not found\n");
+		ft_printf("north asset not found\n");
 		return (FAILURE);
 	}
 	if (open_and_close_file(config->ea_tex) == FAILURE)

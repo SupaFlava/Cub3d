@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   image.c                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 13:59:05 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/15 23:18:21 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,22 @@ mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color)
 	return (img);
 }
 
-void	images_to_window(t_game *game)
+int	create_2dviewimages(t_game *game)
 {
-	if (!game->assets)
-		return ;
-	mlx_image_to_window(game->mlx, game->assets->background, 0, 0);
-	mlx_image_to_window(game->mlx, game->assets->player,
-		(int)game->player.pos_x,
-		(int)game->player.pos_y);
-	mlx_image_to_window(game->mlx, game->assets->wall, 0, 0);
+	//tiles are temp/ 2d view of map & player
+	game->assets->background = make_tile(game->mlx, 0x808080FF);
+	if (!game->assets->background)
+		return (0);
+	game->assets->wall = make_tile(game->mlx, 0xFF0000FF);
+	if (!game->assets->wall)
+		return (0);
+	game->assets->player = make_tile(game->mlx, 0x0000FFFF);
+	if (!game->assets->player)
+		return (0);
+
+	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT); // overlay image size of entire screen for the rays/fov
+	if (!game->assets->fov)
+		return 0;
+	
+	return (1);
 }

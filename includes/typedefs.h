@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 13:20:42 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 23:16:36 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define FOV 60.0
-# define NUM_RAYS 60
+# define NUM_RAYS 90
 
 # define TILE_SIZE 64
 # define INIT_FAILURE 2
@@ -116,12 +116,11 @@ typedef struct s_assets
 	mlx_image_t		*wall;
 	mlx_image_t		*fov;
 
-	mlx_texture_t	*brick_wall;
-	mlx_texture_t	*crack_wall; //adapt these later to tex_so & tex_no etc
-	// void	*tex_no;
-	// void	*tex_so;
-	// void	*tex_we;
-	// void	*tex_ea;
+	mlx_texture_t	*north_tex;
+	mlx_texture_t	*south_tex;
+	mlx_texture_t	*west_tex;
+	mlx_texture_t	*east_tex;
+
 	// int		floor_color;
 	// int		ceiling_color;
 }	t_assets;
@@ -130,10 +129,10 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 
-	//t_config	config;
 	t_map		map;
 	t_player	player;
 	t_assets	*assets;
+	//t_config	config;
 
 }	t_game;
 
