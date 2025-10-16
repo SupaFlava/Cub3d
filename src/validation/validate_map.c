@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 12:19:27 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 22:19:28 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	map_char_check(t_config *config)
 				&& config->map.grid[i][j] != 'W'
 				&& config->map.grid[i][j] != 'E'
 				&& config->map.grid[i][j] != 'S'
-				&& config->map.grid[i][j] != ' ')
+				&& config->map.grid[i][j] != ' '
+				&& config->map.grid[i][j] != '\t')
 			{
 				ft_printf("Error\nUnknown charecter\n");
 				return (FAILURE);
@@ -68,6 +69,7 @@ int	map_char_check(t_config *config)
 			{
 				config->player_x = j;
 				config->player_y = i;
+				config->player_dir = config->map.grid[i][j];
 				config->map.p_count++;
 			}
 			j++;

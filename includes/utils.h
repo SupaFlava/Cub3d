@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 11:27:40 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/15 23:32:36 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int	open_and_close_file(char *path);
 
 
 // utils.c
-void	init_player(t_player *player);
-int		init_assets(t_game *game);
+int 	init_config(t_config *config);
+void	set_player_dir(t_game *game, char dir);
+void	init_player(t_game *game, t_config *config);
+int		init_assets(t_game *game, t_config *config);
 int		init_game(t_game *game, t_config *config);
 
 
