@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/15 23:39:38 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/16 14:05:12 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,16 @@ int	init_assets(t_game *game, t_config *config)
 	game->assets = malloc(sizeof(t_assets));
 	if (!game->assets)
 		return (0);
-	if (!create_2dviewimages(game))
+
+	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT); // first person POV image
+	if (!game->assets->pov)
+		return (0);
+	
+	if (!create_floor_ceiling_images(game, config))
+		return (0);
+	if (!create_2dviewimages(game)) // minimap assets and player
 		return(0);
-	if (!load_textures(game, config))
+	if (!load_textures(game, config)) // textures loaded from files
 		return (0);
 	// textures_to_image() < todo
 	return (1);
@@ -100,6 +107,5 @@ int	init_game(t_game *game, t_config *config)
 		return (EXIT_FAILURE);
 	}
 	//  can technically clean config struct from here??
-	render_map(game); // move this out of this function to something like render_logic()
-	return (EXIT_SUCCESS);
+		return (EXIT_SUCCESS);
 }

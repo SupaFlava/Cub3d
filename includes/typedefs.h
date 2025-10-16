@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 23:16:36 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   typedefs.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/16 14:17:43 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define FOV 60.0
-# define NUM_RAYS 90
-
+# define NUM_RAYS WIDTH //this unnecary now? could just use WIDTH cause its the same
+# define COL_WIDTH WIDTH / NUM_RAYS 
 # define TILE_SIZE 64
-# define INIT_FAILURE 2
+
+// # define INIT_FAILURE 2
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 
@@ -113,7 +114,13 @@ typedef struct s_assets
 {
 	mlx_image_t		*background; // mlx_image_t types are temporary for testing
 	mlx_image_t		*player;
+	
+	
+	mlx_image_t	   *floor;
+	mlx_image_t	   *ceiling;	
+	
 	mlx_image_t		*wall;
+	mlx_image_t		*pov;
 	mlx_image_t		*fov;
 
 	mlx_texture_t	*north_tex;
