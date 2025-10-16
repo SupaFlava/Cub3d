@@ -6,25 +6,25 @@
 /*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/13 14:21:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 15:29:57 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/16 15:05:51 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	cast_rays(t_game *game)
+void	cast_rays_loop(t_game *game)
 {
 	int	i;
 
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		diferential_analysis(game, &game->player.rays[i]);
+		cast_single_ray(game, &game->player.rays[i]);
 		i++;
 	}
 }
 
-void	diferential_analysis(t_game *game, t_ray *ray)
+void	cast_single_ray(t_game *game, t_ray *ray)
 {
 	t_player *p;
 
@@ -110,4 +110,6 @@ void	diferential_analysis(t_game *game, t_ray *ray)
 	//dont allow negative values
 	if (ray->perp_dist < 0.0)
 		ray->perp_dist = 0.0;
+	// ft_printf("ray->perp_dist = %i\n", ray->perp_dist);
+
 }
