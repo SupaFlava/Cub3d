@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 15:06:48 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:55:51 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,7 @@ int	parse_config(t_config *config)
 	}
 	if (extract_map(config, i) == FAILURE)
 		return (FAILURE);
+	// if (copy_map_clone(config) == FAILURE)
+	// 	return (FAILURE);
 	return (SUCCESS);
 }

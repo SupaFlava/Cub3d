@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/15 23:04:04 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/16 10:41:45 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	load_textures(t_game *game, t_config *config)
 {
+	ft_printf("in LOad texture \n");
 	game->assets->north_tex = mlx_load_png(config->no_tex);
 	if (!game->assets->north_tex)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/15 23:38:27 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:33:05 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	render_map(t_game *game)
 {
 	size_t	x;
 	int	y;
-	char c;
 
 	y = 0;
 	x = 0;
@@ -25,12 +24,10 @@ void	render_map(t_game *game)
 		x = 0;
 		while (x < ft_strlen(game->map.grid[y]))
 		{
-			if (c == '\t')
-				x += 3;
-			c = game->map.grid[y][x];
-			if (c == '1')
+
+			if (game->map.grid[y][x] == '1')
 				mlx_image_to_window(game->mlx, game->assets->wall, x * TILE_SIZE, y * TILE_SIZE);
-			else
+			else if (game->map.grid[y][x] == '0')
 				mlx_image_to_window(game->mlx, game->assets->background, x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
