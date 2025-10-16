@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/16 16:09:02 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/16 22:43:52 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	render_map(t_game *game)
 		x = 0;
 		while (x < ft_strlen(game->map.grid[y]))
 		{
-			if (c == '\t')
-				x += 3;
 			c = game->map.grid[y][x];
 			if (c == '1')
 				mlx_image_to_window(game->mlx, game->assets->wall, x * TILE_SIZE, y * TILE_SIZE);
