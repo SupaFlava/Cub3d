@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/10/16 22:14:36 by jbaetsen         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: rmhazres <rmhazres@student.codam.nl>         +#+                      #
+#                                                    +#+                       #
+#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
+#    Updated: 2025/10/17 15:27:53 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
 #this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3d
-
 SRC_DIR = src
 OBJ_DIR = obj
 

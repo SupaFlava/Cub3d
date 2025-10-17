@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/17 14:35:23 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   typedefs.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/17 15:22:55 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,6 @@ typedef struct s_assets
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*west_tex;
 	mlx_texture_t	*east_tex;
-
-	// int		floor_color;
-	// int		ceiling_color;
 }	t_assets;
 
 typedef struct s_game
