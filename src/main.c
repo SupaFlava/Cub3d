@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/17 12:11:27 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:47:47 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ int	main(int argc, char *argv[])
  	}
 	images_to_window(&game);
 
-	
-	mlx_key_hook(game.mlx, keyhook, NULL);
+
+	 mlx_key_hook(game.mlx, keyhook, &game);
+	// mlx_close_hook(game.mlx, clean_cub3d, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx); //closes game loop
 	//####################GAME BLOCK#################################//
 
+	clean_game(&game);
 	clean_config(&config);
 	return (EXIT_SUCCESS);
 }

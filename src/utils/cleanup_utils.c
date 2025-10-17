@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 10:57:12 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:02:14 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,39 @@ void	clean_config(t_config *config)
 		config->map.grid = NULL;
 	}
 
+}
+
+void	clean_game(t_game *game)
+{
+	// if (game->assets->background)
+	// 	mlx_delete_image(game->mlx, game->assets->background);
+	// if (game->assets->player)
+	// 	mlx_delete_image(game->mlx, game->assets->player);
+	// if (game->assets->ceiling)
+	// 	mlx_delete_image(game->mlx, game->assets->ceiling);
+	// if (game->assets->wall)
+	// 	mlx_delete_image(game->mlx, game->assets->wall);
+	// if (game->assets->pov)
+	// 	mlx_delete_image(game->mlx, game->assets->pov);
+	// if (game->assets->fov)
+	// 	mlx_delete_image(game->mlx, game->assets->fov);
+
+	if (game->assets->north_tex)
+		mlx_delete_texture(game->assets->north_tex);
+	if (game->assets->south_tex)
+		mlx_delete_texture(game->assets->south_tex);
+	if (game->assets->west_tex)
+		mlx_delete_texture(game->assets->west_tex);
+	if (game->assets->east_tex)
+		mlx_delete_texture(game->assets->east_tex);
+	free(game->assets);
+}
+
+void	clean_cub3d(void *param)
+{
+	t_game *game;
+
+	game = param;
+	clean_config(game->config);
+	clean_game(game);
 }

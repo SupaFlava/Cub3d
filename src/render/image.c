@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   image.c                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/16 16:47:23 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/17 15:00:23 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,16 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 		draw_start = 0;
 	if (draw_end < 0)
 		draw_end = HEIGHT - 1;
-	
+
 	if (ray->side == 0)
 		color = 0x0000FF;
 	else
 		color = 0x800080;
-		
 	y = draw_start;
-	while (y < draw_end)
+	while (y < draw_end && y > 0)
 	{
+		if (y == 0)
+		 	y = draw_start;
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/17 12:11:41 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:33:30 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	init_game(t_game *game, t_config *config)
 		ft_printf("mlx_init failure\n");
 		return (EXIT_FAILURE);
 	}
+	game->config = config;
 	game->map = config->map;
 	init_player(game, config);
 	if (!init_assets(game, config))
