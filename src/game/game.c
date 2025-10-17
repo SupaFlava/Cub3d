@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   game.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/16 17:00:07 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 11:23:55 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/16 22:43:36 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	game_loop(void *param)
 
 	update_player_rays(&game->player);
 	cast_rays_loop(game);
-	// draw_player_rays(game);
+	draw_player_rays(game);
 
 	x = 0;
 

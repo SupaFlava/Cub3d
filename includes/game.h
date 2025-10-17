@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   game.h                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 11:25:04 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/07 16:14:42 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   game.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 11:25:04 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/16 22:32:00 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ void	game_loop(void *param);
 void	check_rotation(t_game *game, double rot_step);
 void	rotate_player(t_player *p, double angle);
 void	check_movement(t_game *game, double move_step);
+
+// collision.c
+int	is_solid_tile(t_game *game, int target_x, int target_y);
+
 
 #endif // GAME_H
