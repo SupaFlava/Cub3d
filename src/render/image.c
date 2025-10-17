@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/16 22:39:34 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   image.c                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/17 14:30:41 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,26 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	int	line_height;
 	int draw_start;
 	int draw_end;
+	int	start_oob; // out of bounds
+	int	end_oob; // 
 	
 	line_height = (int)(HEIGHT / ray->perp_dist);
 	draw_start= -line_height / 2 + HEIGHT / 2;
 	draw_end= line_height / 2 + HEIGHT / 2;
 
-	if (draw_start < 0)
-		draw_start = 0;
-	if (draw_end < 0)
-		draw_end = HEIGHT - 1;
 	
+	// ft_printf("draw start = %i \n", draw_start);
+	// ft_printf("draw end = %i \n", draw_end);
+	if (draw_start < 0)
+	{
+		start_oob = draw_start;	// keep track of how many pixels are out of bounds, this is needed for mapping textures later
+		draw_start = 0;
+	}
+	if (draw_end > HEIGHT - 1)
+	{
+		end_oob = draw_end;
+		draw_end = HEIGHT - 1;
+	}
 	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
 		
 	y = draw_start;
