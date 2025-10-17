@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/17 15:00:23 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/16 22:39:34 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,26 +102,18 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	int	line_height;
 	int draw_start;
 	int draw_end;
-	uint32_t	color;
 	
 	line_height = (int)(HEIGHT / ray->perp_dist);
 	draw_start= -line_height / 2 + HEIGHT / 2;
 	draw_end= line_height / 2 + HEIGHT / 2;
 
-	// for debugging
-	// ft_printf("ray->perp_dist = %i\n", ray->perp_dist);
-	// ft_printf("lineheight = %i\n", line_height);
-
-
 	if (draw_start < 0)
 		draw_start = 0;
 	if (draw_end < 0)
 		draw_end = HEIGHT - 1;
-
-	if (ray->side == 0)
-		color = 0x0000FF;
-	else
-		color = 0x800080;
+	
+	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
+		
 	y = draw_start;
 	while (y < draw_end && y > 0)
 	{

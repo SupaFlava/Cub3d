@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/16 10:41:45 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/16 22:24:08 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int	load_textures(t_game *game, t_config *config)
 		return (0);
 	}
 	return (1);
+
+
 }
 
 // void	texture_to_image(t_game *game)
 // {
-	
+//
 // }
