@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 14:05:20 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/16 17:00:07 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	game_loop(void *param)
 	t_game	*game;
 	double	move_step;
 	double	rot_step;
+	int		x;
 
 	game = param;
 	move_step = game->player.move_speed * game->mlx->delta_time;
@@ -41,13 +42,23 @@ void	game_loop(void *param)
 	check_rotation(game, rot_step);
 
 	// ray overlay // - clears fov img, - updates direction of all rays, - draws rays on fov img again
-	ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
+	// ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
+	ft_memset(game->assets->pov->pixels, 0, WIDTH * HEIGHT * BPP);
+
 	update_player_rays(&game->player);
-	cast_rays(game);
-	draw_player_rays(game);
+	cast_rays_loop(game);
+	// draw_player_rays(game);
 
+	x = 0;
 
-	// updates player image locationm (temp)
-	game->assets->player->instances[0].x = (int32_t)(game->player.pos_x * TILE_SIZE - game->assets->player->width / 2);
-	game->assets->player->instances[0].y = (int32_t)(game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
+	// draws each pixel colums (this is not good i think)
+	while (x < NUM_RAYS)
+	{
+		draw_column(game, &game->player.rays[x], x);
+		x++;
+	}
+	
+// updates player image location (temp)
+	// game->assets->player->instances[0].x = (int32_t)(game->player.pos_x * TILE_SIZE - game->assets->player->width / 2);
+	// game->assets->player->instances[0].y = (int32_t)(game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
 }
