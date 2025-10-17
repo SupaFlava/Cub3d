@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/16 14:17:43 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/17 15:12:01 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ typedef struct s_assets
 	mlx_image_t		*player;
 	
 	
-	mlx_image_t	   *floor;
-	mlx_image_t	   *ceiling;	
+	mlx_image_t		*floor;
+	mlx_image_t		*ceiling;	
 	
 	mlx_image_t		*wall;
 	mlx_image_t		*pov;
@@ -127,9 +127,6 @@ typedef struct s_assets
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*west_tex;
 	mlx_texture_t	*east_tex;
-
-	// int		floor_color;
-	// int		ceiling_color;
 }	t_assets;
 
 typedef struct s_game
