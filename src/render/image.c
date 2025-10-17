@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 14:30:41 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/17 15:25:32 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,8 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
 		
 	y = draw_start;
-	while (y < draw_end && y > 0)
+	while (y < draw_end)
 	{
-		if (y == 0)
-		 	y = draw_start;
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}

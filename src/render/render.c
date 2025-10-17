@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 14:22:14 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/17 15:23:28 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	render_map(t_game *game)
 {
 	size_t	x;
-	int	y;
+	int		y;
+	char	c;
 
 	y = 0;
 	x = 0;
