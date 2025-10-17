@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        ::::::::            */
 /*   typedefs.h                                         :+:    :+:            */
 /*                                                     +:+                    */
@@ -7,6 +8,15 @@
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
 /*   Updated: 2025/10/17 15:12:01 by jbaetsen      ########   odam.nl         */
+=======
+/*                                                        :::      ::::::::   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/17 14:35:23 by rmhazres         ###   ########.fr       */
+>>>>>>> origin
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +124,19 @@ typedef struct s_assets
 {
 	mlx_image_t		*background; // mlx_image_t types are temporary for testing
 	mlx_image_t		*player;
+<<<<<<< HEAD
 	
 	
 	mlx_image_t		*floor;
 	mlx_image_t		*ceiling;	
 	
+=======
+
+
+	mlx_image_t	   *floor;
+	mlx_image_t	   *ceiling;
+
+>>>>>>> origin
 	mlx_image_t		*wall;
 	mlx_image_t		*pov;
 	mlx_image_t		*fov;
@@ -136,7 +154,7 @@ typedef struct s_game
 	t_map		map;
 	t_player	player;
 	t_assets	*assets;
-	//t_config	config;
+	t_config	*config;
 
 }	t_game;
 

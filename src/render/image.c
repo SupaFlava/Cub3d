@@ -125,8 +125,10 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
 		
 	y = draw_start;
-	while (y < draw_end)
+	while (y < draw_end && y > 0)
 	{
+		if (y == 0)
+		 	y = draw_start;
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}

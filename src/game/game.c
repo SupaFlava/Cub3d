@@ -22,6 +22,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		ft_printf("CLOSING\nescape key pressed\n");
 		// delete_images(game);
 		mlx_terminate(game->mlx);
+		clean_cub3d(game);
 		exit(EXIT_SUCCESS);
 	}
 }
