@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 11:00:16 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:33:14 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int ft_isspace(char *string)
 	i = 0;
 	while (string[i])
 	{
-		if (string[i] == ' ' || string[i] == '\t')
+		if (string[i] == ' ')
 			i++;
 		else
 			return (FAILURE); 

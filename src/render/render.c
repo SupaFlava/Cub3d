@@ -16,7 +16,6 @@ void	render_map(t_game *game)
 {
 	size_t	x;
 	int	y;
-	char c;
 
 	y = 0;
 	x = 0;
@@ -28,7 +27,7 @@ void	render_map(t_game *game)
 			c = game->map.grid[y][x];
 			if (c == '1')
 				mlx_image_to_window(game->mlx, game->assets->wall, x * TILE_SIZE, y * TILE_SIZE);
-			else
+			else if (game->map.grid[y][x] == '0')
 				mlx_image_to_window(game->mlx, game->assets->background, x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}

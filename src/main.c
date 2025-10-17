@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/16 17:02:36 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/17 14:47:47 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,26 @@ int	main(int argc, char *argv[])
 		return (FAILURE);
 	init_config(&config);
 	if (parse_game(&config) == FAILURE)
-	{
-		ft_printf("NOT TRIGGERED ???\n");
 		return (FAILURE);
-	}
 	//####################PARSING BLOCK#################################//
 
 	//####################GAME BLOCK#################################//
 	if (init_game(&game, &config) != EXIT_SUCCESS)
-	 {
-			ft_printf("error initializing game\n");
-	 		return (EXIT_FAILURE); // no proper cleanup function made yet
+	{
+		ft_printf("error initializing game\n");
+ 		return (EXIT_FAILURE); // no proper cleanup function made yet
  	}
 	images_to_window(&game);
 
-	
-	mlx_key_hook(game.mlx, keyhook, NULL);
+
+	 mlx_key_hook(game.mlx, keyhook, &game);
+	// mlx_close_hook(game.mlx, clean_cub3d, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx); //closes game loop
 	//####################GAME BLOCK#################################//
 
-	// clean_config(&config);
+	clean_game(&game);
+	clean_config(&config);
 	return (EXIT_SUCCESS);
 }

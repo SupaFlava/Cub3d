@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 23:32:36 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:42:51 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	set_player_dir(t_game *game, char dir);
 void	init_player(t_game *game, t_config *config);
 int		init_assets(t_game *game, t_config *config);
 int		init_game(t_game *game, t_config *config);
+void	clean_game(t_game *game);
+void	clean_cub3d(void *param);
 
 
 #endif // UTILS_H
