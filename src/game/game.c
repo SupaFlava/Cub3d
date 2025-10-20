@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 14:22:25 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/20 15:06:16 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		ft_printf("CLOSING\nescape key pressed\n");
-		// delete_images(game);
-		mlx_terminate(game->mlx);
 		clean_cub3d(game);
+		mlx_terminate(game->mlx);
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -57,7 +56,7 @@ void	game_loop(void *param)
 		draw_column(game, &game->player.rays[x], x);
 		x++;
 	}
-	
+
 // updates player image location (temp) moves the player in 2d map view
 	// game->assets->player->instances[0].x = (int32_t)(game->player.pos_x * TILE_SIZE - game->assets->player->width / 2);
 	// game->assets->player->instances[0].y = (int32_t)(game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);

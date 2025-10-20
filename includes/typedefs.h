@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/17 15:22:55 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/20 13:35:06 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define HEIGHT 1080
 # define FOV 60.0
 # define NUM_RAYS WIDTH //this unnecary now? could just use WIDTH cause its the same
-# define COL_WIDTH WIDTH / NUM_RAYS 
+# define COL_WIDTH WIDTH / NUM_RAYS
 # define TILE_SIZE 64
 
 // # define INIT_FAILURE 2
@@ -112,12 +112,12 @@ typedef struct s_player
 
 typedef struct s_assets
 {
-	mlx_image_t		*background; // mlx_image_t types are temporary for testing
+	mlx_image_t		*floor2d; // mlx_image_t types are temporary for 2d view
 	mlx_image_t		*player;
 
 
-	mlx_image_t	   *floor;
-	mlx_image_t	   *ceiling;
+	mlx_image_t		*floor;
+	mlx_image_t		*ceiling;
 
 	mlx_image_t		*wall;
 	mlx_image_t		*pov;

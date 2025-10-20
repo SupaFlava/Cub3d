@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/16 22:24:08 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   textures.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/15 22:30:21 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/20 11:07:31 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	load_textures(t_game *game, t_config *config)
 {
-	ft_printf("in LOad texture \n");
+	ft_printf("in load texture \n");
 	game->assets->north_tex = mlx_load_png(config->no_tex);
 	if (!game->assets->north_tex)
 	{

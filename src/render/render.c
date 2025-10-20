@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 15:23:28 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/20 13:35:06 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	render_map(t_game *game)
 			if (c == '1')
 				mlx_image_to_window(game->mlx, game->assets->wall, x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map.grid[y][x] == '0')
-				mlx_image_to_window(game->mlx, game->assets->background, x * TILE_SIZE, y * TILE_SIZE);
+				mlx_image_to_window(game->mlx, game->assets->floor2d, x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
 		y++;

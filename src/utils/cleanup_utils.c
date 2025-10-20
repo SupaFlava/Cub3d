@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cleanup_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/17 15:02:14 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cleanup_utils.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/20 14:34:14 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	clean_config(t_config *config)
 	if (config->we_tex)
 	{
 		free(config->we_tex);
-		config->we_tex = NULL;	
+		config->we_tex = NULL;
 	}
 	if (config->ea_tex)
 	{
@@ -63,18 +63,18 @@ void	clean_config(t_config *config)
 
 void	clean_game(t_game *game)
 {
-	// if (game->assets->background)
-	// 	mlx_delete_image(game->mlx, game->assets->background);
-	// if (game->assets->player)
-	// 	mlx_delete_image(game->mlx, game->assets->player);
-	// if (game->assets->ceiling)
-	// 	mlx_delete_image(game->mlx, game->assets->ceiling);
-	// if (game->assets->wall)
-	// 	mlx_delete_image(game->mlx, game->assets->wall);
-	// if (game->assets->pov)
-	// 	mlx_delete_image(game->mlx, game->assets->pov);
-	// if (game->assets->fov)
-	// 	mlx_delete_image(game->mlx, game->assets->fov);
+	if (game->assets->floor2d)
+		mlx_delete_image(game->mlx, game->assets->floor2d);
+	if (game->assets->player)
+		mlx_delete_image(game->mlx, game->assets->player);
+	if (game->assets->ceiling)
+		mlx_delete_image(game->mlx, game->assets->ceiling);
+	if (game->assets->wall)
+		mlx_delete_image(game->mlx, game->assets->wall);
+	if (game->assets->pov)
+		mlx_delete_image(game->mlx, game->assets->pov);
+	if (game->assets->fov)
+		mlx_delete_image(game->mlx, game->assets->fov);
 
 	if (game->assets->north_tex)
 		mlx_delete_texture(game->assets->north_tex);
@@ -94,4 +94,5 @@ void	clean_cub3d(void *param)
 	game = param;
 	clean_config(game->config);
 	clean_game(game);
+
 }

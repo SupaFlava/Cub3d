@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 15:25:32 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/20 13:35:06 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,22 @@ int	create_floor_ceiling_images(t_game *game, t_config *config)
 
 	x = 0;
 	y = 0;
-	
+
 	game->assets->floor = mlx_new_image(game->mlx, WIDTH, HEIGHT / 2); // floor image
 	if (!game->assets->floor)
 		return (0);
 	game->assets->ceiling = mlx_new_image(game->mlx, WIDTH, HEIGHT / 2); // ceiling image
 	if (!game->assets->ceiling)
 		return (0);
-	
+
 	while (y < HEIGHT / 2)
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
-			mlx_put_pixel(game->assets->floor, x, y, 
+			mlx_put_pixel(game->assets->floor, x, y,
 				(config->floor.r << 24) | (config->floor.g << 16) | (config->floor.b << 8) | 0xFF);
-			mlx_put_pixel(game->assets->ceiling, x, y, 
+			mlx_put_pixel(game->assets->ceiling, x, y,
 				(config->ceiling.r << 24) | (config->ceiling.g << 16) | (config->ceiling.b << 8) | 0xFF);
 			x++;
 		}
@@ -78,8 +78,8 @@ int	create_floor_ceiling_images(t_game *game, t_config *config)
 int	create_2dviewimages(t_game *game)
 {
 	//tiles are temp/ 2d view of map & player
-	game->assets->background = make_tile(game->mlx, 0x808080FF);
-	if (!game->assets->background)
+	game->assets->floor2d = make_tile(game->mlx, 0x808080FF);
+	if (!game->assets->floor2d)
 		return (0);
 	game->assets->wall = make_tile(game->mlx, 0xFF0000FF);
 	if (!game->assets->wall)
@@ -91,7 +91,7 @@ int	create_2dviewimages(t_game *game)
 	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT); // overlay image size of entire screen for the rays/fov
 	if (!game->assets->fov)
 		return 0;
-	
+
 	return (1);
 }
 
@@ -103,13 +103,13 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	int draw_start;
 	int draw_end;
 	int	start_oob; // out of bounds
-	int	end_oob; // 
-	
+	int	end_oob; //
+
 	line_height = (int)(HEIGHT / ray->perp_dist);
 	draw_start= -line_height / 2 + HEIGHT / 2;
 	draw_end= line_height / 2 + HEIGHT / 2;
 
-	
+
 	// ft_printf("draw start = %i \n", draw_start);
 	// ft_printf("draw end = %i \n", draw_end);
 	if (draw_start < 0)
@@ -123,11 +123,13 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 		draw_end = HEIGHT - 1;
 	}
 	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
-		
+
 	y = draw_start;
 	while (y < draw_end)
 	{
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}
+	(void) start_oob;
+	(void) end_oob;
 }

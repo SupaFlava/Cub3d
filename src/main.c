@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 15:21:15 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/20 15:07:44 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	main(int argc, char *argv[])
 	// mlx_close_hook(game.mlx, clean_cub3d, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
-	mlx_terminate(game.mlx); //closes game loop
 	//####################GAME BLOCK#################################//
 
-	clean_game(&game);
 	clean_config(&config);
+	clean_game(&game);
+	mlx_terminate(game.mlx); //closes game loop  //these not needed if we clean in key_hook??
 	return (EXIT_SUCCESS);
 }
