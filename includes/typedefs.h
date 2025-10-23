@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/20 13:35:06 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 14:36:39 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,20 @@ typedef struct s_config {
 
 typedef struct s_ray
 {
-	double	ray_dir_x; //current direction
+	double	ray_dir_x;		//current direction
 	double	ray_dir_y;
-	int		map_x; //current location
+	int		map_x;			//current location
 	int		map_y;
-	double	side_dist_x; //distance to next X tile side
-	double	side_dist_y; //distance to next Y tile side
-	double	delta_dist_x; //how far in map units to go from 1 x_side to the next
-	double	delta_dist_y; //how far in map units to go from 1 y_side to the next
-	int		step_x; // can be +1 or -1
-	int		step_y; // can be +1 or -1
-	int		hit;  // 1 if hit a wall
-	int		side; //0 = hit vertical (x) side, 1 = hit horizontal (y) side
+	double	side_dist_x;	//distance to next X tile side
+	double	side_dist_y;	//distance to next Y tile side
+	double	delta_dist_x;	//how far in map units to go from 1 x_side to the next
+	double	delta_dist_y;	//how far in map units to go from 1 y_side to the next
+	int		step_x;			// can be +1 or -1
+	int		step_y;			// can be +1 or -1
+	int		hit;			// 1 if hit a wall
+	int		side;			//0 = hit vertical (x) side, 1 = hit horizontal (y) side
 
-	double	perp_dist; //distance between player and wall. (tile units)
+	double	perp_dist;		//distance between player and wall. (tile units)
 } t_ray;
 
 
@@ -112,18 +112,17 @@ typedef struct s_player
 
 typedef struct s_assets
 {
-	mlx_image_t		*floor2d; // mlx_image_t types are temporary for 2d view
-	mlx_image_t		*player;
+	mlx_image_t		*floor2d;	// mlx_image_t types are  for 2d view
+	mlx_image_t		*player;	// 2d image for player icon
+	mlx_image_t		*wall;		// 2d image for wall tile
+	mlx_image_t		*fov;		// overlay image for rays
 
 
-	mlx_image_t		*floor;
-	mlx_image_t		*ceiling;
+	mlx_image_t		*floor;		// bottom half of backround in 3d view
+	mlx_image_t		*ceiling;	// top half of backround in 3d view
+	mlx_image_t		*pov;		// 3d view image for rays
 
-	mlx_image_t		*wall;
-	mlx_image_t		*pov;
-	mlx_image_t		*fov;
-
-	mlx_texture_t	*north_tex;
+	mlx_texture_t	*north_tex; // mlx_texture_t types are for wall textures in pov
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*west_tex;
 	mlx_texture_t	*east_tex;

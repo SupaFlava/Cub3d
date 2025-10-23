@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/10/21 15:40:23 by jbaetsen         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: jbaetsen <jbaetsen@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
+#    Updated: 2025/10/23 16:27:15 by jbaetsen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC_VALIDATION = src/validation/validate.c src/validation/validate_map.c
 
 SRC_MAP =
 
-SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c
+SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c src/raycasting/ray_math.c
 
 SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c
 

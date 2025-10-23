@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_utils.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 18:23:52 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 11:00:35 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   validate_utils.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 18:23:52 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/23 17:22:25 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	open_and_close_file(char *path)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -26,4 +26,3 @@ int	open_and_close_file(char *path)
 	close(fd);
 	return (SUCCESS);
 }
- 

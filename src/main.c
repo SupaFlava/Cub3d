@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/20 15:07:44 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 17:17:58 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_game	game;
+	t_game		game;
 	t_config	config;
 
 	// ####################PARSING BLOCK#################################//
@@ -26,17 +26,15 @@ int	main(int argc, char *argv[])
 	if (parse_game(&config) == FAILURE)
 		return (FAILURE);
 	//####################PARSING BLOCK#################################//
-
+	
 	//####################GAME BLOCK#################################//
 	if (init_game(&game, &config) != EXIT_SUCCESS)
 	{
 		ft_printf("error initializing game\n");
- 		return (EXIT_FAILURE); // no proper cleanup function made yet
- 	}
+		return (EXIT_FAILURE); // no proper cleanup function made yet
+	}
 	images_to_window(&game);
-
-
-	 mlx_key_hook(game.mlx, keyhook, &game);
+	mlx_key_hook(game.mlx, keyhook, &game);
 	// mlx_close_hook(game.mlx, clean_cub3d, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);

@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/20 15:06:16 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 17:14:40 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	game_loop(void *param)
 	//movement & rotation
 	check_movement(game, move_step);
 	check_rotation(game, rot_step);
-
+	
 	// ray overlay // - clears fov img, - updates direction of all rays, - draws rays on fov img again
 	// ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
 	ft_memset(game->assets->pov->pixels, 0, WIDTH * HEIGHT * BPP);
@@ -50,13 +50,11 @@ void	game_loop(void *param)
 	draw_player_rays(game);
 
 	x = 0;
-
 	while (x < NUM_RAYS)
 	{
 		draw_column(game, &game->player.rays[x], x);
 		x++;
 	}
-
 // updates player image location (temp) moves the player in 2d map view
 	// game->assets->player->instances[0].x = (int32_t)(game->player.pos_x * TILE_SIZE - game->assets->player->width / 2);
 	// game->assets->player->instances[0].y = (int32_t)(game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
