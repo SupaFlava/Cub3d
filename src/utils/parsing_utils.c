@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/16 12:33:14 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing_utils.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 12:19:01 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/23 17:26:57 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int    parse_color(t_config *config ,char *colors, int dir)
+int	parse_color(t_config *config, char *colors, int dir)
 {
-	char **c_array;
-	int	i;
+	char	**c_array;
+	int		i;
 
 	c_array = ft_split(colors, ',');
 	if (!c_array)
 		return (FAILURE);
-	i = 0;		
+	i = 0;
 	while (c_array[i])
 		i++;
 	if (i != 3)
 	{
 		clean_split(c_array);
-		return (ft_printf("Error\nColors malformated!\n"),FAILURE);
+		return (ft_printf("Error\nColors malformated!\n"), FAILURE);
 	}
 	if (dir == DIR_F)
 	{
@@ -44,9 +44,9 @@ int    parse_color(t_config *config ,char *colors, int dir)
 	return (SUCCESS);
 }
 
-int ft_isspace(char *string)
+int	ft_isspace(char *string)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (string[i])
@@ -54,15 +54,15 @@ int ft_isspace(char *string)
 		if (string[i] == ' ')
 			i++;
 		else
-			return (FAILURE); 
+			return (FAILURE);
 	}
 	return (SUCCESS);
 }
 
-int classify_directive(char *dir)
+int	classify_directive(char *dir)
 {
-	char *identifier[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
-	int	i;
+	char	*identifier[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
+	int		i;
 
 	i = 0;
 	while (identifier[i])

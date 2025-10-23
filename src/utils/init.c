@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/17 14:33:30 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/23 17:57:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	set_player_dir(t_game *game, char dir)
 {
-	//split up into 4 different helper functions to save lines?
 	if (dir == 'N')
 	{
 		game->player.dir_x = 0.0;
@@ -32,7 +31,7 @@ void	set_player_dir(t_game *game, char dir)
 	else if (dir == 'W')
 	{
 		game->player.dir_x = -1.0;
-		game->player.dir_y =  0.0;
+		game->player.dir_y = 0.0;
 		game->player.plane_x = 0.0;
 		game->player.plane_y = -0.66;
 	}
@@ -45,7 +44,7 @@ void	set_player_dir(t_game *game, char dir)
 	}
 }
 
-int init_config(t_config *config)
+int	init_config(t_config *config)
 {
 	config->no_tex = NULL;
 	config->so_tex = NULL;
@@ -67,7 +66,6 @@ void	init_player(t_game *game, t_config *config)
 	game->player.rot_speed = 3.0;
 	game->player.move_speed = 3.0;
 	set_player_dir(game, config->player_dir);
-
 	// init rays here?
 }
 
@@ -76,18 +74,19 @@ int	init_assets(t_game *game, t_config *config)
 	game->assets = malloc(sizeof(t_assets));
 	if (!game->assets)
 		return (0);
-
-	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT); // first person POV image
+	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->assets->pov)
 		return (0);
-	
+
 	if (!create_floor_ceiling_images(game, config))
 		return (0);
-	if (!create_2dviewimages(game)) // minimap assets and player
-		return(0);
-	if (!load_textures(game, config)) // textures loaded from files
+	if (!create_2dviewimages(game))
 		return (0);
-	// textures_to_image() < todo
+	if (!load_textures(game, config))
+	{
+		ft_printf("Error loading textures");
+		return (0);
+	}
 	return (1);
 }
 
@@ -107,6 +106,5 @@ int	init_game(t_game *game, t_config *config)
 		ft_printf("init_assets failure\n");
 		return (EXIT_FAILURE);
 	}
-	//  can technically clean config struct from here??
-		return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.h                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/16 16:32:27 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/22 16:48:29 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color);
 
 // textures.c
 int			load_textures(t_game *game, t_config *config);
+uint32_t	get_texture_pixel(mlx_texture_t *tex, int x, int y);
+mlx_texture_t	*pick_texture(t_game *game, t_ray *ray);
 
 
 #endif // RENDER_H

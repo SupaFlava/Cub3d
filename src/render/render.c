@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 15:23:28 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 17:47:46 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	render_map(t_game *game)
 		{
 			c = game->map.grid[y][x];
 			if (c == '1')
-				mlx_image_to_window(game->mlx, game->assets->wall, x * TILE_SIZE, y * TILE_SIZE);
+				mlx_image_to_window(game->mlx, game->assets->wall, x * 10, y * TILE_SIZE);
 			else if (game->map.grid[y][x] == '0')
-				mlx_image_to_window(game->mlx, game->assets->background, x * TILE_SIZE, y * TILE_SIZE);
+				mlx_image_to_window(game->mlx, game->assets->floor2d, x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
 		y++;
@@ -44,6 +44,6 @@ void	images_to_window(t_game *game)
 {
 	mlx_image_to_window(game->mlx, game->assets->floor, 0, HEIGHT / 2); // floor image
 	mlx_image_to_window(game->mlx, game->assets->ceiling, 0, 0); // ceiling image
-	mlx_image_to_window(game->mlx, game->assets->pov, 0, 0);
+	mlx_image_to_window(game->mlx, game->assets->pov, 0, 0); //first person view
 	// render_map(game);
 }

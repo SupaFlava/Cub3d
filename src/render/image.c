@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/17 15:25:32 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 18:10:37 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	clear_image_overlay(t_game *game)
 
 mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color)
 {
-	mlx_image_t *img;
+	mlx_image_t	*img;
 	int			x;
 	int			y;
 
@@ -30,7 +30,6 @@ mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color)
 	img = mlx_new_image(mlx, TILE_SIZE, TILE_SIZE);
 	if (!img)
 		return (NULL);
-
 	while (y < TILE_SIZE)
 	{
 		x = 0;
@@ -46,27 +45,25 @@ mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color)
 
 int	create_floor_ceiling_images(t_game *game, t_config *config)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
-	
 	game->assets->floor = mlx_new_image(game->mlx, WIDTH, HEIGHT / 2); // floor image
 	if (!game->assets->floor)
 		return (0);
 	game->assets->ceiling = mlx_new_image(game->mlx, WIDTH, HEIGHT / 2); // ceiling image
 	if (!game->assets->ceiling)
 		return (0);
-	
 	while (y < HEIGHT / 2)
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
-			mlx_put_pixel(game->assets->floor, x, y, 
+			mlx_put_pixel(game->assets->floor, x, y,
 				(config->floor.r << 24) | (config->floor.g << 16) | (config->floor.b << 8) | 0xFF);
-			mlx_put_pixel(game->assets->ceiling, x, y, 
+			mlx_put_pixel(game->assets->ceiling, x, y,
 				(config->ceiling.r << 24) | (config->ceiling.g << 16) | (config->ceiling.b << 8) | 0xFF);
 			x++;
 		}
@@ -77,9 +74,8 @@ int	create_floor_ceiling_images(t_game *game, t_config *config)
 
 int	create_2dviewimages(t_game *game)
 {
-	//tiles are temp/ 2d view of map & player
-	game->assets->background = make_tile(game->mlx, 0x808080FF);
-	if (!game->assets->background)
+	game->assets->floor2d = make_tile(game->mlx, 0x808080FF);
+	if (!game->assets->floor2d)
 		return (0);
 	game->assets->wall = make_tile(game->mlx, 0xFF0000FF);
 	if (!game->assets->wall)
@@ -87,46 +83,63 @@ int	create_2dviewimages(t_game *game)
 	game->assets->player = make_tile(game->mlx, 0x0000FFFF);
 	if (!game->assets->player)
 		return (0);
-
-	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT); // overlay image size of entire screen for the rays/fov
+	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->assets->fov)
 		return 0;
-	
+
 	return (1);
 }
 
 void	draw_column(t_game *game, t_ray *ray, int x)
 {
-	(void)game;
-	int	y;
-	int	line_height;
-	int draw_start;
-	int draw_end;
-	int	start_oob; // out of bounds
-	int	end_oob; // 
-	
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	uint32_t		color;
+	mlx_texture_t	*tex;
+	int				tex_x;
+	int				tex_y;
+	double			wall_x;
+	double			tex_pos;
+	double			step;
+	int				y;
+
+	tex = pick_texture(game, ray);
+	if (!tex)
+		return ;
+
 	line_height = (int)(HEIGHT / ray->perp_dist);
 	draw_start= -line_height / 2 + HEIGHT / 2;
 	draw_end= line_height / 2 + HEIGHT / 2;
-
-	
-	// ft_printf("draw start = %i \n", draw_start);
-	// ft_printf("draw end = %i \n", draw_end);
 	if (draw_start < 0)
-	{
-		start_oob = draw_start;	// keep track of how many pixels are out of bounds, this is needed for mapping textures later
 		draw_start = 0;
-	}
 	if (draw_end > HEIGHT - 1)
-	{
-		end_oob = draw_end;
 		draw_end = HEIGHT - 1;
-	}
-	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
-		
+
+	if (ray->side == 0)
+		wall_x = game->player.pos_y + ray->perp_dist * ray->ray_dir_y;
+	else
+		wall_x = game->player.pos_x + ray->perp_dist * ray->ray_dir_x;
+	wall_x -= floor(wall_x);
+
+	tex_x = (int)(wall_x * (double)tex->width);
+	if (ray->side == 0 && ray->ray_dir_x > 0)
+		tex_x = tex->width - tex_x - 1;
+	if (ray->side == 1 && ray->ray_dir_y < 0)
+		tex_x = tex->width - tex_x - 1;
+
+	step = 1.0 * tex->height / line_height;
+	tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
 	y = draw_start;
 	while (y < draw_end)
 	{
+		tex_y = (int)tex_pos;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= (int)tex->height)
+			tex_y = tex->height - 1;
+		tex_pos += step;
+		color = get_texture_pixel(tex, tex_x, tex_y);
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}
