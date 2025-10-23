@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/23 17:29:13 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 18:10:37 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	create_floor_ceiling_images(t_game *game, t_config *config)
 
 int	create_2dviewimages(t_game *game)
 {
-	//tiles are temp/ 2d view of map & player
 	game->assets->floor2d = make_tile(game->mlx, 0x808080FF);
 	if (!game->assets->floor2d)
 		return (0);
@@ -84,7 +83,6 @@ int	create_2dviewimages(t_game *game)
 	game->assets->player = make_tile(game->mlx, 0x0000FFFF);
 	if (!game->assets->player)
 		return (0);
-	// overlay image size of entire screen for the rays/fov
 	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->assets->fov)
 		return 0;
@@ -94,18 +92,19 @@ int	create_2dviewimages(t_game *game)
 
 void	draw_column(t_game *game, t_ray *ray, int x)
 {
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	uint32_t		color;
+	mlx_texture_t	*tex;
+	int				tex_x;
+	int				tex_y;
+	double			wall_x;
+	double			tex_pos;
+	double			step;
+	int				y;
 
-	int		tex_x;
-	int		tex_y;
-	double	wall_x;
-	double	tex_pos;
-	double	step;
-	int		y;
-
-	mlx_texture_t *tex = pick_texture(game, ray);
+	tex = pick_texture(game, ray);
 	if (!tex)
 		return ;
 
@@ -131,15 +130,16 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 
 	step = 1.0 * tex->height / line_height;
 	tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
-
 	y = draw_start;
 	while (y < draw_end)
 	{
-		tex_y = (int)tex_pos & (tex->height - 1);
+		tex_y = (int)tex_pos;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= (int)tex->height)
+			tex_y = tex->height - 1;
 		tex_pos += step;
-
-		uint32_t color = get_texture_pixel(tex, tex_x, tex_y);
-
+		color = get_texture_pixel(tex, tex_x, tex_y);
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}

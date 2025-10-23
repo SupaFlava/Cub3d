@@ -1,7 +1,7 @@
-NO ./src/textures/Brick_Wall_Cracked_64x64.png
-SO ./src/textures/Brick_Wall_Cracked_64x64.png
-WE ./src/textures/Brick_Wall_Mossy_64x64.png
-EA ./src/textures/Brick_Wall_Cobbled_64x64.png
+NO ./src/textures/bricks.png
+SO ./src/textures/bricks.png
+WE ./src/textures/bricks.png
+EA ./src/textures/bricks.png
 F 220,100,0
 C 225,30,0
 

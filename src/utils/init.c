@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/23 17:21:14 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/23 17:57:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ int	init_assets(t_game *game, t_config *config)
 	if (!create_2dviewimages(game))
 		return (0);
 	if (!load_textures(game, config))
+	{
+		ft_printf("Error loading textures");
 		return (0);
+	}
 	return (1);
 }
 
