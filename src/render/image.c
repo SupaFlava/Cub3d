@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   image.c                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/20 13:35:06 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/22 17:10:13 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,41 +95,97 @@ int	create_2dviewimages(t_game *game)
 	return (1);
 }
 
+// void	draw_column(t_game *game, t_ray *ray, int x)
+// {
+// 	(void)game;
+// 	int	y;
+// 	int	line_height;
+// 	int draw_start;
+// 	int draw_end;
+// 	uint32_t color;
+	
+	
+// 	double	wallX;
+// 	int	start_oob; // out of bounds
+// 	int	end_oob; //
+
+// 	line_height = (int)(HEIGHT / ray->perp_dist);
+// 	draw_start= -line_height / 2 + HEIGHT / 2;
+// 	draw_end= line_height / 2 + HEIGHT / 2;
+
+// 	if (draw_start < 0)
+// 	{
+// 		start_oob = draw_start;	// keep track of how many pixels are out of bounds, this is needed for mapping textures later
+// 		draw_start = 0;
+// 	}
+// 	if (draw_end > HEIGHT - 1)
+// 	{
+// 		end_oob = draw_end;
+// 		draw_end = HEIGHT - 1;
+// 	}
+
+// 	y = draw_start;
+// 	while (y < draw_end)
+// 	{
+// 		color = pick_texture_pixel(game->)
+// 		mlx_put_pixel(game->assets->pov, x, y, color);
+		
+// 		y++;
+// 	}
+// 	(void) start_oob;
+// 	(void) end_oob;
+// }
+
 void	draw_column(t_game *game, t_ray *ray, int x)
 {
-	(void)game;
-	int	y;
-	int	line_height;
-	int draw_start;
-	int draw_end;
-	int	start_oob; // out of bounds
-	int	end_oob; //
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	
+	int		tex_x;
+	int		tex_y;
+	double	wall_x;
+	double	tex_pos;
+	double	step;
+	int		y;
+
+	mlx_texture_t *tex = pick_texture(game, ray);
+	if (!tex)
+		return ;
 
 	line_height = (int)(HEIGHT / ray->perp_dist);
 	draw_start= -line_height / 2 + HEIGHT / 2;
 	draw_end= line_height / 2 + HEIGHT / 2;
-
-
-	// ft_printf("draw start = %i \n", draw_start);
-	// ft_printf("draw end = %i \n", draw_end);
 	if (draw_start < 0)
-	{
-		start_oob = draw_start;	// keep track of how many pixels are out of bounds, this is needed for mapping textures later
 		draw_start = 0;
-	}
 	if (draw_end > HEIGHT - 1)
-	{
-		end_oob = draw_end;
 		draw_end = HEIGHT - 1;
-	}
-	uint32_t color = (ray->side == 0) ? 0xFF00FFFF : 0x8800FFFF;
+	
+	if (ray->side == 0)
+		wall_x = game->player.pos_y + ray->perp_dist * ray->ray_dir_y;
+	else
+		wall_x = game->player.pos_x + ray->perp_dist * ray->ray_dir_x;
+	wall_x -= floor(wall_x);
+
+	tex_x = (int)(wall_x * (double)tex->width);
+	if (ray->side == 0 && ray->ray_dir_x > 0)
+		tex_x = tex->width - tex_x - 1;
+	if (ray->side == 1 && ray->ray_dir_y < 0)
+		tex_x = tex->width - tex_x - 1;
+
+	step = 1.0 * tex->height / line_height;
+	tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
 
 	y = draw_start;
 	while (y < draw_end)
 	{
+		tex_y = (int)tex_pos & (tex->height - 1);
+		tex_pos += step;
+
+		uint32_t color = get_texture_pixel(tex, tex_x, tex_y);
+		
 		mlx_put_pixel(game->assets->pov, x, y, color);
 		y++;
 	}
-	(void) start_oob;
-	(void) end_oob;
+	
 }

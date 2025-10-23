@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   textures.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/15 22:30:21 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/20 11:07:31 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/22 16:48:37 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,49 @@ int	load_textures(t_game *game, t_config *config)
 
 }
 
-// void	texture_to_image(t_game *game)
-// {
-//
-// }
+mlx_texture_t	*pick_texture(t_game *game, t_ray *ray)
+{
+	if (ray->side == 0)
+	{
+		if (ray->ray_dir_x > 0)
+			return(game->assets->east_tex);
+		else
+			return (game->assets->west_tex);
+	}
+	else
+	{
+		if (ray->ray_dir_y > 0)
+			return (game->assets->south_tex);
+		else
+		 	return (game->assets->north_tex);
+	}
+}
+
+uint32_t	get_texture_pixel(mlx_texture_t *tex, int x, int y)
+{
+	uint8_t	*pixel_data;
+	int		index;
+	uint8_t	r, g, b, a;
+	uint32_t	color;
+
+	// --- Safety check ---
+	if (!tex)
+		return (0xFFFFFFFF);
+	if (x < 0 || y < 0 || x >= (int)tex->width || y >= (int)tex->height)
+		return (0xFFFFFFFF);
+
+	// --- Get starting index in texture pixel array ---
+	index = (y * tex->width + x) * 4; // 4 bytes per pixel (RGBA)
+	pixel_data = tex->pixels;
+
+	// --- Read RGBA components clearly ---
+	r = pixel_data[index + 0];
+	g = pixel_data[index + 1];
+	b = pixel_data[index + 2];
+	a = pixel_data[index + 3];
+
+	// --- Combine back into a single uint32_t color (RGBA format) ---
+	color = (r << 24) | (g << 16) | (b << 8) | a;
+
+	return (color);
+}
