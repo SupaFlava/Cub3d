@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:25:04 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/16 22:32:00 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/24 14:02:19 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	check_movement(t_game *game, double move_step);
 
 // collision.c
 int	is_solid_tile(t_game *game, int target_x, int target_y);
+void	wall_collision(t_game *game, double x , double y);
 
 
 #endif // GAME_H
