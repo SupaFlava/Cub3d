@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:06:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/16 22:37:41 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/24 14:13:25 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,13 @@ int	is_solid_tile(t_game *game, int target_x, int target_y)
 	
 // }
 
+void wall_collision(t_game *game, double x, double y)
+{
+	if (y < 0 || y >= game->map.height ||
+    	x < 0 || x >= game->map.width)
+    	return ;
+	if (game->map.grid[(int)(game->player.pos_y)][(int)x] != '1')
+		game->player.pos_x = x;
+	if (game->map.grid[(int)y][(int) game->player.pos_x] != '1')
+		game->player.pos_y = y;
+}
