@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/24 14:32:01 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   typedefs.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/27 16:31:29 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define FOV 60.0
 # define NUM_RAYS WIDTH //this unnecary now? could just use WIDTH cause its the same
 # define COL_WIDTH WIDTH / NUM_RAYS
-# define TILE_SIZE 64
+# define TILE_SIZE 10
 
 // # define INIT_FAILURE 2
 # define EXIT_FAILURE 1
@@ -112,16 +112,22 @@ typedef struct s_player
 
 typedef struct s_assets
 {
-	mlx_image_t		*floor2d;	// mlx_image_t types are  for 2d view
-	mlx_image_t		*player;	// 2d image for player icon
-	mlx_image_t		*wall;		// 2d image for wall tile
-	mlx_image_t		*fov;		// overlay image for rays
 
-
+	//instead of these images, draw all this into 1 image > minimap
+	// mlx_image_t		*floor2d;	// mlx_image_t types are  for 2d view
+	// mlx_image_t		*player;	// 2d image for player icon
+	// mlx_image_t		*wall;		// 2d image for wall tile
+	
+	//images
 	mlx_image_t		*floor;		// bottom half of backround in 3d view
 	mlx_image_t		*ceiling;	// top half of backround in 3d view
 	mlx_image_t		*pov;		// 3d view image for rays
+	
+	mlx_image_t		*fov;		// overlay image for rays
+	mlx_image_t		*minimap;
 
+
+	// textures
 	mlx_texture_t	*north_tex; // mlx_texture_t types are for wall textures in pov
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*west_tex;

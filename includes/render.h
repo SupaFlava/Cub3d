@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/22 16:48:29 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/27 16:35:40 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define RENDER_H
 
 // render.c
-void	render_map(t_game *game);
+// void	render_map(t_game *game);
+void	draw_minimap(t_game *game, mlx_image_t *minimap);
 void	images_to_window(t_game *game);
 
 // images.c
 void		draw_column(t_game *game, t_ray *ray, int x);
-int			create_floor_ceiling_images(t_game *game, t_config *config);
-int			create_2dviewimages(t_game *game);
-mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color);
+int			create_background_imgs(t_game *game, t_config *config);
+void		draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color);
+// int			create_2dviewimages(t_game *game);
 
 
 // textures.c

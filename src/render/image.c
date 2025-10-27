@@ -6,44 +6,38 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/23 18:10:37 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/27 16:20:51 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clear_image_overlay(t_game *game)
-{
-	if (!game->assets->fov)
-		return ;
-	ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
-}
+// void	clear_image_overlay(t_game *game)
+// {
+// 	if (!game->assets->fov)
+// 		return ;
+// 	ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
+// }
 
-mlx_image_t	*make_tile(mlx_t *mlx, uint32_t color)
+void	draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color)
 {
-	mlx_image_t	*img;
-	int			x;
-	int			y;
+	int			px;
+	int			py;
 
-	x = 0;
-	y = 0;
-	img = mlx_new_image(mlx, TILE_SIZE, TILE_SIZE);
-	if (!img)
-		return (NULL);
-	while (y < TILE_SIZE)
+	py = 0;
+	while (py < TILE_SIZE)
 	{
-		x = 0;
-		while (x < TILE_SIZE)
+		px = 0;
+		while (px < TILE_SIZE)
 		{
-			mlx_put_pixel(img, x, y, color);
-			x++;
+			mlx_put_pixel(minimap, x * TILE_SIZE+ px, y * TILE_SIZE + py, color);
+			px++;
 		}
-		y++;
+		py++;
 	}
-	return (img);
 }
 
-int	create_floor_ceiling_images(t_game *game, t_config *config)
+int	create_background_imgs(t_game *game, t_config *config)
 {
 	int	x;
 	int	y;
@@ -72,23 +66,23 @@ int	create_floor_ceiling_images(t_game *game, t_config *config)
 	return (1);
 }
 
-int	create_2dviewimages(t_game *game)
-{
-	game->assets->floor2d = make_tile(game->mlx, 0x808080FF);
-	if (!game->assets->floor2d)
-		return (0);
-	game->assets->wall = make_tile(game->mlx, 0xFF0000FF);
-	if (!game->assets->wall)
-		return (0);
-	game->assets->player = make_tile(game->mlx, 0x0000FFFF);
-	if (!game->assets->player)
-		return (0);
-	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	if (!game->assets->fov)
-		return 0;
+// int	create_2dviewimages(t_game *game)
+// {
+// 	game->assets->floor2d = draw_tile(game->mlx, 0x808080FF);
+// 	if (!game->assets->floor2d)
+// 		return (0);
+// 	game->assets->wall = draw_tile(game->mlx, 0xFF0000FF);
+// 	if (!game->assets->wall)
+// 		return (0);
+// 	game->assets->player = draw_tile(game->mlx, 0x0000FFFF);
+// 	if (!game->assets->player)
+// 		return (0);
+// 	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+// 	if (!game->assets->fov)
+// 		return 0;
 
-	return (1);
-}
+// 	return (1);
+// }
 
 void	draw_column(t_game *game, t_ray *ray, int x)
 {
