@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   rays.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 16:42:42 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   rays.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/02 14:13:11 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 17:51:24 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
 
 	while (1)
 	{
-		if (start.x >= 0 && start.x < WIDTH && start.y >= 0 && start.y < HEIGHT)
-			((uint32_t *)img->pixels)[start.y * WIDTH + start.x] = color;
+		if (start.x >= 0 && start.x < (int)img->width &&
+			start.y >= 0 && start.y < (int)img->height)
+				mlx_put_pixel(img, start.x, start.y, color);
+				
 		if (start.x == end.x && start.y == end.y)
 			break;
 		e2 = 2 * err;
@@ -76,7 +78,7 @@ void	draw_player_rays(t_game *game)
 			ray_len *= TILE_SIZE;
 			end.x = (int)(start.x + game->player.rays[i].ray_dir_x * ray_len);
 			end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
-			draw_line(game->assets->fov, start, end, 0xFFFFFFFF);
+			draw_line(game->assets->minimap, start, end, 0xFFFFFFFF);
 		}
 		i++;
 	}

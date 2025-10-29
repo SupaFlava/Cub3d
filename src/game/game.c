@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   game.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 16:42:06 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 11:23:55 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 17:35:57 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	game_loop(void *param)
 	ft_memset(game->assets->pov->pixels, 0, WIDTH * HEIGHT * BPP);
 
 	draw_minimap(game, game->assets->minimap);
+	draw_minimap_player(game);
 	update_player_rays(&game->player);
 	cast_rays_loop(game);
 	draw_player_rays(game);

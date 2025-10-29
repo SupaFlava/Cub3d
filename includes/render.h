@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.h                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 16:44:38 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 16:33:27 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@
 // render.c
 // void	render_map(t_game *game);
 void	draw_minimap(t_game *game, mlx_image_t *minimap);
+void	draw_minimap_player(t_game *game);
+
 void	images_to_window(t_game *game);
 
 // images.c
 void		clear_image(mlx_image_t *img);
 void		draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color);
-void render_minimap_player(t_game *game);
 void		draw_column(t_game *game, t_ray *ray, int x);
 int			create_background_imgs(t_game *game, t_config *config);
-// int			create_2dviewimages(t_game *game);
-
 
 // textures.c
 int				load_textures(t_game *game, t_config *config);

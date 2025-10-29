@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 16:44:01 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 16:49:18 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void render_minimap_player(t_game *game)
+void draw_minimap_player(t_game *game)
 {
 	int px = (int)(game->player.pos_x * TILE_SIZE);
 	int py = (int)(game->player.pos_y * TILE_SIZE);
