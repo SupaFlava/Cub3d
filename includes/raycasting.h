@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   raycasting.h                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/13 14:37:38 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/23 16:52:10 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   raycasting.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/13 14:37:38 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 19:50:11 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ void	check_ray_dir(t_ray *ray);
 void	perform_dda(t_game *game, t_ray *ray);
 void	calc_perp_dist(t_ray *ray, t_player *p);
 void	calc_side_dist(t_ray *ray, t_player *p);
-
-
 
 #endif // RAYCASTING_H

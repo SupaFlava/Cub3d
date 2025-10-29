@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 23:02:13 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/14 14:06:42 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 23:02:13 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 19:51:55 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # include "render.h"
 # include "raycasting.h"
 # include "utils.h"
-
 
 # define FAILURE 0
 # define SUCCESS 1
