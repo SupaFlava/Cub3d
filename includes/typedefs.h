@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/27 16:31:29 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/28 15:08:53 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 
+// colors
+# define RED     0xFF0000FF
+# define GREEN   0x00FF00FF
+# define BLUE    0x0000FFFF
+# define WHITE   0xFFFFFFFF
+# define BLACK   0x000000FF
+# define YELLOW  0xFFFF00FF
+# define CYAN    0x00FFFFFF
+# define MAGENTA 0xFF00FFFF
+
 // enums
 typedef enum e_dir_type
 {
@@ -36,7 +46,7 @@ typedef enum e_dir_type
 	DIR_EA,	//EA
 	DIR_F,	//F
 	DIR_C,	//C
-    DIR_INV, //invalid
+	DIR_INV, //invalid
 } t_dir_type;
 
 // structs
@@ -117,12 +127,12 @@ typedef struct s_assets
 	// mlx_image_t		*floor2d;	// mlx_image_t types are  for 2d view
 	// mlx_image_t		*player;	// 2d image for player icon
 	// mlx_image_t		*wall;		// 2d image for wall tile
-	
+
 	//images
 	mlx_image_t		*floor;		// bottom half of backround in 3d view
 	mlx_image_t		*ceiling;	// top half of backround in 3d view
 	mlx_image_t		*pov;		// 3d view image for rays
-	
+
 	mlx_image_t		*fov;		// overlay image for rays
 	mlx_image_t		*minimap;
 

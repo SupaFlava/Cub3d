@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/27 16:35:40 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/28 16:44:38 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ void	draw_minimap(t_game *game, mlx_image_t *minimap);
 void	images_to_window(t_game *game);
 
 // images.c
+void		clear_image(mlx_image_t *img);
+void		draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color);
+void render_minimap_player(t_game *game);
 void		draw_column(t_game *game, t_ray *ray, int x);
 int			create_background_imgs(t_game *game, t_config *config);
-void		draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color);
 // int			create_2dviewimages(t_game *game);
 
 
 // textures.c
-int			load_textures(t_game *game, t_config *config);
-uint32_t	get_texture_pixel(mlx_texture_t *tex, int x, int y);
+int				load_textures(t_game *game, t_config *config);
+uint32_t		get_texture_pixel(mlx_texture_t *tex, int x, int y);
 mlx_texture_t	*pick_texture(t_game *game, t_ray *ray);
 
 

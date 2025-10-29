@@ -6,18 +6,18 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/27 16:20:51 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/28 15:56:43 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	clear_image_overlay(t_game *game)
-// {
-// 	if (!game->assets->fov)
-// 		return ;
-// 	ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
-// }
+void	clear_image(mlx_image_t *img)
+{
+	if (!img)
+		return ;
+	ft_memset(img->pixels, 0, img->width * TILE_SIZE * img->height * TILE_SIZE * BPP);
+}
 
 void	draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color)
 {

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/27 16:28:14 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/28 16:11:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,15 @@ int	init_assets(t_game *game, t_config *config)
 	if (!game->assets)
 		return (0);
 
+	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	if (!game->assets->pov)
+		return (0);
+
 	game->assets->minimap = mlx_new_image(game->mlx,
 		config->map.width * TILE_SIZE, config->map.height * TILE_SIZE);
 	if (!game->assets->minimap)
 		return (0);
-
-	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	if (!game->assets->pov)
-		return (0);
+	draw_minimap(game, game->assets->minimap);
 
 	if (!create_background_imgs(game, config))
 		return (0);

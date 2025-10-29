@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/24 14:32:15 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/28 14:21:34 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int argc, char *argv[])
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
 
+
+	
 	clean_config(&config);
 	clean_game(&game);
 	mlx_terminate(game.mlx); //closes game loop  //these not needed if we clean in key_hook??
