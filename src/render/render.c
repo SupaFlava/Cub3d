@@ -1,43 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/23 17:47:46 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/10/29 16:49:18 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	render_map(t_game *game)
+void draw_minimap_player(t_game *game)
 {
-	size_t	x;
+	int px = (int)(game->player.pos_x * TILE_SIZE);
+	int py = (int)(game->player.pos_y * TILE_SIZE);
+	int radius = 2;
+	int dx = -radius;
+
+	while (dx <= radius)
+	{
+		int dy = -radius;
+		while (dy <= radius)
+		{
+			mlx_put_pixel(game->assets->minimap,
+				px + dx, py + dy, 0xFF0000FF); // Red player dot
+			dy++;
+		}
+		dx++;
+	}
+}
+
+void	draw_minimap(t_game *game, mlx_image_t *minimap)
+{
+	int		x;
 	int		y;
 	char	c;
+	int	row_length;
 
 	y = 0;
-	x = 0;
 	while (y < game->map.height)
 	{
 		x = 0;
-		while (x < ft_strlen(game->map.grid[y]))
+		row_length = ft_strlen(game->map.grid[y]);
+		while (x < game->map.width)
 		{
-			c = game->map.grid[y][x];
+			if (x < row_length)
+				c = game->map.grid[y][x];
+			else
+				c = ' ';
 			if (c == '1')
-				mlx_image_to_window(game->mlx, game->assets->wall, x * 10, y * TILE_SIZE);
-			else if (game->map.grid[y][x] == '0')
-				mlx_image_to_window(game->mlx, game->assets->floor2d, x * TILE_SIZE, y * TILE_SIZE);
+				draw_tile(minimap, x, y, YELLOW);
+			else if (c == 'V')
+				draw_tile(minimap, x, y, BLACK);
 			x++;
 		}
 		y++;
 	}
-	mlx_image_to_window(game->mlx, game->assets->player,
-							(int)game->player.pos_x * TILE_SIZE - game->assets->player->width / 2,
-							(int)game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
-	mlx_image_to_window(game->mlx, game->assets->fov, 0, 0); // overlay img to window (for rays)
 }
 
 void	images_to_window(t_game *game)
@@ -45,5 +65,6 @@ void	images_to_window(t_game *game)
 	mlx_image_to_window(game->mlx, game->assets->floor, 0, HEIGHT / 2); // floor image
 	mlx_image_to_window(game->mlx, game->assets->ceiling, 0, 0); // ceiling image
 	mlx_image_to_window(game->mlx, game->assets->pov, 0, 0); //first person view
-	// render_map(game);
+	mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0); //minimap
+
 }

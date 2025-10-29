@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cleanup_utils.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/23 17:28:34 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cleanup_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/10/29 17:31:16 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,8 @@ void	clean_config(t_config *config)
 
 void	clean_game(t_game *game)
 {
-	if (game->assets->floor2d)
-		mlx_delete_image(game->mlx, game->assets->floor2d);
-	if (game->assets->player)
-		mlx_delete_image(game->mlx, game->assets->player);
 	if (game->assets->ceiling)
 		mlx_delete_image(game->mlx, game->assets->ceiling);
-	if (game->assets->wall)
-		mlx_delete_image(game->mlx, game->assets->wall);
 	if (game->assets->pov)
 		mlx_delete_image(game->mlx, game->assets->pov);
 	if (game->assets->fov)

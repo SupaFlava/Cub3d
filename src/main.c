@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/24 14:32:15 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:33:10 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ int	main(int argc, char *argv[])
 	if (init_game(&game, &config) != EXIT_SUCCESS)
 	{
 		ft_printf("error initializing game\n");
-		return (EXIT_FAILURE); // no proper cleanup function made yet
+		clean_cub3d(&game);
 	}
 	images_to_window(&game);
 	mlx_key_hook(game.mlx, keyhook, &game);
-	// mlx_close_hook(game.mlx, clean_cub3d, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
 
+
+	
 	clean_config(&config);
 	clean_game(&game);
 	mlx_terminate(game.mlx); //closes game loop  //these not needed if we clean in key_hook??

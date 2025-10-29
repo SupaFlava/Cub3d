@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/24 14:30:31 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/28 16:11:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	init_player(t_game *game, t_config *config)
 	game->player.rot_speed = 3.0;
 	game->player.move_speed = 3.0;
 	set_player_dir(game, config->player_dir);
-	// init rays here?
 }
 
 int	init_assets(t_game *game, t_config *config)
@@ -74,13 +73,18 @@ int	init_assets(t_game *game, t_config *config)
 	game->assets = malloc(sizeof(t_assets));
 	if (!game->assets)
 		return (0);
+
 	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->assets->pov)
 		return (0);
 
-	if (!create_floor_ceiling_images(game, config))
+	game->assets->minimap = mlx_new_image(game->mlx,
+		config->map.width * TILE_SIZE, config->map.height * TILE_SIZE);
+	if (!game->assets->minimap)
 		return (0);
-	if (!create_2dviewimages(game))
+	draw_minimap(game, game->assets->minimap);
+
+	if (!create_background_imgs(game, config))
 		return (0);
 	if (!load_textures(game, config))
 	{
