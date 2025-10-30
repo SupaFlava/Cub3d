@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 14:25:59 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:23:32 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,24 @@ void	draw_pov(t_game *game)
 	}
 }
 
-void draw_minimap_player(t_game *game)
+void	draw_minimap_player(t_game *game)
 {
-	int px = (int)(game->player.pos_x * TILE_SIZE);
-	int py = (int)(game->player.pos_y * TILE_SIZE);
-	int radius = 2;
-	int dx = -radius;
+	int	px;
+	int	py;
+	int	radius;
+	int	dx;
+	int	dy;
 
+	px = (int)(game->player.pos_x * TILE);
+	py = (int)(game->player.pos_y * TILE);
+	radius = 10;
+	dx = -radius;
 	while (dx <= radius)
 	{
-		int dy = -radius;
+		dy = -radius;
 		while (dy <= radius)
 		{
-			mlx_put_pixel(game->assets->minimap,
-				px + dx, py + dy, RED); // Red player dot
+			mlx_put_pixel(game->assets->minimap, px + dx, py + dy, RED);
 			dy++;
 		}
 		dx++;
@@ -48,8 +52,8 @@ void	draw_minimap(t_game *game, mlx_image_t *minimap)
 {
 	int		x;
 	int		y;
+	int		row_length;
 	char	c;
-	int	row_length;
 
 	y = 0;
 	while (y < game->map.height)
@@ -74,9 +78,8 @@ void	draw_minimap(t_game *game, mlx_image_t *minimap)
 
 void	images_to_window(t_game *game)
 {
-	mlx_image_to_window(game->mlx, game->assets->floor, 0, HEIGHT / 2); // floor image
-	mlx_image_to_window(game->mlx, game->assets->ceiling, 0, 0); // ceiling image
-	mlx_image_to_window(game->mlx, game->assets->pov, 0, 0); //first person view
-	mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0); //minimap
-
+	mlx_image_to_window(game->mlx, game->assets->floor, 0, HEIGHT / 2);
+	mlx_image_to_window(game->mlx, game->assets->roof, 0, 0);
+	mlx_image_to_window(game->mlx, game->assets->pov, 0, 0);
+	mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0);
 }

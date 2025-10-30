@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/15 21:58:51 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   validate.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 18:00:35 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 16:11:49 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int	check_colors(t_config *config)
 		return (FAILURE);
 	if (config->floor.b > 255 || config->floor.g < 0)
 		return (FAILURE);
-	if (config->ceiling.r > 255 || config->ceiling.g < 0)
+	if (config->roof.r > 255 || config->roof.g < 0)
 		return (FAILURE);
-	if (config->ceiling.g > 255 || config->ceiling.g < 0)
+	if (config->roof.g > 255 || config->roof.g < 0)
 		return (FAILURE);
-	if (config->ceiling.b > 255 || config->ceiling.g < 0)
+	if (config->roof.b > 255 || config->roof.g < 0)
 		return (FAILURE);
 	return (SUCCESS);
 }

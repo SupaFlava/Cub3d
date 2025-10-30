@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 12:19:01 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/23 17:26:57 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:13:14 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	parse_color(t_config *config, char *colors, int dir)
 	}
 	else
 	{
-		config->ceiling.r = ft_atoi(c_array[0]);
-		config->ceiling.g = ft_atoi(c_array[1]);
-		config->ceiling.b = ft_atoi(c_array[2]);
+		config->roof.r = ft_atoi(c_array[0]);
+		config->roof.g = ft_atoi(c_array[1]);
+		config->roof.b = ft_atoi(c_array[2]);
 	}
 	clean_split(c_array);
 	return (SUCCESS);

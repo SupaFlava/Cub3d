@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 15:45:40 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:05:12 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,15 @@ void	draw_minimap_rays(t_game *game)
 	t_point	end;
 	double	ray_len;
 
-	start.x = (int)(game->player.pos_x * TILE_SIZE);
-	start.y = (int)(game->player.pos_y * TILE_SIZE);
+	start.x = (int)(game->player.pos_x * TILE);
+	start.y = (int)(game->player.pos_y * TILE);
 	i = 0;
 	while (i < NUM_RAYS)
 	{
 		ray_len = game->player.rays[i].perp_dist;
 		if (ray_len > 0.0 && ray_len != INFINITY)
 		{
-			ray_len *= TILE_SIZE;
+			ray_len *= TILE;
 			end.x = (int)(start.x + game->player.rays[i].ray_dir_x * ray_len);
 			end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
 			draw_line(game->assets->minimap, start, end, WHITE);

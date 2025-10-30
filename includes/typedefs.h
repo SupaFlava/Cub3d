@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 15:31:21 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:36:44 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define FOV 60.0
-# define TILE_SIZE 10
+# define TILE 10
 # define NUM_RAYS WIDTH
 
 // # define INIT_FAILURE 2
@@ -54,6 +54,7 @@ typedef struct s_color
 	int		r;
 	int		g;
 	int		b;
+	int		a;
 }	t_color;
 
 typedef struct s_point
@@ -80,7 +81,7 @@ typedef struct s_config
 	bool	in_config;
 	bool	*err_flag;
 	t_color	floor;
-	t_color	ceiling;
+	t_color	roof;
 	t_map	map;
 	int		player_x;
 	int		player_y;
@@ -123,7 +124,7 @@ typedef struct s_player
 typedef struct s_assets
 {
 	mlx_image_t		*floor;
-	mlx_image_t		*ceiling;
+	mlx_image_t		*roof;
 	mlx_image_t		*pov;
 
 	mlx_image_t		*minimap;

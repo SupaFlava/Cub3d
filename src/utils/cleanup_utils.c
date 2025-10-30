@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 15:31:59 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:13:33 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	clean_config(t_config *config)
 
 void	clean_game(t_game *game)
 {
-	if (game->assets->ceiling)
-		mlx_delete_image(game->mlx, game->assets->ceiling);
+	if (game->assets->roof)
+		mlx_delete_image(game->mlx, game->assets->roof);
 	if (game->assets->pov)
 		mlx_delete_image(game->mlx, game->assets->pov);
 	if (game->assets->north_tex)
