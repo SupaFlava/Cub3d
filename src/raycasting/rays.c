@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rays.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 14:13:11 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/29 17:51:24 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   rays.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/30 13:20:15 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	update_player_rays(t_player *player)
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		camera_x = 2.0 * i / (double)NUM_RAYS - 1.0;
+		camera_x = 2.0 * i / (double)(NUM_RAYS -1) - 1.0;
 		player->rays[i].ray_dir_x = player->dir_x + player->plane_x * camera_x;
 		player->rays[i].ray_dir_y = player->dir_y + player->plane_y * camera_x;
  		i++;
@@ -58,7 +58,7 @@ void draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
 	}
 }
 
-void	draw_player_rays(t_game *game)
+void	draw_minimap_rays(t_game *game)
 {
 	int		i;
 	t_point	start;
@@ -67,18 +67,16 @@ void	draw_player_rays(t_game *game)
 
 	start.x = (int)(game->player.pos_x * TILE_SIZE);
 	start.y = (int)(game->player.pos_y * TILE_SIZE);
-
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		// Only draw if perp_dist is valid and positive
 		ray_len = game->player.rays[i].perp_dist;
 		if (ray_len > 0.0 && ray_len != INFINITY)
 		{
 			ray_len *= TILE_SIZE;
 			end.x = (int)(start.x + game->player.rays[i].ray_dir_x * ray_len);
 			end.y = (int)(start.y + game->player.rays[i].ray_dir_y * ray_len);
-			draw_line(game->assets->minimap, start, end, 0xFFFFFFFF);
+			draw_line(game->assets->minimap, start, end, WHITE);
 		}
 		i++;
 	}

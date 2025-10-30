@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 15:56:43 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 13:11:37 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,6 @@ int	create_background_imgs(t_game *game, t_config *config)
 	}
 	return (1);
 }
-
-// int	create_2dviewimages(t_game *game)
-// {
-// 	game->assets->floor2d = draw_tile(game->mlx, 0x808080FF);
-// 	if (!game->assets->floor2d)
-// 		return (0);
-// 	game->assets->wall = draw_tile(game->mlx, 0xFF0000FF);
-// 	if (!game->assets->wall)
-// 		return (0);
-// 	game->assets->player = draw_tile(game->mlx, 0x0000FFFF);
-// 	if (!game->assets->player)
-// 		return (0);
-// 	game->assets->fov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-// 	if (!game->assets->fov)
-// 		return 0;
-
-// 	return (1);
-// }
 
 void	draw_column(t_game *game, t_ray *ray, int x)
 {

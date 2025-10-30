@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 16:11:42 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 13:06:36 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	init_assets(t_game *game, t_config *config)
 		config->map.width * TILE_SIZE, config->map.height * TILE_SIZE);
 	if (!game->assets->minimap)
 		return (0);
-	draw_minimap(game, game->assets->minimap);
+	// draw_minimap(game, game->assets->minimap);
 
 	if (!create_background_imgs(game, config))
 		return (0);

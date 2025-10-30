@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/29 20:20:08 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   utils.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 12:17:19 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	clean_split(char **alloc);
 void	clean_config(t_config *config);
 
 // controls_utils.c
-void	move_left(t_game *game, double next_x, double next_y, double move_step);
-void	move_right(t_game *game, double next_x, double next_y, double move_step);
-void	move_forward(t_game *game, double next_x, double next_y, double move_step);
-void	move_back(t_game *game, double next_x, double next_y, double move_step);
+void	move_left(t_game *game, double move_step);
+void	move_right(t_game *game, double move_step);
+void	move_forward(t_game *game, double move_step);
+void	move_back(t_game *game,  double move_step);
 
 
 // validate utils

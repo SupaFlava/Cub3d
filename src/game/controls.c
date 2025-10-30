@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   controls.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 16:00:33 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/29 20:21:18 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   controls.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/07 16:00:33 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/30 12:22:49 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,14 @@
 
 void	check_movement(t_game *game, double move_step)
 {
-	double next_x;
-	double next_y;
-	
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		move_forward(game, next x)
+		move_forward(game, move_step);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-	{
-		next_x = game->player.pos_x - game->player.dir_x * move_step;
-		next_y = game->player.pos_y - game->player.dir_y * move_step;
-		wall_collision(game, next_x , next_y);
-	}
+		move_back(game, move_step);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-	{
-		next_x = game->player.pos_x + game->player.dir_y * move_step;
-		next_y = game->player.pos_y - game->player.dir_x * move_step;
-		wall_collision(game, next_x, next_y);
-	}
+		move_left(game, move_step);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-	{
-		next_x =  game->player.pos_x - game->player.dir_y * move_step;
-		next_y = game->player.pos_y + game->player.dir_x * move_step;
-		wall_collision(game, next_x, next_y);
-	}
+		move_right(game, move_step);
 }
 
 void	check_rotation(t_game *game, double rot_step)

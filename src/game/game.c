@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 11:23:55 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/29 17:35:57 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   game.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/30 13:24:16 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	keyhook(mlx_key_data_t keydata, void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
@@ -36,28 +36,18 @@ void	game_loop(void *param)
 	game = param;
 	move_step = game->player.move_speed * game->mlx->delta_time;
 	rot_step = game->player.rot_speed * game->mlx->delta_time;
-
-	//movement & rotation
 	check_movement(game, move_step);
 	check_rotation(game, rot_step);
-
-	// ray overlay // - clears fov img, - updates direction of all rays, - draws rays on fov img again
-	//replace both with clear_image() function also for minimap.
-	// ft_memset(game->assets->fov->pixels, 0, WIDTH * HEIGHT * BPP);
 	ft_memset(game->assets->pov->pixels, 0, WIDTH * HEIGHT * BPP);
-
 	draw_minimap(game, game->assets->minimap);
 	draw_minimap_player(game);
 	update_player_rays(&game->player);
 	cast_rays_loop(game);
-	draw_player_rays(game);
+	draw_minimap_rays(game);
 	x = 0;
 	while (x < NUM_RAYS)
 	{
 		draw_column(game, &game->player.rays[x], x);
 		x++;
 	}
-// updates player image location (temp) moves the player in 2d map view
-	// game->assets->player->instances[0].x = (int32_t)(game->player.pos_x * TILE_SIZE - game->assets->player->width / 2);
-	// game->assets->player->instances[0].y = (int32_t)(game->player.pos_y * TILE_SIZE - game->assets->player->height / 2);
 }

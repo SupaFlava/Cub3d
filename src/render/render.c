@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/29 16:49:18 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/30 13:04:15 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void draw_minimap_player(t_game *game)
 		while (dy <= radius)
 		{
 			mlx_put_pixel(game->assets->minimap,
-				px + dx, py + dy, 0xFF0000FF); // Red player dot
+				px + dx, py + dy, RED); // Red player dot
 			dy++;
 		}
 		dx++;
