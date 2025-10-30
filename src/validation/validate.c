@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 18:00:35 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:11:49 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:57:31 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	check_assets(t_config *config)
 	}
 	return (SUCCESS);
 }
+
 int	check_colors(t_config *config)
 {
 	if (config->floor.r > 255 || config->floor.g < 0)
@@ -64,7 +65,6 @@ int	validate_config(t_config *config)
 	}
 	return (SUCCESS);
 }
-
 
 int	validate(t_config *config)
 {

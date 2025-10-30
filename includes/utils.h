@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 14:41:55 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 17:05:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		parse_color(t_config *config, char *colors, int dir);
 int		classify_directive(char *dir);
 
 // math_utils.c
-int		my_abs(int	num);
+int		my_abs(int num);
 
 // set_dir.c
 void	set_north(t_game *game);
@@ -40,7 +40,7 @@ void	clean_config(t_config *config);
 void	move_left(t_game *game, double move_step);
 void	move_right(t_game *game, double move_step);
 void	move_forward(t_game *game, double move_step);
-void	move_back(t_game *game,  double move_step);
+void	move_back(t_game *game, double move_step);
 
 // validate_utils.c
 int		open_and_close_file(char *path);
