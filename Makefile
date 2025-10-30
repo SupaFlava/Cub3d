@@ -6,7 +6,7 @@
 #    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/10/29 16:55:15 by jbaetsen         ###   ########.fr        #
+#    Updated: 2025/10/29 20:18:57 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c
 SRC_PLAYER =
 
 SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c \
-			src/utils/validate_utils.c
+			src/utils/validate_utils.c src/utils/controls_utils.c
 
 SRC_ASSETS =
 

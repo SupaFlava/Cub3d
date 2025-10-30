@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/29 19:31:50 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:20:08 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ char	*safe_assign(char *src, bool *err_flag);
 void	clean_split(char **alloc);
 void	clean_config(t_config *config);
 
-//validate utils
+// controls_utils.c
+void	move_left(t_game *game, double next_x, double next_y, double move_step);
+void	move_right(t_game *game, double next_x, double next_y, double move_step);
+void	move_forward(t_game *game, double next_x, double next_y, double move_step);
+void	move_back(t_game *game, double next_x, double next_y, double move_step);
+
+
+// validate utils
 int		open_and_close_file(char *path);
 
 // utils.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 16:00:33 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/24 14:31:14 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:21:18 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ void	check_movement(t_game *game, double move_step)
 	double next_y;
 	
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-	{	
-		next_x = game->player.pos_x + game->player.dir_x * move_step;
-		next_y = game->player.pos_y + game->player.dir_y * move_step;
-		wall_collision(game, next_x , next_y);
-	}
+		move_forward(game, next x)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
 	{
 		next_x = game->player.pos_x - game->player.dir_x * move_step;
@@ -37,7 +33,7 @@ void	check_movement(t_game *game, double move_step)
 	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 	{
-	 	next_x =  game->player.pos_x - game->player.dir_y * move_step;
+		next_x =  game->player.pos_x - game->player.dir_y * move_step;
 		next_y = game->player.pos_y + game->player.dir_x * move_step;
 		wall_collision(game, next_x, next_y);
 	}
@@ -53,12 +49,13 @@ void	check_rotation(t_game *game, double rot_step)
 
 void	rotate_player(t_player *p, double angle)
 {
-	double	old_dir_x = p->dir_x;
-	double	old_plane_x = p->plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
+	old_dir_x = p->dir_x;
+	old_plane_x = p->plane_x;
 	p->dir_x = p->dir_x * cos(angle) - p->dir_y * sin(angle);
 	p->dir_y = old_dir_x * sin(angle) + p->dir_y * cos(angle);
-
 	p->plane_x = p->plane_x * cos(angle) - p->plane_y * sin(angle);
 	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
 }
