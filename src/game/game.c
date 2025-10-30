@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 13:24:16 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 13:55:35 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	game_loop(void *param)
 	t_game	*game;
 	double	move_step;
 	double	rot_step;
-	int		x;
 
 	game = param;
 	move_step = game->player.move_speed * game->mlx->delta_time;
@@ -44,10 +43,5 @@ void	game_loop(void *param)
 	update_player_rays(&game->player);
 	cast_rays_loop(game);
 	draw_minimap_rays(game);
-	x = 0;
-	while (x < NUM_RAYS)
-	{
-		draw_column(game, &game->player.rays[x], x);
-		x++;
-	}
+	draw_pov(game);
 }

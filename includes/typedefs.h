@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/29 19:53:05 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   typedefs.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 15:31:21 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,12 @@ typedef struct s_player
 
 typedef struct s_assets
 {
-	//images
 	mlx_image_t		*floor;
 	mlx_image_t		*ceiling;
 	mlx_image_t		*pov;
 
-	mlx_image_t		*fov;
 	mlx_image_t		*minimap;
 
-	// textures
 	mlx_texture_t	*north_tex;
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*west_tex;

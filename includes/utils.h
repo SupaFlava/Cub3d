@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 12:17:19 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 14:41:55 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,19 @@ int		ft_isspace(char *string);
 int		parse_color(t_config *config, char *colors, int dir);
 int		classify_directive(char *dir);
 
-//memory utils
+// math_utils.c
+int		my_abs(int	num);
+
+// set_dir.c
+void	set_north(t_game *game);
+void	set_south(t_game *game);
+void	set_west(t_game *game);
+void	set_east(t_game *game);
+
+// memory_utils.c
 char	*safe_assign(char *src, bool *err_flag);
 
-//clean up utils
+// cleanup_utils.c
 void	clean_split(char **alloc);
 void	clean_config(t_config *config);
 
@@ -33,8 +42,7 @@ void	move_right(t_game *game, double move_step);
 void	move_forward(t_game *game, double move_step);
 void	move_back(t_game *game,  double move_step);
 
-
-// validate utils
+// validate_utils.c
 int		open_and_close_file(char *path);
 
 // utils.c

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cleanup_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/29 17:31:16 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cleanup_utils.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 15:31:59 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	clean_game(t_game *game)
 		mlx_delete_image(game->mlx, game->assets->ceiling);
 	if (game->assets->pov)
 		mlx_delete_image(game->mlx, game->assets->pov);
-	if (game->assets->fov)
-		mlx_delete_image(game->mlx, game->assets->fov);
 	if (game->assets->north_tex)
 		mlx_delete_texture(game->assets->north_tex);
 	if (game->assets->south_tex)

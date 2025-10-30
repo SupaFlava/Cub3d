@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/29 19:49:54 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/30 13:32:11 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RENDER_H
 
 // render.c
+void		draw_pov(t_game *game);
 void			draw_minimap(t_game *game, mlx_image_t *minimap);
 void			draw_minimap_player(t_game *game);
 void			images_to_window(t_game *game);

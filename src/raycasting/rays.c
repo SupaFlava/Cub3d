@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 13:20:15 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 15:45:40 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,58 @@ void	update_player_rays(t_player *player)
 		camera_x = 2.0 * i / (double)(NUM_RAYS -1) - 1.0;
 		player->rays[i].ray_dir_x = player->dir_x + player->plane_x * camera_x;
 		player->rays[i].ray_dir_y = player->dir_y + player->plane_y * camera_x;
- 		i++;
+		i++;
 	}
 }
 
-void draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
+void	init_line_variables(t_point *d, t_point *s, t_point start, t_point end)
 {
-	int dx = abs(end.x - start.x);
-	int dy = -abs(end.y - start.y);
-	int sx = start.x < end.x ? 1 : -1;
-	int sy = start.y < end.y ? 1 : -1;
-	int err = dx + dy;
-	int e2;
+	d->x = my_abs(end.x - start.x);
+	d->y = -my_abs(end.y - start.y);
+	if (start.x < end.x)
+		s->x = 1;
+	else
+		s->x = -1;
+	if (start.y < end.y)
+		s->y = 1;
+	else
+		s->y = -1;
+}
 
+int	is_in_bounds(mlx_image_t *img, t_point p)
+{
+	if (p.x < 0 || p.x >= (int)img->width)
+		return (0);
+	if (p.y < 0 || p.y >= (int)img->height)
+		return (0);
+	return (1);
+}
+
+void	draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
+{
+	t_point	d;
+	t_point	s;
+	int		err;
+	int		e2;
+
+	init_line_variables(&d, &s, start, end);
+	err = d.x + d.y;
 	while (1)
 	{
-		if (start.x >= 0 && start.x < (int)img->width &&
-			start.y >= 0 && start.y < (int)img->height)
-				mlx_put_pixel(img, start.x, start.y, color);
-				
+		if (is_in_bounds(img, start))
+			mlx_put_pixel(img, start.x, start.y, color);
 		if (start.x == end.x && start.y == end.y)
-			break;
+			break ;
 		e2 = 2 * err;
-		if (e2 >= dy)
+		if (e2 >= d.y)
 		{
-			err += dy;
-			start.x += sx;
+			err += d.y;
+			start.x += s.x;
 		}
-		if (e2 <= dx)
+		if (e2 <= d.x)
 		{
-			err += dx;
-			start.y += sy;
+			err += d.x;
+			start.y += s.y;
 		}
 	}
 }
