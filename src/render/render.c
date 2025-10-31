@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:23:32 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 12:15:20 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_minimap_player(t_game *game)
 
 	px = (int)(game->player.pos_x * TILE);
 	py = (int)(game->player.pos_y * TILE);
-	radius = 10;
+	radius = 2;
 	dx = -radius;
 	while (dx <= radius)
 	{

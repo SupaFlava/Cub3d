@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 13:55:35 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 16:20:19 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 
 void	game_loop(void *param)
 {
-	t_game	*game;
-	double	move_step;
-	double	rot_step;
+	t_game			*game;
+	double			move_step;
+	double			rot_step;
 
 	game = param;
 	move_step = game->player.move_speed * game->mlx->delta_time;
 	rot_step = game->player.rot_speed * game->mlx->delta_time;
 	check_movement(game, move_step);
 	check_rotation(game, rot_step);
+	check_mouse(game);
 	ft_memset(game->assets->pov->pixels, 0, WIDTH * HEIGHT * BPP);
 	draw_minimap(game, game->assets->minimap);
 	draw_minimap_player(game);
