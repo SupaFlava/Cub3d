@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:36:44 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 12:55:22 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,13 @@ typedef struct s_player
 
 	double	move_speed;
 	double	rot_speed;
+	double	mouse_sens;
 
+	double	last_mouse_x;
+	double	pending_movement;
+	bool	mouse_locked;
+	bool	mouse_init;
+	
 	t_ray	rays[NUM_RAYS];
 }	t_player;
 

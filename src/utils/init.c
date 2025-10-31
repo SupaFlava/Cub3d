@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:47:29 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 13:48:52 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void	init_player(t_game *game, t_config *config)
 	game->player.rot_speed = 3.0;
 	game->player.move_speed = 3.0;
 	set_player_dir(game, config->player_dir);
+	game->player.last_mouse_x = 0;
+	game->player.pending_movement = 0.0;
+	game->player.mouse_sens = 0.002;
+	game->player.mouse_init = false;
 }
 
 int	init_assets(t_game *game, t_config *config)
@@ -78,6 +82,7 @@ int	init_game(t_game *game, t_config *config)
 		ft_printf("mlx_init failure\n");
 		return (EXIT_FAILURE);
 	}
+	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
 	game->config = config;
 	game->map = config->map;
 	init_player(game, config);

@@ -6,11 +6,31 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/07 16:00:33 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 12:22:49 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 13:58:23 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	mouse_look(double x_pos, double y_pos, void *param)
+{
+	t_game		*game;
+	t_player	*player;
+	double		delta_x;
+
+	(void)y_pos;
+	game = param;
+	player = &game->player;
+	if (!player->mouse_init)
+	{
+		player->last_mouse_x = x_pos;
+		player->mouse_init = true;
+		return ;
+	}
+	delta_x = x_pos - player->last_mouse_x;
+	player->last_mouse_x = x_pos;
+	game->player.pending_movement += delta_x;
+}
 
 void	check_movement(t_game *game, double move_step)
 {
