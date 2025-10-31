@@ -6,11 +6,25 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/07 16:00:33 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/31 13:58:23 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 16:28:22 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	check_mouse(t_game *game)
+{
+	double	mouse_rot;
+	double	smooth_mouse_rot;
+
+	if (fabs(game->player.pending_movement) > 0.001)
+	{
+		mouse_rot = game->player.pending_movement * game->player.mouse_sens;
+		smooth_mouse_rot = mouse_rot * 0.8 + mouse_rot * 0.2;
+		rotate_player(&game->player, smooth_mouse_rot);
+		game->player.pending_movement = 0;
+	}
+}
 
 void	mouse_look(double x_pos, double y_pos, void *param)
 {

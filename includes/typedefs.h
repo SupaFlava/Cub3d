@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 21:37:10 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/31 12:55:22 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 15:40:54 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@
 // enums
 typedef enum e_dir_type
 {
-	DIR_NO,	//NO
-	DIR_SO,	//SO
-	DIR_WE,	//WE
-	DIR_EA,	//EA
-	DIR_F,	//F
-	DIR_C,	//C
-	DIR_INV, //invalid
+	DIR_NO,
+	DIR_SO,
+	DIR_WE,
+	DIR_EA,
+	DIR_F,	
+	DIR_C,
+	DIR_INV,
 }	t_dir_type;
 
 // structs

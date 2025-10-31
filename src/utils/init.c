@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/31 13:48:52 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/31 16:06:21 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_player(t_game *game, t_config *config)
 	set_player_dir(game, config->player_dir);
 	game->player.last_mouse_x = 0;
 	game->player.pending_movement = 0.0;
-	game->player.mouse_sens = 0.002;
+	game->player.mouse_sens = 0.001;
 	game->player.mouse_init = false;
 }
 
