@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/10/29 17:33:10 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/10/30 17:06:51 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char *argv[])
 		return (FAILURE);
 	if (parse_game(&config) == FAILURE)
 		return (FAILURE);
-
 	if (init_game(&game, &config) != EXIT_SUCCESS)
 	{
 		ft_printf("error initializing game\n");
@@ -31,11 +30,5 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(game.mlx, keyhook, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
-
-
-	
-	clean_config(&config);
-	clean_game(&game);
-	mlx_terminate(game.mlx); //closes game loop  //these not needed if we clean in key_hook??
 	return (EXIT_SUCCESS);
 }

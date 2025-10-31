@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cleanup_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/29 17:31:16 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cleanup_utils.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 16:44:23 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_and_null(char *ptr)
+{
+	free(ptr);
+	ptr = NULL;
+}
 
 void	clean_split(char **alloc)
 {
@@ -29,25 +35,13 @@ void	clean_split(char **alloc)
 void	clean_config(t_config *config)
 {
 	if (config->no_tex)
-	{
-		free(config->no_tex);
-		config->no_tex = NULL;
-	}
+		free_and_null(config->no_tex);
 	if (config->so_tex)
-	{
-		free(config->so_tex);
-		config->so_tex = NULL;
-	}
+		free_and_null(config->so_tex);
 	if (config->we_tex)
-	{
-		free(config->we_tex);
-		config->we_tex = NULL;
-	}
+		free_and_null(config->we_tex);
 	if (config->ea_tex)
-	{
-		free(config->ea_tex);
-		config->ea_tex = NULL;
-	}
+		free_and_null(config->ea_tex);
 	if (config->setting)
 	{
 		clean_split(config->setting);
@@ -62,12 +56,10 @@ void	clean_config(t_config *config)
 
 void	clean_game(t_game *game)
 {
-	if (game->assets->ceiling)
-		mlx_delete_image(game->mlx, game->assets->ceiling);
+	if (game->assets->roof)
+		mlx_delete_image(game->mlx, game->assets->roof);
 	if (game->assets->pov)
 		mlx_delete_image(game->mlx, game->assets->pov);
-	if (game->assets->fov)
-		mlx_delete_image(game->mlx, game->assets->fov);
 	if (game->assets->north_tex)
 		mlx_delete_texture(game->assets->north_tex);
 	if (game->assets->south_tex)

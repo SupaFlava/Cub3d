@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_file.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 10:54:53 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   get_file.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 21:34:35 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 16:59:37 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ int	get_file(char *path, t_config *config)
 	config->setting = map;
 	return (SUCCESS);
 }
-

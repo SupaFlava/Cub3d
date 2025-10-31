@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/15 22:30:21 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/23 18:07:52 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:39:21 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ mlx_texture_t	*pick_texture(t_game *game, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x > 0)
-			return(game->assets->east_tex);
+			return (game->assets->east_tex);
 		else
 			return (game->assets->west_tex);
 	}
@@ -43,29 +43,27 @@ mlx_texture_t	*pick_texture(t_game *game, t_ray *ray)
 		if (ray->ray_dir_y > 0)
 			return (game->assets->south_tex);
 		else
-		 	return (game->assets->north_tex);
+			return (game->assets->north_tex);
 	}
 }
 
 uint32_t	get_texture_pixel(mlx_texture_t *tex, int x, int y)
 {
-	int		index;
-	uint8_t	*pixel_data;
-	uint8_t	r, g, b, a;
+	int			index;
+	uint8_t		*pixel_data;
+	t_color		pxl;
 	uint32_t	color;
 
 	if (!tex)
-		return (0xFFFFFFFF);
+		return (WHITE);
 	if (x < 0 || y < 0 || x >= (int)tex->width || y >= (int)tex->height)
-		return (0xFFFFFFFF);
-	// Get starting index in texture pixel array
+		return (WHITE);
 	index = (y * tex->width + x) * 4;
 	pixel_data = tex->pixels;
-	// Read RGBA components clearly
-	r = pixel_data[index + 0];
-	g = pixel_data[index + 1];
-	b = pixel_data[index + 2];
-	a = pixel_data[index + 3];
-	color = (r << 24) | (g << 16) | (b << 8) | a;
+	pxl.r = pixel_data[index + 0];
+	pxl.g = pixel_data[index + 1];
+	pxl.b = pixel_data[index + 2];
+	pxl.a = pixel_data[index + 3];
+	color = (pxl.r << 24) | (pxl.g << 16) | (pxl.b << 8) | pxl.a;
 	return (color);
 }

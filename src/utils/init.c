@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/28 16:11:42 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/10/30 16:47:29 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,13 @@
 void	set_player_dir(t_game *game, char dir)
 {
 	if (dir == 'N')
-	{
-		game->player.dir_x = 0.0;
-		game->player.dir_y = -1.0;
-		game->player.plane_x = 0.66;
-		game->player.plane_y = 0.0;
-	}
+		set_north(game);
 	else if (dir == 'S')
-	{
-		game->player.dir_x = 0.0;
-		game->player.dir_y = 1.0;
-		game->player.plane_x = -0.66;
-		game->player.plane_y = 0.0;
-	}
+		set_south(game);
 	else if (dir == 'W')
-	{
-		game->player.dir_x = -1.0;
-		game->player.dir_y = 0.0;
-		game->player.plane_x = 0.0;
-		game->player.plane_y = -0.66;
-	}
+		set_west(game);
 	else if (dir == 'E')
-	{
-		game->player.dir_x = 1.0;
-		game->player.dir_y = 0.0;
-		game->player.plane_x = 0.0;
-		game->player.plane_y = 0.66;
-	}
+		set_east(game);
 }
 
 int	init_config(t_config *config)
@@ -61,8 +41,8 @@ int	init_config(t_config *config)
 
 void	init_player(t_game *game, t_config *config)
 {
-	game->player.pos_x = config->player_x;
-	game->player.pos_y = config->player_y;
+	game->player.pos_x = config->player_x + 0.5;
+	game->player.pos_y = config->player_y + 0.5;
 	game->player.rot_speed = 3.0;
 	game->player.move_speed = 3.0;
 	set_player_dir(game, config->player_dir);
@@ -73,17 +53,13 @@ int	init_assets(t_game *game, t_config *config)
 	game->assets = malloc(sizeof(t_assets));
 	if (!game->assets)
 		return (0);
-
 	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->assets->pov)
 		return (0);
-
 	game->assets->minimap = mlx_new_image(game->mlx,
-		config->map.width * TILE_SIZE, config->map.height * TILE_SIZE);
+			config->map.width * TILE, config->map.height * TILE);
 	if (!game->assets->minimap)
 		return (0);
-	draw_minimap(game, game->assets->minimap);
-
 	if (!create_background_imgs(game, config))
 		return (0);
 	if (!load_textures(game, config))

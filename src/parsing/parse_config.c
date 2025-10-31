@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_config.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/16 12:55:51 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_config.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 17:02:32 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	extract_map(t_config *config, int i)
 {
-	int j;
+	int	j;
 	int	count;
-	int width;
+	int	width;
 
 	count = 0;
 	width = 0;
@@ -54,7 +54,7 @@ int	assign_config(t_config *config, int dir, char **arr)
 		config->ea_tex = safe_assign(arr[1], config->err_flag);
 	else if (dir == DIR_F || dir == DIR_C)
 	{
-		if (parse_color(config ,arr[1],dir) == FAILURE)
+		if (parse_color(config, arr[1], dir) == FAILURE)
 			return (FAILURE);
 	}
 	else if (dir == DIR_INV)
@@ -67,10 +67,10 @@ int	assign_config(t_config *config, int dir, char **arr)
 	return (SUCCESS);
 }
 
-int	extract_config(t_config *config, char *line , bool *seen)
+int	extract_config(t_config *config, char *line, bool *seen)
 {
-	char **result;
-	int	dir;
+	char	**result;
+	int		dir;
 
 	result = ft_split(line, ' ');
 	if (!result || result[2])
@@ -94,9 +94,9 @@ int	extract_config(t_config *config, char *line , bool *seen)
 
 int	parse_config(t_config *config)
 {
-	int	i;
-	int config_len;
-	bool seen[6] = {false, false, false, false, false, false};
+	int		i;
+	int		config_len;
+	bool	seen[6] = {false, false, false, false, false, false};
 
 	i = 0;
 	config_len = 0;
@@ -107,7 +107,7 @@ int	parse_config(t_config *config)
 			i++;
 		else
 		{
-			if (extract_config(config,config->setting[i], seen) == FAILURE)
+			if (extract_config(config, config->setting[i], seen) == FAILURE)
 				return (FAILURE);
 			config_len++;
 			i++;
@@ -117,7 +117,5 @@ int	parse_config(t_config *config)
 	}
 	if (extract_map(config, i) == FAILURE)
 		return (FAILURE);
-	// if (copy_map_clone(config) == FAILURE)
-	// 	return (FAILURE);
 	return (SUCCESS);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/16 14:35:27 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   validate_map.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 16:58:36 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	is_matching(char c)
 	return (FAILURE);
 }
 
-int	flood_fill(t_config *config , int y, int x)
+int	flood_fill(t_config *config, int y, int x)
 {
-	int	row_len;
+	int		row_len;
 	char	**map;
 
 	map = config->map.grid;
-	if (x < 0 || y < 0 )
+	if (x < 0 || y < 0)
 		return (FAILURE);
 	row_len = ft_strlen(map[y]);
-	if (y >= config->map.height || x >= row_len 
+	if (y >= config->map.height || x >= row_len
 		|| map[y][x] == ' ')
 		return (FAILURE);
 	if (map[y][x] == '1' || map[y][x] == 'V')
@@ -48,7 +48,7 @@ int	flood_fill(t_config *config , int y, int x)
 int	map_char_check(t_config *config)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (config->map.grid[i])
@@ -87,18 +87,18 @@ int	map_char_check(t_config *config)
 
 int	empty_space_fill(t_config *config)
 {
-	int	y;
+	int		y;
 	size_t	x;
 
 	y = 0;
 	while (y < config->map.height)
 	{
 		x = 0;
-		while(x < ft_strlen(config->map.grid[y]))
+		while (x < ft_strlen(config->map.grid[y]))
 		{
-			if(config->map.grid[y][x] == '0')
+			if (config->map.grid[y][x] == '0')
 			{
-				if(flood_fill(config, y , x) == FAILURE)
+				if (flood_fill(config, y, x) == FAILURE)
 				{
 					ft_printf("Error\nEmpty space failuer\n");
 					return (FAILURE);
@@ -110,9 +110,9 @@ int	empty_space_fill(t_config *config)
 	}
 	return (SUCCESS);
 }
-int validate_map(t_config *config)
-{
 
+int	validate_map(t_config *config)
+{
 	if (!config->map.height)
 	{
 		ft_printf("Error\nMap empty or doesnt exist!\n");
@@ -120,7 +120,7 @@ int validate_map(t_config *config)
 	}
 	if (map_char_check(config) == FAILURE)
 		return (FAILURE);
-	if (flood_fill(config, config->player_y , config->player_x) == FAILURE)
+	if (flood_fill(config, config->player_y, config->player_x) == FAILURE)
 	{
 		ft_printf("map is busted\n");
 		return (FAILURE);

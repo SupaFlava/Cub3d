@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   arg_checker.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 20:03:14 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/14 10:55:54 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   arg_checker.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/23 20:03:14 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/10/30 16:59:21 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	check_extention(char *file)
 	return (SUCCESS);
 }
 
-int arg_checker(int argc, char *argv[])
+int	arg_checker(int argc, char *argv[])
 {
 	(void)argv;
 	if (argc != 2)
