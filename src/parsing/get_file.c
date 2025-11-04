@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_file.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 21:34:35 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:59:37 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_file.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/04 11:23:00 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_file(char *path, t_config *config)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error\nCan't access map file\n");
 		return (FAILURE);
 	}
 	map_str = read_map_file(fd);

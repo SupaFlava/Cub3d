@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 13:07:58 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/31 12:19:39 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/11/04 11:43:29 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ int	main(int argc, char *argv[])
 	if (handle_input(argc, argv, &config) == FAILURE)
 		return (FAILURE);
 	if (parse_game(&config) == FAILURE)
+	{
 		return (FAILURE);
-	if (init_game(&game, &config) != EXIT_SUCCESS)
+	}
+	if (init_game(&game, &config) == EXIT_FAILURE)
 	{
 		ft_printf("error initializing game\n");
 		clean_cub3d(&game);
+		return (FAILURE);
 	}
 	images_to_window(&game);
 	mlx_key_hook(game.mlx, keyhook, &game);
