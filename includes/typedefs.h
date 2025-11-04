@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 12:30:24 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/04 22:25:54 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,16 @@ typedef struct s_map
 	int		height;
 	int		p_count;
 }	t_map;
+
+typedef struct s_draw_info
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+}	t_draw_info;
 
 typedef struct s_config
 {

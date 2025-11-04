@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
+#    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/04 10:55:14 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/11/04 22:55:45 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC_MAP =
 
 SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c src/raycasting/ray_math.c
 
-SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c
+SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c src/render/draw_column_utils.c
 
 SRC_PLAYER =
 

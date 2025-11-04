@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.h                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 17:04:45 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/11/04 22:55:07 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ int				create_background_imgs(t_game *game, t_config *config);
 int				load_textures(t_game *game, t_config *config);
 uint32_t		get_texture_pixel(mlx_texture_t *tex, int x, int y);
 mlx_texture_t	*pick_texture(t_game *game, t_ray *ray);
+
+// draw_column_utils.c
+void			calc_wall_bounds(t_ray *ray, t_draw_info *info);
+int				calc_text_x(t_game *game, t_ray *ray, mlx_texture_t *tex);
+void			setup_text_sampling(t_draw_info *info, mlx_texture_t *tex);
+void			draw_textured_column(t_game *game, mlx_texture_t *tex, int x,
+					t_draw_info *info);
 
 #endif // RENDER_H
