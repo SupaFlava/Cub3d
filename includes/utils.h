@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   utils.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 17:05:42 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/04 14:43:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 int		ft_isspace(char *string);
 int		parse_color(t_config *config, char *colors, int dir);
 int		classify_directive(char *dir);
+bool	is_map_line(char *line);
+void	set_position(t_config *config, int i, int j);
 
 // math_utils.c
 int		my_abs(int num);
@@ -44,6 +46,7 @@ void	move_back(t_game *game, double move_step);
 
 // validate_utils.c
 int		open_and_close_file(char *path);
+int		check_char(t_config *config, int i, int j);
 
 // utils.c
 int		init_config(t_config *config);

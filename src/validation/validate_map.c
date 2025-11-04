@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   validate_map.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:58:36 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/04 14:43:44 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	flood_fill(t_config *config, int y, int x)
 
 int	map_char_check(t_config *config)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (config->map.grid[i])
@@ -56,23 +56,10 @@ int	map_char_check(t_config *config)
 		j = 0;
 		while (config->map.grid[i][j])
 		{
-			if (config->map.grid[i][j] != '0' && config->map.grid[i][j] != '1'
-				&& config->map.grid[i][j] != 'N'
-				&& config->map.grid[i][j] != 'W'
-				&& config->map.grid[i][j] != 'E'
-				&& config->map.grid[i][j] != 'S'
-				&& config->map.grid[i][j] != ' ')
-			{
-				ft_printf("Error\nUnknown charecter\n");
-				return (FAILURE);
-			}
+			if (check_char(config, i, j) == FAILURE)
+				return (ft_printf("Error\nUnknown char or dup\n"), FAILURE);
 			if (is_matching(config->map.grid[i][j]) == SUCCESS)
-			{
-				config->player_x = j;
-				config->player_y = i;
-				config->player_dir = config->map.grid[i][j];
-				config->map.p_count++;
-			}
+				set_position(config, i, j);
 			j++;
 		}
 		i++;
@@ -100,7 +87,7 @@ int	empty_space_fill(t_config *config)
 			{
 				if (flood_fill(config, y, x) == FAILURE)
 				{
-					ft_printf("Error\nEmpty space failuer\n");
+					ft_printf("Error\nMap is open!\n");
 					return (FAILURE);
 				}
 			}

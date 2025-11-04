@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   arg_checker.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 20:03:14 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:59:21 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   arg_checker.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 20:03:14 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/04 11:52:43 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int	arg_checker(int argc, char *argv[])
 	(void)argv;
 	if (argc != 2)
 	{
-		ft_putstr_fd("error wrong num of args\n", STDOUT_FILENO);
+		ft_putstr_fd("Error\nerror wrong num of args\n", STDOUT_FILENO);
 		return (FAILURE);
 	}
-	check_extention(argv[1]);
+	if (check_extention(argv[1]) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }

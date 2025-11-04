@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cleanup_utils.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:44:23 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cleanup_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/04 11:29:39 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	clean_split(char **alloc)
 
 void	clean_config(t_config *config)
 {
+	if (!config)
+		return ;
 	if (config->no_tex)
 		free_and_null(config->no_tex);
 	if (config->so_tex)

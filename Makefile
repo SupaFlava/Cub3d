@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: jbaetsen <jbaetsen@student.42.fr>            +#+                      #
-#                                                    +#+                       #
-#    Created: 2025/09/23 15:04:17 by jbaetsen      #+#    #+#                  #
-#    Updated: 2025/10/30 17:03:29 by jbaetsen      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
+#    Updated: 2025/11/04 10:55:14 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC      = cc
 #this is for apple silicon please dont remove it only comment it out
 BREW_PREFIX = /opt/homebrew
 
-CFLAGS  = -Wall -Wextra -Werror -Iincludes \
+CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto \
           -Ilibft \
           -IMLX42/include -fsanitize=address
 #		  -I$(BREW_PREFIX)/opt/glfw/include

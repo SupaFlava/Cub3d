@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   validate.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 18:00:35 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:57:31 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/04 12:57:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	check_assets(t_config *config)
 	}
 	if (open_and_close_file(config->ea_tex) == FAILURE)
 	{
+		ft_printf("%s\n", config->ea_tex);
 		ft_printf("east asset not found\n");
 		return (FAILURE);
 	}
