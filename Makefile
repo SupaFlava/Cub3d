@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/05 15:50:18 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/11/05 16:15:34 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,9 +97,9 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C libft fclean
-	@rm -rf mlx42/build
-	@rm ./includes/MLX42.h
-	@rm ./includes/MLX42_Int.h
+	@rm -rf mlx42/*
+	@rm -rf ./includes/MLX42.h
+	@rm -rf ./includes/MLX42_Int.h
 	@echo "🗑️  Full clean done"
 
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 15:39:03 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:06:44 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	assign_config(t_config *config, int dir, char **arr)
 		config->ea_tex = safe_assign(arr[1], config->err_flag);
 	else if (dir == DIR_F || dir == DIR_C)
 	{
-		if (parse_color(config, arr[1], dir) == FAILURE)
+		if (!parse_color(config, arr[1], dir))
 			return (ft_printf("Error\nColors malformated!\n"), FAILURE);
 	}
 	else if (dir == DIR_INV)
@@ -92,7 +92,7 @@ int	extract_config(t_config *config, char *line, bool *seen)
 		ft_printf("Error\nDuplicate or wrong config\n");
 		return (FAILURE);
 	}
-	if (assign_config(config, dir, result) == FAILURE)
+	if (!assign_config(config, dir, result))
 	{
 		clean_split(result);
 		return (FAILURE);
@@ -118,7 +118,7 @@ int	parse_config(t_config *config)
 			i++;
 		else
 		{
-			if (extract_config(config, config->setting[i], seen) == FAILURE)
+			if (!extract_config(config, config->setting[i], seen))
 				return (FAILURE);
 			config_len++;
 			i++;
@@ -126,7 +126,7 @@ int	parse_config(t_config *config)
 				config->in_config = false;
 		}
 	}
-	if (extract_map(config, i) == FAILURE)
+	if (!extract_map(config, i))
 		return (FAILURE);
 	return (SUCCESS);
 }

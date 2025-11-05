@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:03:14 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 11:52:43 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:04:18 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	arg_checker(int argc, char *argv[])
 		ft_putstr_fd("Error\nerror wrong num of args\n", STDOUT_FILENO);
 		return (FAILURE);
 	}
-	if (check_extention(argv[1]) == FAILURE)
+	if (!check_extention(argv[1]))
 		return (FAILURE);
 	return (SUCCESS);
 }

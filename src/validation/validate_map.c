@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 14:43:44 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:12:05 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	flood_fill(t_config *config, int y, int x)
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return (SUCCESS);
 	map[y][x] = 'V';
-	if (flood_fill(config, y - 1, x) == FAILURE)
+	if (!flood_fill(config, y - 1, x))
 		return (FAILURE);
-	if (flood_fill(config, y + 1, x) == FAILURE)
+	if (!flood_fill(config, y + 1, x))
 		return (FAILURE);
-	if (flood_fill(config, y, x - 1) == FAILURE)
+	if (!flood_fill(config, y, x - 1))
 		return (FAILURE);
-	if (flood_fill(config, y, x + 1) == FAILURE)
+	if (!flood_fill(config, y, x + 1))
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -56,9 +56,9 @@ int	map_char_check(t_config *config)
 		j = 0;
 		while (config->map.grid[i][j])
 		{
-			if (check_char(config, i, j) == FAILURE)
+			if (!check_char(config, i, j))
 				return (ft_printf("Error\nUnknown char or dup\n"), FAILURE);
-			if (is_matching(config->map.grid[i][j]) == SUCCESS)
+			if (is_matching(config->map.grid[i][j]))
 				set_position(config, i, j);
 			j++;
 		}
@@ -85,7 +85,7 @@ int	empty_space_fill(t_config *config)
 		{
 			if (config->map.grid[y][x] == '0')
 			{
-				if (flood_fill(config, y, x) == FAILURE)
+				if (!flood_fill(config, y, x))
 				{
 					ft_printf("Error\nMap is open!\n");
 					return (FAILURE);
@@ -105,14 +105,14 @@ int	validate_map(t_config *config)
 		ft_printf("Error\nMap empty or doesnt exist!\n");
 		return (FAILURE);
 	}
-	if (map_char_check(config) == FAILURE)
+	if (!map_char_check(config))
 		return (FAILURE);
-	if (flood_fill(config, config->player_y, config->player_x) == FAILURE)
+	if (!flood_fill(config, config->player_y, config->player_x))
 	{
 		ft_printf("map is busted\n");
 		return (FAILURE);
 	}
-	if (empty_space_fill(config) == FAILURE)
+	if (!empty_space_fill(config))
 		return (FAILURE);
 	return (SUCCESS);
 }
