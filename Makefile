@@ -6,7 +6,7 @@
 #    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/04 22:55:45 by jbaetsen         ###   ########.fr        #
+#    Updated: 2025/11/05 12:21:56 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,8 @@ submodules:
 	@$(MAKE) -C libft
 	@cmake -S MLX42 -B MLX42/build > /dev/null
 	@cmake --build MLX42/build -j4 > /dev/null
+	@cp ./MLX42/include/MLX42/MLX42.h ./includes
+	@cp ./MLX42/include/MLX42/MLX42_Int.h ./includes
 	@echo "✅ Submodules updated and built"
 
 # --- Build final binary ---
@@ -96,6 +98,8 @@ fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C libft fclean
 	@rm -rf mlx42/build
+	@rm ./includes/MLX42.h
+	@rm ./includes/MLX42_Int.h
 	@echo "🗑️  Full clean done"
 
 re: fclean all
