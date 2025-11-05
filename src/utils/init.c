@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/04 11:00:30 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:32:13 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,25 @@ int	init_assets(t_game *game, t_config *config)
 {
 	game->assets = malloc(sizeof(t_assets));
 	if (!game->assets)
-		return (0);
+		return (FAILURE);
 	game->assets->pov = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->assets->pov)
-		return (0);
+		return (FAILURE);
 	game->assets->minimap = mlx_new_image(game->mlx,
 			config->map.width * TILE, config->map.height * TILE);
 	if (!game->assets->minimap)
-		return (0);
+		return (FAILURE);
 	if (!create_background_imgs(game, config))
-		return (0);
+	{
+		ft_printf("Error creating background images\n");	
+		return (FAILURE);
+	}
 	if (!load_textures(game, config))
 	{
 		ft_printf("Error loading textures");
-		return (0);
+		return (FAILURE);
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	init_game(t_game *game, t_config *config)
@@ -80,7 +83,7 @@ int	init_game(t_game *game, t_config *config)
 	if (!game->mlx)
 	{
 		ft_printf("mlx_init failure\n");
-		return (EXIT_FAILURE);
+		return (FAILURE);
 	}
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
 	game->config = config;
@@ -89,7 +92,7 @@ int	init_game(t_game *game, t_config *config)
 	if (!init_assets(game, config))
 	{
 		ft_printf("init_assets failure\n");
-		return (EXIT_FAILURE);
+		return (FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	return (SUCCESS);
 }

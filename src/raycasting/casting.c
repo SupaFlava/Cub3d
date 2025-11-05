@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   casting.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/13 14:21:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 13:36:04 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   casting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/13 14:21:11 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/11/05 13:50:09 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	cast_rays_loop(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < NUM_RAYS)
+	while (i < WIDTH)
 	{
 		cast_single_ray(game, &game->player.rays[i]);
 		i++;

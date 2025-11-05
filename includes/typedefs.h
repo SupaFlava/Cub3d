@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 22:25:54 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:58:50 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 # define HEIGHT 1080
 # define FOV 60.0
 # define TILE 10
-# define NUM_RAYS WIDTH
 
-// # define INIT_FAILURE 2
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
+
+# define FAILURE 0
+# define SUCCESS 1
+# define BUFF 1024
 
 // colors
 # define RED     0xFF0000FF
@@ -133,7 +135,7 @@ typedef struct s_player
 	double	pending_movement;
 	bool	mouse_locked;
 	bool	mouse_init;
-	t_ray	rays[NUM_RAYS];
+	t_ray	rays[WIDTH];
 }	t_player;
 
 typedef struct s_assets
