@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 15:26:19 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:47:33 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	main(int argc, char *argv[])
 	if (!handle_input(argc, argv, &config))
 		return (EXIT_FAILURE);
 	if (!parse_game(&config))
-	{
-		ft_printf("error parsing\n");
-		clean_cub3d(&game);
-	}
+		return (EXIT_FAILURE);
 	if (!init_game(&game, &config))
 	{
 		ft_printf("error initializing game\n");

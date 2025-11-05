@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/05 13:16:28 by jbaetsen         ###   ########.fr        #
+#    Updated: 2025/11/05 15:50:18 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
