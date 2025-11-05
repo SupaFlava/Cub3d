@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/04 22:55:07 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:21:29 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void			draw_pov(t_game *game);
 void			draw_minimap(t_game *game, mlx_image_t *minimap);
 void			draw_minimap_player(t_game *game);
-void			images_to_window(t_game *game);
+int				images_to_window(t_game *game);
 
 // images.c
 void			clear_image(mlx_image_t *img);

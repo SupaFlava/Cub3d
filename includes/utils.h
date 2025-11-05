@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 14:43:16 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 13:18:28 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	clean_split(char **alloc);
 void	clean_config(t_config *config);
 
 // controls_utils.c
+void	wall_collision(t_game *game, double x, double y);
 void	move_left(t_game *game, double move_step);
 void	move_right(t_game *game, double move_step);
 void	move_forward(t_game *game, double move_step);

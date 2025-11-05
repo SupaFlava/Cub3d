@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   render.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/31 12:15:20 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/11/05 15:24:46 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_pov(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < NUM_RAYS)
+	while (i < WIDTH)
 	{
 		draw_column(game, &game->player.rays[i], i);
 		i++;
@@ -76,10 +76,18 @@ void	draw_minimap(t_game *game, mlx_image_t *minimap)
 	}
 }
 
-void	images_to_window(t_game *game)
+int	images_to_window(t_game *game)
 {
-	mlx_image_to_window(game->mlx, game->assets->floor, 0, HEIGHT / 2);
-	mlx_image_to_window(game->mlx, game->assets->roof, 0, 0);
-	mlx_image_to_window(game->mlx, game->assets->pov, 0, 0);
-	mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0);
+	int	pos;
+
+	pos = HEIGHT / 2;
+	if (mlx_image_to_window(game->mlx, game->assets->floor, 0, pos) == -1)
+		return (FAILURE);
+	if (mlx_image_to_window(game->mlx, game->assets->roof, 0, 0) == -1)
+		return (FAILURE);
+	if (mlx_image_to_window(game->mlx, game->assets->pov, 0, 0) == -1)
+		return (FAILURE);
+	if (mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0) == -1)
+		return (FAILURE);
+	return (SUCCESS);
 }

@@ -23,6 +23,12 @@ build/
 libft/obj/
 
 # =========================
+#     	Headers
+# =========================
+./includes/MLX42.h
+./includes/MLX42_Int.h
+
+# =========================
 #     CMake Files
 # =========================
 CMakeCache.txt
@@ -30,9 +36,7 @@ CMakeFiles/
 cmake_install.cmake
 Makefile.cmake
 
-# =========================
-#     IDE / Editor files
-# =========================
+
 *.swp
 *.swo
 *.tmp

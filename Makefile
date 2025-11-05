@@ -6,7 +6,7 @@
 #    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/05 12:21:56 by jbaetsen         ###   ########.fr        #
+#    Updated: 2025/11/05 13:16:28 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJ_DIR = obj
 # ===================== #
 SRC_MAIN = src/main.c
 
-SRC_GAME = src/game/game.c src/game/controls.c src/game/collision.c
+SRC_GAME = src/game/game.c src/game/controls.c
 
 SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_config.c src/parsing/parse_game.c src/parsing/handle_input.c
 

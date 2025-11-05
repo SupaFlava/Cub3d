@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   textures.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/15 22:30:21 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:39:21 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/11/05 14:32:23 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	load_textures(t_game *game, t_config *config)
 {
 	game->assets->north_tex = mlx_load_png(config->no_tex);
 	if (!game->assets->north_tex)
-		return (0);
+		return (FAILURE);
 	game->assets->south_tex = mlx_load_png(config->so_tex);
 	if (!game->assets->south_tex)
-		return (0);
+		return (FAILURE);
 	game->assets->east_tex = mlx_load_png(config->ea_tex);
 	if (!game->assets->east_tex)
-		return (0);
+		return (FAILURE);
 	game->assets->west_tex = mlx_load_png(config->we_tex);
 	if (!game->assets->west_tex)
-		return (0);
-	return (1);
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 mlx_texture_t	*pick_texture(t_game *game, t_ray *ray)

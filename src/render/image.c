@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:46:18 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/04 22:52:48 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:59:02 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	clear_image(mlx_image_t *img)
 {
 	if (!img)
 		return ;
-	ft_memset(img->pixels, 0, img->width * TILE * img->height * TILE * BPP);
+	ft_memset(img->pixels, 0, img->width * img->height * BPP);
 }
 
 void	draw_tile(mlx_image_t *minimap, int x, int y, uint32_t color)
@@ -46,10 +46,10 @@ int	create_background_imgs(t_game *game, t_config *c)
 	y = 0;
 	game->assets->floor = mlx_new_image(game->mlx, WIDTH, HEIGHT / 2);
 	if (!game->assets->floor)
-		return (0);
+		return (FAILURE);
 	game->assets->roof = mlx_new_image(game->mlx, WIDTH, HEIGHT / 2);
 	if (!game->assets->roof)
-		return (0);
+		return (FAILURE);
 	while (y < HEIGHT / 2)
 	{
 		x = 0;
@@ -63,7 +63,7 @@ int	create_background_imgs(t_game *game, t_config *c)
 		}
 		y++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 void	draw_column(t_game *game, t_ray *ray, int x)
