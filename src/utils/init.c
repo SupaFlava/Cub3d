@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 15:32:13 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:14:42 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	init_assets(t_game *game, t_config *config)
 		return (FAILURE);
 	if (!create_background_imgs(game, config))
 	{
-		ft_printf("Error creating background images\n");	
+		ft_printf("Error creating background images\n");
 		return (FAILURE);
 	}
 	if (!load_textures(game, config))
