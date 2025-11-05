@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/05 15:46:33 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/11/05 15:50:18 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ BREW_PREFIX = /opt/homebrew
 
 CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto \
           -Ilibft \
-          -IMLX42/include
+          -IMLX42/include -fsanitize=address
 #		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \

@@ -2,8 +2,7 @@ NO ./src/textures/Brick_Wall_Cracked_64x64.png
 
       
 SO ./src/textures/Brick_Wall_Cracked_64x64.png
-SO ./src/textures/Brick_Wall_Cracked_64x64.png
-ggdas sdfffff
+
 WE ./src/textures/Brick_Wall_Mossy_64x64.png
 C 225,30,24
 EA ./src/textures/Brick_Wall_Cobbled_64x64.png
