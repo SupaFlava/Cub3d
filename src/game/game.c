@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/04 11:25:21 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:36:56 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	game_loop(void *param)
 	check_movement(game, move_step);
 	check_rotation(game, rot_step);
 	check_mouse(game);
-	ft_memset(game->assets->pov->pixels, 0, WIDTH * HEIGHT * BPP);
+	clear_image(game->assets->pov);
 	draw_minimap(game, game->assets->minimap);
 	draw_minimap_player(game);
 	update_player_rays(&game->player);

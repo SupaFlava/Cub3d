@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   rays.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/02 14:13:11 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/10/30 16:05:12 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   rays.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/02 14:13:11 by jbaetsen          #+#    #+#             */
+/*   Updated: 2025/11/05 14:31:58 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	update_player_rays(t_player *player)
 	double	camera_x;
 
 	i = 0;
-	while (i < NUM_RAYS)
+	while (i < WIDTH)
 	{
-		camera_x = 2.0 * i / (double)(NUM_RAYS -1) - 1.0;
+		camera_x = 2.0 * i / (double)(WIDTH -1) - 1.0;
 		player->rays[i].ray_dir_x = player->dir_x + player->plane_x * camera_x;
 		player->rays[i].ray_dir_y = player->dir_y + player->plane_y * camera_x;
 		i++;
@@ -41,13 +41,13 @@ void	init_line_variables(t_point *d, t_point *s, t_point start, t_point end)
 		s->y = -1;
 }
 
-int	is_in_bounds(mlx_image_t *img, t_point p)
+bool	is_in_bounds(mlx_image_t *img, t_point p)
 {
 	if (p.x < 0 || p.x >= (int)img->width)
-		return (0);
+		return (false);
 	if (p.y < 0 || p.y >= (int)img->height)
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
 void	draw_line(mlx_image_t *img, t_point start, t_point end, uint32_t color)
@@ -89,7 +89,7 @@ void	draw_minimap_rays(t_game *game)
 	start.x = (int)(game->player.pos_x * TILE);
 	start.y = (int)(game->player.pos_y * TILE);
 	i = 0;
-	while (i < NUM_RAYS)
+	while (i < WIDTH)
 	{
 		ray_len = game->player.rays[i].perp_dist;
 		if (ray_len > 0.0 && ray_len != INFINITY)
