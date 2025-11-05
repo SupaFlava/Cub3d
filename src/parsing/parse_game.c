@@ -17,7 +17,7 @@ int	parse_game(t_config *config)
 	init_config(config);
 	if (!parse_config(config))
 	{
-		ft_printf("Error\nparsing failed\n");
+		ft_printf("Error\nParsing failed\n");
 		return (clean_config(config), FAILURE);
 	}
 	if (!validate(config))

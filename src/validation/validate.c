@@ -61,7 +61,7 @@ int	validate_config(t_config *config)
 		return (FAILURE);
 	if (!check_colors(config))
 	{
-		ft_printf("Error\n colors malformated\n");
+		ft_printf("Error\nColors malformated\n");
 		return (FAILURE);
 	}
 	return (SUCCESS);

@@ -81,13 +81,15 @@ int	extract_config(t_config *config, char *line, bool *seen)
 	int		dir;
 
 	result = ft_split(line, ' ');
-	if (!result || result[2])
+	if (!result)
 		return (FAILURE);
+	if (!result[0] || !result[1] || result[2])
+		return (clean_split(result), FAILURE);
 	dir = classify_directive(result[0]);
 	if (seen[dir])
 	{
 		clean_split(result);
-		ft_printf("Error\nDuplicate in config\n");
+		ft_printf("Error\nDuplicate or wrong config\n");
 		return (FAILURE);
 	}
 	if (!assign_config(config, dir, result))
