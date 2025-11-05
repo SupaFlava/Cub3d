@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 12:57:27 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:24:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	validate_config(t_config *config)
 		return (FAILURE);
 	if (check_colors(config) == FAILURE)
 	{
-		ft_printf("Error\n colors malformated\n");
+		ft_printf("Error\nColors malformated\n");
 		return (FAILURE);
 	}
 	return (SUCCESS);

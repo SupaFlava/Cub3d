@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 14:51:47 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:39:03 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,15 @@ int	extract_config(t_config *config, char *line, bool *seen)
 	int		dir;
 
 	result = ft_split(line, ' ');
-	if (!result || result[2])
+	if (!result)
 		return (FAILURE);
+	if (!result[0] || !result[1] || result[2])
+		return (clean_split(result), FAILURE);
 	dir = classify_directive(result[0]);
 	if (seen[dir])
 	{
 		clean_split(result);
-		ft_printf("Error\nDuplicate in config\n");
+		ft_printf("Error\nDuplicate or wrong config\n");
 		return (FAILURE);
 	}
 	if (assign_config(config, dir, result) == FAILURE)

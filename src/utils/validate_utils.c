@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:23:52 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 14:44:57 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:29:05 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	open_and_close_file(char *path)
 	if (fd < 0)
 	{
 		ft_printf("ERROR\n");
-		close(fd);
 		return (FAILURE);
 	}
 	close(fd);
