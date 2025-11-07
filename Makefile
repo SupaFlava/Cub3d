@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/05 16:15:34 by jbaetsen         ###   ########.fr        #
+#    Updated: 2025/11/07 11:41:18 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ BREW_PREFIX = /opt/homebrew
 
 CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto \
           -Ilibft \
-          -IMLX42/include -fsanitize=address
+          -IMLX42/include
 #		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
@@ -43,13 +43,9 @@ SRC_PARSE = src/parsing/arg_checker.c src/parsing/get_file.c src/parsing/parse_c
 
 SRC_VALIDATION = src/validation/validate.c src/validation/validate_map.c
 
-SRC_MAP =
-
 SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c src/raycasting/ray_math.c
 
 SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c src/render/draw_column_utils.c
-
-SRC_PLAYER =
 
 SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c \
 			src/utils/validate_utils.c src/utils/controls_utils.c src/utils/math_utils.c src/utils/set_dir.c
@@ -75,12 +71,13 @@ submodules:
 	@cmake --build MLX42/build -j4 > /dev/null
 	@cp ./MLX42/include/MLX42/MLX42.h ./includes
 	@cp ./MLX42/include/MLX42/MLX42_Int.h ./includes
-	@echo "✅ Submodules updated and built"
 
 # --- Build final binary ---
-$(NAME): $(OBJ) $(LIBFT) submodules
+$(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 	@echo "✅ Build complete: $(NAME)"
+
+$(OBJ): | submodules
 
 # --- Compile source files ---
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
