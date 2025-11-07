@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 14:32:23 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/07 22:23:22 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ mlx_texture_t	*pick_texture(t_game *game, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x > 0)
-			return (game->assets->east_tex);
-		else
 			return (game->assets->west_tex);
+		else
+			return (game->assets->east_tex);
 	}
 	else
 	{
 		if (ray->ray_dir_y > 0)
-			return (game->assets->south_tex);
-		else
 			return (game->assets->north_tex);
+		else
+			return (game->assets->south_tex);
 	}
 }
 
