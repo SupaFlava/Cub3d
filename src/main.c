@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 15:47:33 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/07 21:28:25 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	main(int argc, char *argv[])
 	mlx_cursor_hook(game.mlx, mouse_look, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
+	clean_cub3d(&game);
+	mlx_terminate(game.mlx);
 	return (EXIT_SUCCESS);
 }

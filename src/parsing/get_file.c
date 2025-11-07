@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_file.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/23 21:34:35 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/07 18:28:43 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_file.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/07 22:09:08 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,7 @@ int	get_file(char *path, t_config *config)
 		ft_printf("Error\nmap file is empty\n");
 		return (FAILURE);
 	}
-	map = ft_split(map_str, '\0');
-	int i, j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while(map[i][j])
-		{
-			ft_printf("%s\n",map[i]);
-			j++;
-		}
-		i++;
-	}
-	
+	map = ft_split(map_str, '\n');
 	free(map_str);
 	if (!map)
 		return (ft_printf("Error\n"), FAILURE);
