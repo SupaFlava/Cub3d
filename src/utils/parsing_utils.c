@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 14:52:08 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:26:22 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	parse_color(t_config *config, char *colors, int dir)
 	i = 0;
 	while (c_array[i])
 		i++;
-	if (i != 3)
+	if (i != 3 || !ft_isnumeric(c_array))
 		return (clean_split(c_array), FAILURE);
 	if (dir == DIR_F)
 	{
@@ -87,7 +87,7 @@ int	classify_directive(char *dir)
 	identifier[6] = NULL;
 	while (identifier[i])
 	{
-		if (ft_strncmp(identifier[i], dir, ft_strlen(identifier[i])) == 0)
+		if (ft_strncmp(identifier[i], dir, ft_strlen(dir)) == 0)
 			return (i);
 		i++;
 	}

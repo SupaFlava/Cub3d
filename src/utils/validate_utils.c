@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:23:52 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 15:29:05 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:35:51 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,25 @@ int	check_char(t_config *config, int i, int j)
 				&& config->map.grid[i][j] != 'S'
 				&& config->map.grid[i][j] != ' ')
 		return (FAILURE);
+	return (SUCCESS);
+}
+
+int	ft_isnumeric(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (!isdigit(str[i][j]))
+				return (FAILURE);
+			j++;
+		}
+		i++;
+	}
 	return (SUCCESS);
 }

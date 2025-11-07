@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_config.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 16:06:44 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_config.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/07 18:37:18 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	extract_config(t_config *config, char *line, bool *seen)
 	result = ft_split(line, ' ');
 	if (!result)
 		return (FAILURE);
+
 	if (!result[0] || !result[1] || result[2])
 		return (clean_split(result), FAILURE);
 	dir = classify_directive(result[0]);
@@ -119,7 +120,10 @@ int	parse_config(t_config *config)
 		else
 		{
 			if (!extract_config(config, config->setting[i], seen))
+			{
+				ft_printf("failing here\n");
 				return (FAILURE);
+			}
 			config_len++;
 			i++;
 			if (config_len == 6)

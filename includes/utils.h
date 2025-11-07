@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 13:18:28 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:27:09 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	move_back(t_game *game, double move_step);
 // validate_utils.c
 int		open_and_close_file(char *path);
 int		check_char(t_config *config, int i, int j);
+int		ft_isnumeric(char **str);
 
 // utils.c
 int		init_config(t_config *config);
