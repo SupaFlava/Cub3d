@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 14:52:08 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:03:13 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	classify_directive(char *dir)
 	identifier[6] = NULL;
 	while (identifier[i])
 	{
-		if (ft_strncmp(identifier[i], dir, ft_strlen(identifier[i])) == 0)
+		if (ft_strncmp(identifier[i], dir, ft_strlen(dir)) == 0)
 			return (i);
 		i++;
 	}
