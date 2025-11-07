@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 11:23:00 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/07 11:46:29 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ int	get_file(char *path, t_config *config)
 	}
 	map_str = read_map_file(fd);
 	if (!map_str)
+	{
+		ft_printf("Error\nmap file is empty\n");
 		return (FAILURE);
+	}
 	map = ft_split(map_str, '\n');
 	free(map_str);
 	if (!map)

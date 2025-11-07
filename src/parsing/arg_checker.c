@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:03:14 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 16:04:18 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/07 11:43:38 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static int	check_extention(char *file)
 
 int	arg_checker(int argc, char *argv[])
 {
-	(void)argv;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\nerror wrong num of args\n", STDOUT_FILENO);
