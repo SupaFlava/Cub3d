@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/04 11:29:39 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/09 20:35:46 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	clean_config(t_config *config)
 		free_and_null(config->ea_tex);
 	if (config->setting)
 	{
-		clean_split(config->setting);
+		free(config->setting);
 		config->setting = NULL;
 	}
 	if (config->map.height != -1)

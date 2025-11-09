@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_config.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/07 18:37:18 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_config.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/09 22:26:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	extract_map(t_config *config, int i)
 	int	j;
 	int	count;
 	int	width;
+	char	*line;
 
 	width = 0;
 	j = 0;
@@ -34,16 +35,18 @@ int	extract_map(t_config *config, int i)
 	config->map.grid = malloc(sizeof(char *) *(count + 1));
 	if (!config->map.grid)
 		return (FAILURE);
-	while (config->setting[i])
+	line = getnl_string(config->setting, &i);
+	while (line)
 	{
-		config->map.grid[j] = ft_strdup(config->setting[i]);
+		config->map.grid[j] = ft_strdup(line);
 		if (!config->map.grid[j])
-			return (FAILURE);
+			return (free(line),FAILURE);
 		width = ft_strlen(config->map.grid[j]);
 		if (width > config->map.width)
 			config->map.width = width;
-		i++;
 		j++;
+		free(line);
+		line = getnl_string(config->setting, &i);
 	}
 	config->map.grid[j] = NULL;
 	config->map.height = count;
@@ -83,7 +86,6 @@ int	extract_config(t_config *config, char *line, bool *seen)
 	result = ft_split(line, ' ');
 	if (!result)
 		return (FAILURE);
-
 	if (!result[0] || !result[1] || result[2])
 		return (clean_split(result), FAILURE);
 	dir = classify_directive(result[0]);
@@ -106,31 +108,37 @@ int	extract_config(t_config *config, char *line, bool *seen)
 int	parse_config(t_config *config)
 {
 	int		i;
-	int		config_len;
+	int		count;
+	char	*line;
 	bool	seen[6];
 
-	i = 0;
-	config_len = 0;
-	config->in_config = true;
 	ft_memset(seen, 0, 6);
-	while (config->setting[i] && config->in_config)
+	i = 0;
+	line = getnl_string(config->setting,&i);
+	count = 0;
+	while (line)
 	{
-		if (ft_isspace(config->setting[i]) == SUCCESS)
-			i++;
+		if (*line =='\0' || ft_isspace(line))
+		{
+			free(line);
+			line = getnl_string(config->setting, &i);
+			continue;	
+		}
 		else
 		{
-			if (!extract_config(config, config->setting[i], seen))
-			{
-				ft_printf("failing here\n");
-				return (FAILURE);
-			}
-			config_len++;
-			i++;
-			if (config_len == 6)
-				config->in_config = false;
+		if (!extract_config(config, line, seen))
+			return(free(line),FAILURE);
 		}
+		free(line);
+		count ++;
+		if(count == 6)
+			break;
+		line = getnl_string(config->setting, &i);
 	}
 	if (!extract_map(config, i))
+	{
+		ft_printf("hererere\n");	
 		return (FAILURE);
+	}
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:36:47 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/10/29 19:30:05 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/09 22:12:23 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 
 int	validate(t_config *config);
 int	validate_map(t_config *config);
+char	*getnl_string(char *src, int *i);
+int	empty_line(char **str);
 
 #endif

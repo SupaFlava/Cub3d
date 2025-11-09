@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 16:12:05 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/09 23:06:06 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	empty_space_fill(t_config *config)
 	while (y < config->map.height)
 	{
 		x = 0;
-		while (x < ft_strlen(config->map.grid[y]))
+		while (config->map.grid[y] && x < ft_strlen(config->map.grid[y]))
 		{
 			if (config->map.grid[y][x] == '0')
 			{
@@ -114,5 +114,25 @@ int	validate_map(t_config *config)
 	}
 	if (!empty_space_fill(config))
 		return (FAILURE);
+	if (!empty_line(config->map.grid))
+		return(FAILURE);
+	return (SUCCESS);
+}
+int	empty_line(char **str)
+{
+	int	i;
+	bool found;
+	
+	i = 0;
+	found = false;
+	while(ft_isspace(str[i]))
+			i++;
+	while(str[i])
+	{	if (found)
+			return (FAILURE);
+		if (ft_isspace(str[i]))
+			found = true;
+		i++;
+	}
 	return (SUCCESS);
 }
