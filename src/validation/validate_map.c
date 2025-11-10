@@ -6,11 +6,12 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 16:12:05 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/10 15:15:43 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stddef.h>
 
 int	is_matching(char c)
 {
@@ -21,14 +22,14 @@ int	is_matching(char c)
 
 int	flood_fill(t_config *config, int y, int x)
 {
-	int		row_len;
+	size_t	row_len;
 	char	**map;
 
 	map = config->map.grid;
 	if (x < 0 || y < 0)
 		return (FAILURE);
 	row_len = ft_strlen(map[y]);
-	if (y >= config->map.height || x >= row_len
+	if (y >= config->map.height || x >= (int)row_len
 		|| map[y][x] == ' ')
 		return (FAILURE);
 	if (map[y][x] == '1' || map[y][x] == 'V')
