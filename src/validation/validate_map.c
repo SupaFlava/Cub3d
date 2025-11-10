@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/09 23:06:06 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:13:07 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ int	map_char_check(t_config *config)
 
 int	empty_space_fill(t_config *config)
 {
-	int		y;
+	size_t	y;
 	size_t	x;
 
 	y = 0;
-	while (y < config->map.height)
+	while (y < (size_t)config->map.height)
 	{
 		x = 0;
 		while (config->map.grid[y] && x < ft_strlen(config->map.grid[y]))
@@ -105,11 +105,16 @@ int	validate_map(t_config *config)
 		ft_printf("Error\nMap empty or doesnt exist!\n");
 		return (FAILURE);
 	}
+	if (config->map.height > 1500 || config->map.width > 1500)
+	{
+			ft_printf("Error\n map is to big");
+				return (FAILURE);
+	}
 	if (!map_char_check(config))
 		return (FAILURE);
 	if (!flood_fill(config, config->player_y, config->player_x))
 	{
-		ft_printf("map is busted\n");
+		ft_printf("\Error\nmap is open\n");
 		return (FAILURE);
 	}
 	if (!empty_space_fill(config))
@@ -118,20 +123,37 @@ int	validate_map(t_config *config)
 		return(FAILURE);
 	return (SUCCESS);
 }
+/* part of this function is commented for reason: dont delete the comments.
+	im not sure about the implementation if the the map can have empty spaces and new lines at the end 
+	after the map ends and ignore them :
+	for example 
+	last line 1111111111111
+			  " "" "
+			  \n 
+	-if this need to throw an error or just simply ignore the space and the new line 
+	and only trigger if there is a map line after the spaces and newlines
+	-for me i think all trailing space and or new lines should throw and error
+	the last line should always be the map, thats how i read the subject.
+	*/
 int	empty_line(char **str)
 {
 	int	i;
-	bool found;
+	// bool found;
 	
 	i = 0;
-	found = false;
+	// found = false;
 	while(ft_isspace(str[i]))
 			i++;
 	while(str[i])
-	{	if (found)
-			return (FAILURE);
+	{	
+		// if (found && !is_map_line(str[i]))
+		// 	return (FAILURE);
 		if (ft_isspace(str[i]))
-			found = true;
+		{
+			ft_printf("Error\nEmpty line detected\n");
+			return (FAILURE);
+			// found = true;
+		}
 		i++;
 	}
 	return (SUCCESS);

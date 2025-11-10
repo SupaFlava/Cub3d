@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:44:16 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 15:21:29 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:19:38 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int				create_background_imgs(t_game *game, t_config *config);
 int				load_textures(t_game *game, t_config *config);
 uint32_t		get_texture_pixel(mlx_texture_t *tex, int x, int y);
 mlx_texture_t	*pick_texture(t_game *game, t_ray *ray);
+void	init_textures(t_game *game);
 
 // draw_column_utils.c
 void			calc_wall_bounds(t_ray *ray, t_draw_info *info);

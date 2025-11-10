@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 18:29:35 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/10 18:55:03 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	is_map_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '1' || line[i] != '0' ||  line[i] != ' ')
+		if (line[i] != '1' || line[i] != '0')
 			return (false);
 		i++;
 	}
