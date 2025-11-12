@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/11 13:42:05 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   textures.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/10/15 22:30:21 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/11/12 12:15:43 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_textures(t_game *game)
+{
+	game->assets->north_tex = NULL;
+	game->assets->south_tex = NULL;
+	game->assets->east_tex = NULL;
+	game->assets->west_tex = NULL;
+}
 
 int	load_textures(t_game *game, t_config *config)
 {

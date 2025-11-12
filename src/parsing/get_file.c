@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:34:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/07 22:09:08 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/09 20:26:48 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	get_file(char *path, t_config *config)
 {
 	int		fd;
 	char	*map_str;
-	char	**map;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -66,10 +65,6 @@ int	get_file(char *path, t_config *config)
 		ft_printf("Error\nmap file is empty\n");
 		return (FAILURE);
 	}
-	map = ft_split(map_str, '\n');
-	free(map_str);
-	if (!map)
-		return (ft_printf("Error\n"), FAILURE);
-	config->setting = map;
+	config->setting = map_str;
 	return (SUCCESS);
 }
