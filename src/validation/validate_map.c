@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/12 12:19:56 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/12 12:56:09 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,14 @@ int	validate_map(t_config *config)
 	}
 	if (config->map.height > 1500 || config->map.width > 1500)
 	{
-		ft_printf("Error\n map is to big");
+		ft_printf("Error\nMap is to big");
 		return (FAILURE);
 	}
 	if (!map_char_check(config))
 		return (FAILURE);
 	if (!flood_fill(config, config->player_y, config->player_x))
 	{
-		ft_printf("Error\nmap is open\n");
+		ft_printf("Error\nMap is open\n");
 		return (FAILURE);
 	}
 	if (!empty_space_fill(config))
@@ -147,3 +147,4 @@ int	empty_line(char **str)
 	}
 	return (SUCCESS);
 }
+
