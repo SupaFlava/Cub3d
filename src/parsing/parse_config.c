@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 17:00:35 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:11:04 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@ static int	get_count(t_config *config, int i)
 	return (count);
 }
 
-void	duplicate_map(t_config *config, int i)
-{
-	int	j;
-
-	j = 0;
-	while (config->setting[i])
-	{
-		ft_memcpy(&config->map_string[j], &config->setting[i],1);
-		j++;
-		i++;
-	}
-}
 int	extract_map(t_config *config, int i)
 {
 	int		j;
@@ -42,22 +30,15 @@ int	extract_map(t_config *config, int i)
 	char	*line;
 
 	j = 0;
-	while (config->setting[i] && config->setting[i] == '\n')
-		i++;
-	count = get_count(config, i);
-	config->map.grid = malloc(sizeof(char *) *(count + 1));
-	if (!config->map.grid)
-	{
-		return (FAILURE);
-	}
 	line = getnl_string(config->setting, &i);
+	while (line && ft_isspace(line))
+		line = getnl_string(config->setting, &i);
+	count = get_count(config, i);
+	config->map.grid = malloc(sizeof(char *) * (count + 1));
+	if (!config->map.grid)
+		return (FAILURE);
 	while (line)
 	{
-	 	if (ft_strncmp(line, " ", ft_strlen(line)) == 0)
-	 	{
-	 		ft_printf(" line is %s and i is '%c' \n", line, config->setting[i]);
-	 		return (FAILURE);
-	 	}
 		config->map.grid[j] = ft_strdup(line);
 		if (!config->map.grid[j])
 			return (free(line), FAILURE);
