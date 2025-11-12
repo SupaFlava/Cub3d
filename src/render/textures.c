@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 22:30:21 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/07 22:23:22 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:42:05 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	load_textures(t_game *game, t_config *config)
 	game->assets->west_tex = mlx_load_png(config->we_tex);
 	if (!game->assets->west_tex)
 		return (FAILURE);
+
 	return (SUCCESS);
 }
 

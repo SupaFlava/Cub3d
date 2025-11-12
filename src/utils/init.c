@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 16:14:42 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:30:35 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	init_assets(t_game *game, t_config *config)
 	}
 	if (!load_textures(game, config))
 	{
-		ft_printf("Error loading textures");
+		ft_printf("Error loading textures\n");
 		return (FAILURE);
 	}
 	return (SUCCESS);
