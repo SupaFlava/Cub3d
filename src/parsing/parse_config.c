@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 18:26:22 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:30:33 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	get_count(t_config *config, int i)
 
 int	extract_map(t_config *config, int i)
 {
-	int	j;
-	int	count;
-	int	width;
+	int		j;
+	int		count;
+	int		width;
 	char	*line;
 
 	width = 0;
@@ -40,7 +40,7 @@ int	extract_map(t_config *config, int i)
 	{
 		config->map.grid[j] = ft_strdup(line);
 		if (!config->map.grid[j])
-			return (free(line),FAILURE);
+			return (free(line), FAILURE);
 		width = ft_strlen(config->map.grid[j]);
 		if (width > config->map.width)
 			config->map.width = width;
@@ -114,31 +114,28 @@ int	parse_config(t_config *config)
 
 	ft_memset(seen, 0, 6);
 	i = 0;
-	line = getnl_string(config->setting,&i);
+	line = getnl_string(config->setting, &i);
 	count = 0;
 	while (line)
 	{
-		if (*line =='\0' || ft_isspace(line))
+		if (*line == '\0' || ft_isspace(line))
 		{
 			free(line);
 			line = getnl_string(config->setting, &i);
-			continue;	
+			continue ;
 		}
 		else
 		{
-		if (!extract_config(config, line, seen))
-			return(free(line),FAILURE);
+			if (!extract_config(config, line, seen))
+				return (free(line), FAILURE);
 		}
 		free(line);
 		count ++;
-		if(count == 6)
-			break;
+		if (count == 6)
+			break ;
 		line = getnl_string(config->setting, &i);
 	}
 	if (!extract_map(config, i))
-	{
-		ft_printf("hererere\n");	
 		return (FAILURE);
-	}
 	return (SUCCESS);
 }

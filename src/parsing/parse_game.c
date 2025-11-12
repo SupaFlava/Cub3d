@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:10:49 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 16:09:39 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:30:22 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	parse_game(t_config *config)
 		ft_printf("Error\nParsing failed\n");
 		return (clean_config(config), FAILURE);
 	}
+	// set_map_width(config);
 	if (!validate(config))
 		return (clean_config(config), FAILURE);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 19:13:07 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:36:23 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,20 +107,20 @@ int	validate_map(t_config *config)
 	}
 	if (config->map.height > 1500 || config->map.width > 1500)
 	{
-			ft_printf("Error\n map is to big");
-				return (FAILURE);
+		ft_printf("Error\n map is to big");
+		return (FAILURE);
 	}
 	if (!map_char_check(config))
 		return (FAILURE);
 	if (!flood_fill(config, config->player_y, config->player_x))
 	{
-		ft_printf("\Error\nmap is open\n");
+		ft_printf("Error\nmap is open\n");
 		return (FAILURE);
 	}
 	if (!empty_space_fill(config))
 		return (FAILURE);
 	if (!empty_line(config->map.grid))
-		return(FAILURE);
+		return (FAILURE);
 	return (SUCCESS);
 }
 /* part of this function is commented for reason: dont delete the comments.
@@ -135,25 +135,25 @@ int	validate_map(t_config *config)
 	-for me i think all trailing space and or new lines should throw and error
 	the last line should always be the map, thats how i read the subject.
 	*/
+
 int	empty_line(char **str)
 {
 	int	i;
-	// bool found;
-	
+	bool	found;
+
 	i = 0;
-	// found = false;
-	while(ft_isspace(str[i]))
-			i++;
-	while(str[i])
-	{	
-		// if (found && !is_map_line(str[i]))
-		// 	return (FAILURE);
-		if (ft_isspace(str[i]))
+	found = false;
+	while (ft_isspace(str[i]))
+		i++;
+	while (str[i])
+	{
+		if (found && !is_map_line(str[i]))
 		{
-			ft_printf("Error\nEmpty line detected\n");
+			ft_printf("Error\nempty line detected\n");
 			return (FAILURE);
-			// found = true;
 		}
+		if (ft_isspace(str[i]))
+			found = true;
 		i++;
 	}
 	return (SUCCESS);
