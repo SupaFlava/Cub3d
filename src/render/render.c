@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 15:24:46 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:08:10 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ int	images_to_window(t_game *game)
 		return (FAILURE);
 	if (mlx_image_to_window(game->mlx, game->assets->pov, 0, 0) == -1)
 		return (FAILURE);
-	if (mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0) == -1)
-		return (FAILURE);
+	if (game->assets->minimap->width < WIDTH && game->assets->minimap->height < HEIGHT)
+	{
+		if (mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0) == -1)
+			return (FAILURE);
+	}
 	return (SUCCESS);
 }

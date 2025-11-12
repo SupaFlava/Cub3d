@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 11:36:23 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   validate_map.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/12 11:46:12 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stddef.h>
 
 int	is_matching(char c)
 {
@@ -21,14 +22,14 @@ int	is_matching(char c)
 
 int	flood_fill(t_config *config, int y, int x)
 {
-	int		row_len;
+	size_t	row_len;
 	char	**map;
 
 	map = config->map.grid;
 	if (x < 0 || y < 0)
 		return (FAILURE);
 	row_len = ft_strlen(map[y]);
-	if (y >= config->map.height || x >= row_len
+	if (y >= config->map.height || x >= (int)row_len
 		|| map[y][x] == ' ')
 		return (FAILURE);
 	if (map[y][x] == '1' || map[y][x] == 'V')
@@ -123,18 +124,6 @@ int	validate_map(t_config *config)
 		return (FAILURE);
 	return (SUCCESS);
 }
-/* part of this function is commented for reason: dont delete the comments.
-	im not sure about the implementation if the the map can have empty spaces and new lines at the end 
-	after the map ends and ignore them :
-	for example 
-	last line 1111111111111
-			  " "" "
-			  \n 
-	-if this need to throw an error or just simply ignore the space and the new line 
-	and only trigger if there is a map line after the spaces and newlines
-	-for me i think all trailing space and or new lines should throw and error
-	the last line should always be the map, thats how i read the subject.
-	*/
 
 int	empty_line(char **str)
 {
