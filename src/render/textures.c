@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/10/15 22:30:21 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/11/12 12:15:43 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/12 12:20:58 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	load_textures(t_game *game, t_config *config)
 	game->assets->west_tex = mlx_load_png(config->we_tex);
 	if (!game->assets->west_tex)
 		return (FAILURE);
-
 	return (SUCCESS);
 }
 

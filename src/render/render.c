@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 13:31:46 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/10 14:08:10 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 13:31:46 by jbaetsen      #+#    #+#                 */
+/*   Updated: 2025/11/12 12:19:42 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,19 @@ void	draw_minimap(t_game *game, mlx_image_t *minimap)
 int	images_to_window(t_game *game)
 {
 	int	pos;
+	int	minimap_width;
+	int	minimap_height;
 
 	pos = HEIGHT / 2;
+	minimap_width = game->assets->minimap->width;
+	minimap_height = game->assets->minimap->height;
 	if (mlx_image_to_window(game->mlx, game->assets->floor, 0, pos) == -1)
 		return (FAILURE);
 	if (mlx_image_to_window(game->mlx, game->assets->roof, 0, 0) == -1)
 		return (FAILURE);
 	if (mlx_image_to_window(game->mlx, game->assets->pov, 0, 0) == -1)
 		return (FAILURE);
-	if (game->assets->minimap->width < WIDTH && game->assets->minimap->height < HEIGHT)
+	if (minimap_width < WIDTH && minimap_height < HEIGHT)
 	{
 		if (mlx_image_to_window(game->mlx, game->assets->minimap, 0, 0) == -1)
 			return (FAILURE);

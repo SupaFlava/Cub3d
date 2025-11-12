@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/12 11:46:12 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/12 12:19:56 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	validate_map(t_config *config)
 
 int	empty_line(char **str)
 {
-	int	i;
+	int		i;
 	bool	found;
 
 	i = 0;
