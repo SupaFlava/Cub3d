@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 18:47:11 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:58:37 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		parse_color(t_config *config, char *colors, int dir);
 int		classify_directive(char *dir);
 bool	is_map_line(char *line);
 void	set_position(t_config *config, int i, int j);
+int		flood_fill(t_config *config, int start_y, int start_x);
 
 // math_utils.c
 int		my_abs(int num);

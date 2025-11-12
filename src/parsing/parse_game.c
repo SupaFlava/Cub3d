@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:10:49 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 12:36:20 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:38:17 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	set_map_size(t_config *config)
 {
 	int	width;
-	int height;
+	int	height;
 
 	width = 0;
 	height = 0;
 	while (config->map.grid[height])
 	{
-		width =  ft_strlen(config->map.grid[height]);
+		width = ft_strlen(config->map.grid[height]);
 		if (width > config->map.width)
 			config->map.width = width;
 		height++;

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:07:58 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/10 18:49:58 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:49:58 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ int	main(int argc, char *argv[])
 	{
 		ft_printf("error initializing game\n");
 		clean_cub3d(&game);
+		return (EXIT_FAILURE);
 	}
 	if (!images_to_window(&game))
 	{
 		ft_printf("error putting image to window\n");
 		clean_cub3d(&game);
+		return (EXIT_FAILURE);
 	}
 	mlx_key_hook(game.mlx, keyhook, &game);
 	mlx_cursor_hook(game.mlx, mouse_look, &game);

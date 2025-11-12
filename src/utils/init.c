@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/10 19:17:32 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:50:38 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	init_config(t_config *config)
 	config->map.p_count = 0;
 	config->player_x = 0;
 	config->player_y = 0;
+	config->open_found = false;
+	config->top = 0;
+	config->max= 0;
 	return (SUCCESS);
 }
 
@@ -72,7 +75,7 @@ int	init_assets(t_game *game, t_config *config)
 	init_textures(game);
 	if (!load_textures(game, config))
 	{
-		ft_printf("Error loading textures");
+		ft_printf("Error loading textures\n");
 		return (FAILURE);
 	}
 	return (SUCCESS);
