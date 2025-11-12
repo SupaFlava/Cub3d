@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 11:30:33 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:23:28 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ int	extract_map(t_config *config, int i)
 {
 	int		j;
 	int		count;
-	int		width;
 	char	*line;
 
-	width = 0;
 	j = 0;
 	count = get_count(config, i);
 	config->map.grid = malloc(sizeof(char *) *(count + 1));
@@ -41,15 +39,11 @@ int	extract_map(t_config *config, int i)
 		config->map.grid[j] = ft_strdup(line);
 		if (!config->map.grid[j])
 			return (free(line), FAILURE);
-		width = ft_strlen(config->map.grid[j]);
-		if (width > config->map.width)
-			config->map.width = width;
 		j++;
 		free(line);
 		line = getnl_string(config->setting, &i);
 	}
 	config->map.grid[j] = NULL;
-	config->map.height = count;
 	return (SUCCESS);
 }
 
