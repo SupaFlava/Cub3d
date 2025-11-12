@@ -6,19 +6,12 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/12 12:56:09 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/12 13:48:36 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stddef.h>
-
-int	is_matching(char c)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (SUCCESS);
-	return (FAILURE);
-}
 
 int	flood_fill(t_config *config, int y, int x)
 {
@@ -147,4 +140,3 @@ int	empty_line(char **str)
 	}
 	return (SUCCESS);
 }
-
