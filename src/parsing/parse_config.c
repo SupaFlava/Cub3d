@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 19:11:04 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:54:18 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	get_count(t_config *config, int i)
 	int	count;
 
 	count = 0;
-
 	while (config->setting[i] && config->setting[i + count])
 		count++;
 	return (count);

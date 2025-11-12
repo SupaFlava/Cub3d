@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:19:36 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/09 20:35:46 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:11:49 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,13 @@ void	clean_game(t_game *game)
 	free(game->assets);
 }
 
-void	clean_cub3d(void *param)
+void	clean_cub3d(void *param, char *msg)
 {
 	t_game	*game;
 
 	game = param;
+	if (msg != NULL)
+		ft_printf("%s\n", msg);
 	clean_config(game->config);
 	clean_game(game);
 }
