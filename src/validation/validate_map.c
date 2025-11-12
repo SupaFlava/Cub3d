@@ -1,24 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 11:57:23 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   validate_map.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/12 13:48:36 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stddef.h>
-
-int	is_matching(char c)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (SUCCESS);
-	return (FAILURE);
-}
 
 int	flood_fill(t_config *config, int y, int x)
 {
@@ -108,14 +101,14 @@ int	validate_map(t_config *config)
 	}
 	if (config->map.height > 1500 || config->map.width > 1500)
 	{
-		ft_printf("Error\n map is to big");
+		ft_printf("Error\nMap is to big");
 		return (FAILURE);
 	}
 	if (!map_char_check(config))
 		return (FAILURE);
 	if (!flood_fill(config, config->player_y, config->player_x))
 	{
-		ft_printf("Error\nmap is open\n");
+		ft_printf("Error\nMap is open\n");
 		return (FAILURE);
 	}
 	if (!empty_space_fill(config))
@@ -127,7 +120,7 @@ int	validate_map(t_config *config)
 
 int	empty_line(char **str)
 {
-	int	i;
+	int		i;
 	bool	found;
 
 	i = 0;
@@ -147,4 +140,3 @@ int	empty_line(char **str)
 	}
 	return (SUCCESS);
 }
-

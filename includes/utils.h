@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 18:47:11 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   utils.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/12 13:46:54 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	move_forward(t_game *game, double move_step);
 void	move_back(t_game *game, double move_step);
 
 // validate_utils.c
+int		is_matching(char c);
 int		open_and_close_file(char *path);
 int		check_char(t_config *config, int i, int j);
 int		ft_isnumeric(char **str);
@@ -57,6 +58,6 @@ void	init_player(t_game *game, t_config *config);
 int		init_assets(t_game *game, t_config *config);
 int		init_game(t_game *game, t_config *config);
 void	clean_game(t_game *game);
-void	clean_cub3d(void *param);
+void	clean_cub3d(void *param, char *msg);
 
 #endif // UTILS_H
