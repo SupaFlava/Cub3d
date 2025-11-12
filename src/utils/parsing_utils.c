@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/07 12:26:22 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/10 18:55:03 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ bool	is_map_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		while (line && line[i] == ' ')
-			i++;
-		if (line[i] == '1' || line[i] == '0')
-			return (true);
+		if (line[i] != '1' || line[i] != '0')
+			return (false);
 		i++;
 	}
-	return (false);
+	return (true);
 }
 
 int	ft_isspace(char *string)
@@ -64,7 +62,7 @@ int	ft_isspace(char *string)
 	i = 0;
 	while (string[i])
 	{
-		if (string[i] == ' ')
+		if (string[i] == ' ' || string[i] == '\n')
 			i++;
 		else
 			return (FAILURE);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 15:15:43 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   validate_map.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/12 11:46:12 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ int	map_char_check(t_config *config)
 
 int	empty_space_fill(t_config *config)
 {
-	int		y;
+	size_t	y;
 	size_t	x;
 
 	y = 0;
-	while (y < config->map.height)
+	while (y < (size_t)config->map.height)
 	{
 		x = 0;
-		while (x < ft_strlen(config->map.grid[y]))
+		while (config->map.grid[y] && x < ft_strlen(config->map.grid[y]))
 		{
 			if (config->map.grid[y][x] == '0')
 			{
@@ -106,14 +106,44 @@ int	validate_map(t_config *config)
 		ft_printf("Error\nMap empty or doesnt exist!\n");
 		return (FAILURE);
 	}
+	if (config->map.height > 1500 || config->map.width > 1500)
+	{
+		ft_printf("Error\n map is to big");
+		return (FAILURE);
+	}
 	if (!map_char_check(config))
 		return (FAILURE);
 	if (!flood_fill(config, config->player_y, config->player_x))
 	{
-		ft_printf("map is busted\n");
+		ft_printf("Error\nmap is open\n");
 		return (FAILURE);
 	}
 	if (!empty_space_fill(config))
 		return (FAILURE);
+	if (!empty_line(config->map.grid))
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+int	empty_line(char **str)
+{
+	int	i;
+	bool	found;
+
+	i = 0;
+	found = false;
+	while (ft_isspace(str[i]))
+		i++;
+	while (str[i])
+	{
+		if (found && !is_map_line(str[i]))
+		{
+			ft_printf("Error\nempty line detected\n");
+			return (FAILURE);
+		}
+		if (ft_isspace(str[i]))
+			found = true;
+		i++;
+	}
 	return (SUCCESS);
 }

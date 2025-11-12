@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/05 16:13:31 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:20:06 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,24 @@ int	validate(t_config *config)
 	if (!validate_map(config))
 		return (FAILURE);
 	return (SUCCESS);
+}
+
+char	*getnl_string(char *src, int *i)
+{
+	char	*line;
+	int		start;
+	int		len;
+
+	if (!src || src[*i] == '\0')
+		return (NULL);
+	start = *i;
+	while (src[*i] && src[*i] != '\n')
+		(*i)++;
+	len = *i - start;
+	if (src[*i] == '\n')
+		(*i)++;
+	line = ft_substr(src, start, len);
+	if (!line)
+		return (NULL);
+	return (line);
 }
