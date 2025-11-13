@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 13:10:18 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 15:33:39 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	extract_map(t_config *config, int i)
 	j = 0;
 	line = getnl_string(config->setting, &i);
 	while (line && ft_isspace(line))
-		line = getnl_string(config->setting, &i);
+		free_and_get_line(config, &line, &i);
 	count = get_count(config, i);
 	config->map.grid = malloc(sizeof(char *) * (count + 1));
 	if (!config->map.grid)
@@ -32,8 +32,7 @@ int	extract_map(t_config *config, int i)
 		if (!config->map.grid[j])
 			return (free(line), FAILURE);
 		j++;
-		free(line);
-		line = getnl_string(config->setting, &i);
+		free_and_get_line(config, &line, &i);
 	}
 	config->map.grid[j] = NULL;
 	return (SUCCESS);

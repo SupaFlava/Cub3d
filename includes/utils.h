@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 13:25:10 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 15:34:29 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_isnumeric(char **str);
 // parse_config_utils.
 int		get_count(t_config *config, int i);
 int		process_config_lines(t_config *config, bool seen[6], int *i);
+void	free_and_get_line(t_config *config, char **line, int *i);
 
 // utils.c
 int		init_config(t_config *config);
