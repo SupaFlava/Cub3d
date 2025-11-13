@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 13:58:37 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:14:05 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ void	init_player(t_game *game, t_config *config);
 int		init_assets(t_game *game, t_config *config);
 int		init_game(t_game *game, t_config *config);
 void	clean_game(t_game *game);
-void	clean_cub3d(void *param);
+void	clean_cub3d(void *param, char *msg);
+
+// flood_fill_utils.c
+bool	is_inside_map(t_config *config, int y, int x);
+bool	is_wall_or_visited(char **map, int y, int x);
+bool	is_space_cell(char **map, int y, int x);
 
 #endif // UTILS_H

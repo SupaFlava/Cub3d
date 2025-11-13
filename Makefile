@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
+#    By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/12 18:29:03 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/11/12 23:41:02 by jbaetsen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto \
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
           -lglfw -ldl -pthread -lm \
 		  -L$(BREW_PREFIX)/opt/glfw/lib \
- 	 	  -framework Cocoa -framework OpenGL -framework IOKit
+# 	 	  -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3d
@@ -48,7 +48,8 @@ SRC_RAYS = src/raycasting/rays.c src/raycasting/casting.c src/raycasting/ray_mat
 SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c src/render/draw_column_utils.c
 
 SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c \
-			src/utils/validate_utils.c src/utils/controls_utils.c src/utils/math_utils.c src/utils/set_dir.c src/utils/flood_fill.c 
+			src/utils/validate_utils.c src/utils/controls_utils.c src/utils/math_utils.c src/utils/set_dir.c src/utils/flood_fill.c \
+			src/utils/flood_fill_utils.c
 
 SRC_ASSETS =
 

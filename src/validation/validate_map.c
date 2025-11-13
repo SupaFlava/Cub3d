@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 16:25:02 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:02:31 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,30 @@ int	is_matching(char c)
 	return (FAILURE);
 }
 
-int	flood_fill(t_config *config, int y, int x)
-{
-	size_t	row_len;
-	char	**map;
+// int	flood_fill(t_config *config, int y, int x)
+// {
+// 	size_t	row_len;
+// 	char	**map;
 
-	map = config->map.grid;
-	if (x < 0 || y < 0 || y >= config->map.height)
-		return (FAILURE);
-	row_len = ft_strlen(map[y]);
-	if (x >= (int)row_len || map[y][x] == ' ')
-		return (FAILURE);
-	if (map[y][x] == '1' || map[y][x] == 'V')
-		return (SUCCESS);
-	map[y][x] = 'V';
-	if (!flood_fill(config, y - 1, x))
-		return (FAILURE);
-	if (!flood_fill(config, y + 1, x))
-		return (FAILURE);
-	if (!flood_fill(config, y, x - 1))
-		return (FAILURE);
-	if (!flood_fill(config, y, x + 1))
-		return (FAILURE);
-	return (SUCCESS);
-}
+// 	map = config->map.grid;
+// 	if (x < 0 || y < 0 || y >= config->map.height)
+// 		return (FAILURE);
+// 	row_len = ft_strlen(map[y]);
+// 	if (x >= (int)row_len || map[y][x] == ' ')
+// 		return (FAILURE);
+// 	if (map[y][x] == '1' || map[y][x] == 'V')
+// 		return (SUCCESS);
+// 	map[y][x] = 'V';
+// 	if (!flood_fill(config, y - 1, x))
+// 		return (FAILURE);
+// 	if (!flood_fill(config, y + 1, x))
+// 		return (FAILURE);
+// 	if (!flood_fill(config, y, x - 1))
+// 		return (FAILURE);
+// 	if (!flood_fill(config, y, x + 1))
+// 		return (FAILURE);
+// 	return (SUCCESS);
+// }
 
 int	map_char_check(t_config *config)
 {
@@ -121,19 +121,12 @@ int	validate_map(t_config *config)
 		return (FAILURE);
 	if (!empty_line(config->map.grid))
 		return (FAILURE);
-	// config->map.grid =  ft_split(config->map_string, '\n');
-	// int i = 0;
-	// while(config->map.grid[i])
-	// {
-	// 		ft_printf("%s\n", config->map.grid[i]);
-	// 	i++;
-	// }
 	return (SUCCESS);
 }
 
 int	empty_line(char **str)
 {
-	int	i;
+	int		i;
 	bool	found;
 
 	i = 0;
@@ -153,4 +146,3 @@ int	empty_line(char **str)
 	}
 	return (SUCCESS);
 }
-
