@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   render.h                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 17:44:16 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/11/12 13:49:45 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 12:42:08 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   validate.h                                         :+:    :+:            */
+/*   line.h                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/09/29 18:36:47 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 12:42:24 by jbaetsen      ########   odam.nl         */
+/*   Created: 2023/02/22 12:44:50 by mforstho      #+#    #+#                 */
+/*   Updated: 2023/03/07 16:53:19 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_H
-# define VALIDATE_H
+#ifndef LINE_H
+# define LINE_H
+# include "cub.h"
 
-# include "cub3d.h"
+typedef mlx_image_t	t_img;
 
-int		validate(t_config *config);
-int		validate_map(t_config *config);
-char	*getnl_string(char *src, int *i);
-int		empty_line(char **str);
+typedef struct s_line
+{
+	int	xa;
+	int	ya;
+	int	xb;
+	int	yb;
+}	t_line;
+
+void	ft_line(t_img *img, t_line *line, uint32_t color);
 
 #endif

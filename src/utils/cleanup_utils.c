@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   cleanup_utils.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 17:19:36 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/12 13:46:29 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 12:44:08 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

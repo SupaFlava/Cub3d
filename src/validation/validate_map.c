@@ -3,41 +3,47 @@
 /*                                                        ::::::::            */
 /*   validate_map.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/12 13:48:36 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 12:45:04 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stddef.h>
 
-int	flood_fill(t_config *config, int y, int x)
+int	is_matching(char c)
 {
-	size_t	row_len;
-	char	**map;
-
-	map = config->map.grid;
-	if (x < 0 || y < 0)
-		return (FAILURE);
-	row_len = ft_strlen(map[y]);
-	if (y >= config->map.height || x >= (int)row_len
-		|| map[y][x] == ' ')
-		return (FAILURE);
-	if (map[y][x] == '1' || map[y][x] == 'V')
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (SUCCESS);
-	map[y][x] = 'V';
-	if (!flood_fill(config, y - 1, x))
-		return (FAILURE);
-	if (!flood_fill(config, y + 1, x))
-		return (FAILURE);
-	if (!flood_fill(config, y, x - 1))
-		return (FAILURE);
-	if (!flood_fill(config, y, x + 1))
-		return (FAILURE);
-	return (SUCCESS);
+	return (FAILURE);
 }
+
+// int	flood_fill(t_config *config, int y, int x)
+// {
+// 	size_t	row_len;
+// 	char	**map;
+
+// 	map = config->map.grid;
+// 	if (x < 0 || y < 0 || y >= config->map.height)
+// 		return (FAILURE);
+// 	row_len = ft_strlen(map[y]);
+// 	if (x >= (int)row_len || map[y][x] == ' ')
+// 		return (FAILURE);
+// 	if (map[y][x] == '1' || map[y][x] == 'V')
+// 		return (SUCCESS);
+// 	map[y][x] = 'V';
+// 	if (!flood_fill(config, y - 1, x))
+// 		return (FAILURE);
+// 	if (!flood_fill(config, y + 1, x))
+// 		return (FAILURE);
+// 	if (!flood_fill(config, y, x - 1))
+// 		return (FAILURE);
+// 	if (!flood_fill(config, y, x + 1))
+// 		return (FAILURE);
+// 	return (SUCCESS);
+// }
 
 int	map_char_check(t_config *config)
 {

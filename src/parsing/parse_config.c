@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_config.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 12:23:28 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_config.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/13 12:01:41 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_count(t_config *config, int i)
 	int	count;
 
 	count = 0;
-	while (config->setting[i + count])
+	while (config->setting[i] && config->setting[i + count])
 		count++;
 	return (count);
 }
@@ -29,11 +29,13 @@ int	extract_map(t_config *config, int i)
 	char	*line;
 
 	j = 0;
+	line = getnl_string(config->setting, &i);
+	while (line && ft_isspace(line))
+		line = getnl_string(config->setting, &i);
 	count = get_count(config, i);
-	config->map.grid = malloc(sizeof(char *) *(count + 1));
+	config->map.grid = malloc(sizeof(char *) * (count + 1));
 	if (!config->map.grid)
 		return (FAILURE);
-	line = getnl_string(config->setting, &i);
 	while (line)
 	{
 		config->map.grid[j] = ft_strdup(line);

@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:23:55 by jbaetsen          #+#    #+#             */
-/*   Updated: 2025/11/05 14:36:56 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:13:18 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 	game = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		clean_cub3d(game);
+		clean_cub3d(game, NULL);
 		mlx_terminate(game->mlx);
 		exit(EXIT_SUCCESS);
 	}

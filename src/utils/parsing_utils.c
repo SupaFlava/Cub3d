@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 18:55:03 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:10:52 by jbaetsen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_isspace(char *string)
 	i = 0;
 	while (string[i])
 	{
-		if (string[i] == ' ' || string[i] == '\n')
+		if (string[i] == '\n')
 			i++;
 		else
 			return (FAILURE);

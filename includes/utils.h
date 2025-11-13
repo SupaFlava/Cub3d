@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        ::::::::            */
 /*   utils.h                                            :+:    :+:            */
 /*                                                     +:+                    */
@@ -7,6 +8,15 @@
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
 /*   Updated: 2025/11/12 13:46:54 by jbaetsen      ########   odam.nl         */
+=======
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/13 00:14:05 by jbaetsen         ###   ########.fr       */
+>>>>>>> 99733310487c2a0b0f227974be2a5903dd5ad1a4
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +31,7 @@ int		parse_color(t_config *config, char *colors, int dir);
 int		classify_directive(char *dir);
 bool	is_map_line(char *line);
 void	set_position(t_config *config, int i, int j);
+int		flood_fill(t_config *config, int start_y, int start_x);
 
 // math_utils.c
 int		my_abs(int num);
@@ -59,5 +70,10 @@ int		init_assets(t_game *game, t_config *config);
 int		init_game(t_game *game, t_config *config);
 void	clean_game(t_game *game);
 void	clean_cub3d(void *param, char *msg);
+
+// flood_fill_utils.c
+bool	is_inside_map(t_config *config, int y, int x);
+bool	is_wall_or_visited(char **map, int y, int x);
+bool	is_space_cell(char **map, int y, int x);
 
 #endif // UTILS_H
