@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/09 20:26:36 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 15:37:06 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ typedef struct s_config
 	int		player_x;
 	int		player_y;
 	char	player_dir;
+	int		top;
+	int		max;
+	bool	open_found;
+	char	*map_string;
 }	t_config;
 
 typedef struct s_ray

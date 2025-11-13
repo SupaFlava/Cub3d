@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/10 18:55:03 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:08:21 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ int	ft_isspace(char *string)
 	i = 0;
 	while (string[i])
 	{
-		if (string[i] == ' ' || string[i] == '\n')
+		if (string[i] == '\n')
 			i++;
 		else
 			return (FAILURE);
 	}
 	return (SUCCESS);
 }
+
 
 int	classify_directive(char *dir)
 {

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 11:20:06 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/12 15:48:11 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	check_assets(t_config *config)
 	}
 	if (!open_and_close_file(config->ea_tex))
 	{
-		ft_printf("%s\n", config->ea_tex);
 		ft_printf("east asset not found\n");
 		return (FAILURE);
 	}
