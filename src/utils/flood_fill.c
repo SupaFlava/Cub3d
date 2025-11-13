@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/12 13:40:46 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 13:49:43 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 16:40:24 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,20 @@ static void	push_cell(t_fill *fill, int y, int x)
 
 static void	add_neighbor_if_valid(t_config *cfg, t_fill *fill, int y, int x)
 {
-	if (!is_inside_map(cfg, y, x) || fill->top >= fill->max)
+	if (fill->top >= fill->max)
 		return ;
-	if (is_wall_or_visited(cfg->map.grid, y, x)
-		|| is_space_cell(cfg->map.grid, y, x))
+	if (!is_inside_map(cfg, y, x))
+	{
+		cfg->open_found = true;
 		return ;
+	}
+	if (is_wall_or_visited(cfg->map.grid, y, x))
+		return ;
+	if (is_space_cell(cfg->map.grid, y, x))
+	{
+		cfg->open_found = true;
+		return ;
+	}
 	cfg->map.grid[y][x] = 'V';
 	push_cell(fill, y, x);
 }
