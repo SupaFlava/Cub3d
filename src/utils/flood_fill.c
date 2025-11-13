@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 13:40:46 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/13 00:08:02 by jbaetsen         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   flood_fill.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/11/12 13:40:46 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/13 13:49:43 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	push_cell(t_point *stack, size_t *top, int y, int x)
+static void	push_cell(t_fill *fill, int y, int x)
 {
-	stack[*top].y = y;
-	stack[*top].x = x;
-	(*top)++;
+	fill->stack[fill->top].y = y;
+	fill->stack[fill->top].x = x;
+	(fill->top)++;
 }
 
-static void	add_neighbor_if_valid(t_config *cfg, t_point *stack,
-	size_t *top, size_t max, int y, int x)
+static void	add_neighbor_if_valid(t_config *cfg, t_fill *fill, int y, int x)
 {
-	if (!is_inside_map(cfg, y, x) || *top >= max)
+	if (!is_inside_map(cfg, y, x) || fill->top >= fill->max)
 		return ;
 	if (is_wall_or_visited(cfg->map.grid, y, x)
 		|| is_space_cell(cfg->map.grid, y, x))
 		return ;
 	cfg->map.grid[y][x] = 'V';
-	push_cell(stack, top, y, x);
+	push_cell(fill, y, x);
 }
 
-static void	add_all_neighbors(t_config *cfg, t_point *stack,
-	size_t *top, size_t max, int y, int x)
+static void	add_all_neighbors(t_config *cfg, t_fill *fill, int y, int x)
 {
-	add_neighbor_if_valid(cfg, stack, top, max, y - 1, x);
-	add_neighbor_if_valid(cfg, stack, top, max, y + 1, x);
-	add_neighbor_if_valid(cfg, stack, top, max, y, x - 1);
-	add_neighbor_if_valid(cfg, stack, top, max, y, x + 1);
+	add_neighbor_if_valid(cfg, fill, y - 1, x);
+	add_neighbor_if_valid(cfg, fill, y + 1, x);
+	add_neighbor_if_valid(cfg, fill, y, x - 1);
+	add_neighbor_if_valid(cfg, fill, y, x + 1);
 }
 
 static bool	process_cell(t_config *cfg, int y, int x)
@@ -58,26 +56,24 @@ static bool	process_cell(t_config *cfg, int y, int x)
 
 int	flood_fill(t_config *cfg, int start_y, int start_x)
 {
-	t_point	*stack;
-	t_point	cur;
-	size_t	top;
-	size_t	max;
+	t_fill	fill;
+	t_point	current;
 
-	max = (size_t)cfg->map.width * (size_t)cfg->map.height;
-	stack = malloc(sizeof(t_point) * max);
-	if (!stack)
+	fill.top = 0;
+	fill.max = (size_t)cfg->map.width * (size_t)cfg->map.height;
+	fill.stack = malloc(sizeof(t_point) * fill.max);
+	if (!fill.stack)
 		return (FAILURE);
-	cfg->open_found = false;
-	top = 0;
-	push_cell(stack, &top, start_y, start_x);
+	fill.open_found = false;
 	cfg->map.grid[start_y][start_x] = 'V';
-	while (top > 0)
+	push_cell(&fill, start_y, start_x);
+	while (fill.top > 0)
 	{
-		cur = stack[--top];
-		process_cell(cfg, cur.y, cur.x);
-		add_all_neighbors(cfg, stack, &top, max, cur.y, cur.x);
+		current = fill.stack[--fill.top];
+		process_cell(cfg, current.y, current.x);
+		add_all_neighbors(cfg, &fill, current.y, current.x);
 	}
-	free(stack);
+	free(fill.stack);
 	if (cfg->open_found)
 		return (FAILURE);
 	return (SUCCESS);
