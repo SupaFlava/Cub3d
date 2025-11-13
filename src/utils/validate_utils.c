@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   validate_utils.c                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 18:23:52 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 12:46:46 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   validate_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 18:23:52 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/13 15:40:40 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,33 @@ int	ft_isnumeric(char **str)
 	i = 0;
 	while (str[i])
 	{
-		j = 0;
+		if (i == 0)
+			j = 1;
+		else
+			j = 0;
 		while (str[i][j])
 		{
-			if (!isdigit(str[i][j]))
+			if (ft_isdigit(str[i][j]) || str[i][j] == ' ')
+				j++;
+			else
 				return (FAILURE);
-			j++;
 		}
 		i++;
+	}
+	return (SUCCESS);
+}
+
+int	ft_isspace(char *string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i])
+	{
+		if (string[i] == ' ')
+			i++;
+		else
+			return (FAILURE);
 	}
 	return (SUCCESS);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   validate_map.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/30 14:27:58 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 12:45:04 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/13 13:05:18 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	empty_line(char **str)
 
 	i = 0;
 	found = false;
-	while (ft_isspace(str[i]))
+	while (ft_isnl(str[i]))
 		i++;
 	while (str[i])
 	{
@@ -140,7 +140,7 @@ int	empty_line(char **str)
 			ft_printf("Error\nempty line detected\n");
 			return (FAILURE);
 		}
-		if (ft_isspace(str[i]))
+		if (ft_isnl(str[i]))
 			found = true;
 		i++;
 	}
