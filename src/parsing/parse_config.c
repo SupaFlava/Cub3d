@@ -6,21 +6,11 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 12:01:41 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 13:10:18 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static int	get_count(t_config *config, int i)
-{
-	int	count;
-
-	count = 0;
-	while (config->setting[i] && config->setting[i + count])
-		count++;
-	return (count);
-}
 
 int	extract_map(t_config *config, int i)
 {
@@ -104,33 +94,12 @@ int	extract_config(t_config *config, char *line, bool *seen)
 int	parse_config(t_config *config)
 {
 	int		i;
-	int		count;
-	char	*line;
 	bool	seen[6];
 
 	ft_memset(seen, 0, 6);
 	i = 0;
-	line = getnl_string(config->setting, &i);
-	count = 0;
-	while (line)
-	{
-		if (*line == '\0' || ft_isspace(line))
-		{
-			free(line);
-			line = getnl_string(config->setting, &i);
-			continue ;
-		}
-		else
-		{
-			if (!extract_config(config, line, seen))
-				return (free(line), FAILURE);
-		}
-		free(line);
-		count ++;
-		if (count == 6)
-			break ;
-		line = getnl_string(config->setting, &i);
-	}
+	if (!process_config_lines(config, seen, &i))
+		return (FAILURE);
 	if (!extract_map(config, i))
 		return (FAILURE);
 	return (SUCCESS);
