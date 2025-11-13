@@ -6,18 +6,11 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 18:23:52 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/12 13:41:39 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 12:46:46 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	is_matching(char c)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (SUCCESS);
-	return (FAILURE);
-}
 
 int	open_and_close_file(char *path)
 {
