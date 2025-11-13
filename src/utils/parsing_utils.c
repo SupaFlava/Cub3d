@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbaetsen <jbaetsen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/13 00:10:52 by jbaetsen         ###   ########.fr       */
+/*   Updated: 2025/11/13 14:19:52 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	is_map_line(char *line)
 	return (true);
 }
 
-int	ft_isspace(char *string)
+int	ft_isnl(char *string)
 {
 	int	i;
 

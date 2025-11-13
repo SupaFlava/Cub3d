@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/23 19:59:19 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 13:11:16 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 15:47:11 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 // parse_config.c
 int	extract_map(t_config *config, int i);
-int	assign_config(t_config *config, int dir, char **arr);
+int	assign_config(t_config *config, int dir, char **arr, char *line);
 int	extract_config(t_config *config, char *line, bool *seen);
 int	parse_config(t_config *config);
 

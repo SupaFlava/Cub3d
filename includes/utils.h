@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   utils.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 15:34:29 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 15:45:29 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "cub3d.h"
 # include "libft.h"
 
-int		ft_isspace(char *string);
+int		ft_isnl(char *string);
 int		parse_color(t_config *config, char *colors, int dir);
 int		classify_directive(char *dir);
 bool	is_map_line(char *line);

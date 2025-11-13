@@ -6,7 +6,7 @@
 /*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 15:33:39 by jbaetsen      ########   odam.nl         */
+/*   Updated: 2025/11/13 15:47:34 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	extract_map(t_config *config, int i)
 
 	j = 0;
 	line = getnl_string(config->setting, &i);
-	while (line && ft_isspace(line))
-		free_and_get_line(config, &line, &i);
+	while (line && ft_isnl(line))
+	{
+		free(line);
+		line = getnl_string(config->setting, &i);
+	}
 	count = get_count(config, i);
 	config->map.grid = malloc(sizeof(char *) * (count + 1));
 	if (!config->map.grid)
@@ -38,7 +41,7 @@ int	extract_map(t_config *config, int i)
 	return (SUCCESS);
 }
 
-int	assign_config(t_config *config, int dir, char **arr)
+int	assign_config(t_config *config, int dir, char **arr, char *line)
 {
 	if (dir == DIR_NO)
 		config->no_tex = safe_assign(arr[1], config->err_flag);
@@ -50,7 +53,7 @@ int	assign_config(t_config *config, int dir, char **arr)
 		config->ea_tex = safe_assign(arr[1], config->err_flag);
 	else if (dir == DIR_F || dir == DIR_C)
 	{
-		if (!parse_color(config, arr[1], dir))
+		if (!parse_color(config, line, dir))
 			return (ft_printf("Error\nColors malformated!\n"), FAILURE);
 	}
 	else if (dir == DIR_INV)
@@ -71,16 +74,16 @@ int	extract_config(t_config *config, char *line, bool *seen)
 	result = ft_split(line, ' ');
 	if (!result)
 		return (FAILURE);
-	if (!result[0] || !result[1] || result[2])
-		return (clean_split(result), FAILURE);
 	dir = classify_directive(result[0]);
+	if ((!result[1] || result[2]) && (dir != DIR_C && dir != DIR_F))
+		return (clean_split(result), FAILURE);
 	if (seen[dir])
 	{
 		clean_split(result);
 		ft_printf("Error\nDuplicate or wrong config\n");
 		return (FAILURE);
 	}
-	if (!assign_config(config, dir, result))
+	if (!assign_config(config, dir, result, line))
 	{
 		clean_split(result);
 		return (FAILURE);
