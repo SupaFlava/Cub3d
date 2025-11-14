@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_game.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/10/14 11:10:49 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 12:43:07 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_game.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/14 11:10:49 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/14 17:26:44 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	set_map_size(t_config *config)
+static int	set_map_size(t_config *config)
 {
 	int	width;
 	int	height;
@@ -27,6 +27,9 @@ static void	set_map_size(t_config *config)
 		height++;
 	}
 	config->map.height = height;
+	if (height < 0 || width < 0)
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 int	parse_game(t_config *config)
@@ -37,7 +40,8 @@ int	parse_game(t_config *config)
 		ft_printf("Error\nParsing failed\n");
 		return (clean_config(config), FAILURE);
 	}
-	set_map_size(config);
+	if(!set_map_size(config))
+		return (clean_config(config),FAILURE);
 	if (!validate(config))
 		return (clean_config(config), FAILURE);
 	return (SUCCESS);

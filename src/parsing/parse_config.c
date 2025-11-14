@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_config.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/24 18:46:06 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 15:47:34 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_config.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/24 18:46:06 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/14 17:20:03 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int	extract_map(t_config *config, int i)
 	j = 0;
 	line = getnl_string(config->setting, &i);
 	while (line && ft_isnl(line))
-	{
-		free(line);
-		line = getnl_string(config->setting, &i);
-	}
+		free_and_get_line(config, &line, &i);
 	count = get_count(config, i);
 	config->map.grid = malloc(sizeof(char *) * (count + 1));
 	if (!config->map.grid)
