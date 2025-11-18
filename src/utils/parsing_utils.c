@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing_utils.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 12:19:01 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/14 17:55:00 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/18 10:52:42 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ int	parse_color(t_config *config, char *colors, int dir)
 		return (clean_split(c_array), FAILURE);
 	if (dir == DIR_F)
 	{
-		config->floor.r = ft_atoi(c_array[0]);
-		config->floor.g = ft_atoi(c_array[1]);
-		config->floor.b = ft_atoi(c_array[2]);
+		config->floor.r = atoi_p(ft_strtrim(c_array[0], "F"));
+		config->floor.g = atoi_p(c_array[1]);
+		config->floor.b = atoi_p(c_array[2]);
 	}
 	else
 	{
-		config->roof.r = ft_atoi(c_array[0]);
-		config->roof.g = ft_atoi(c_array[1]);
-		config->roof.b = ft_atoi(c_array[2]);
+		config->roof.r = atoi_p(ft_strtrim(c_array[0], "C"));
+		config->roof.g = atoi_p(c_array[1]);
+		config->roof.b = atoi_p(c_array[2]);
 	}
 	clean_split(c_array);
 	return (SUCCESS);

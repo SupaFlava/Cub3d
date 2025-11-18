@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   utils.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/13 15:45:29 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/18 10:51:44 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int		init_assets(t_game *game, t_config *config);
 int		init_game(t_game *game, t_config *config);
 void	clean_game(t_game *game);
 void	clean_cub3d(void *param, char *msg);
+int		atoi_p(const char *str);
+
 
 // flood_fill_utils.c
 bool	is_inside_map(t_config *config, int y, int x);
