@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:00:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/12 15:48:11 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:57:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ int	check_assets(t_config *config)
 
 int	check_colors(t_config *config)
 {
-	if (config->floor.r > 255 || config->floor.g < 0)
+	if (config->floor.r > 255 || config->floor.r < 0)
 		return (FAILURE);
 	if (config->floor.g > 255 || config->floor.g < 0)
 		return (FAILURE);
-	if (config->floor.b > 255 || config->floor.g < 0)
+	if (config->floor.b > 255 || config->floor.b < 0)
 		return (FAILURE);
-	if (config->roof.r > 255 || config->roof.g < 0)
+	if (config->roof.r > 255 || config->roof.r < 0)
 		return (FAILURE);
 	if (config->roof.g > 255 || config->roof.g < 0)
 		return (FAILURE);
-	if (config->roof.b > 255 || config->roof.g < 0)
+	if (config->roof.b > 255 || config->roof.b < 0)
 		return (FAILURE);
 	return (SUCCESS);
 }

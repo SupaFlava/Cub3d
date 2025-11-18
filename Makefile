@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/18 10:50:40 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/11/18 18:09:49 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ BREW_PREFIX = /opt/homebrew
 CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto -O3 -ffast-math \
           -Ilibft \
           -IMLX42/include \
-		  -I$(BREW_PREFIX)/opt/glfw/include
+		#   -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
           -lglfw -ldl -pthread -lm \
 		  -L$(BREW_PREFIX)/opt/glfw/lib \
-# 	 	  -framework Cocoa -framework OpenGL -framework IOKit
+ 	 	#   -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3D
