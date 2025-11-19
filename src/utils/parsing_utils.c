@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/19 11:44:12 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:25:56 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,9 @@ int	parse_color(t_config *config, char *colors, int dir)
 		i++;
 	if (i != 3 || !ft_isnumeric(c_array))
 		return (clean_split(c_array), FAILURE);
-	if (dir == DIR_F)
+	if (!set_colors(dir, c_array, config))
 	{
-		config->floor.r = atoi_p(ft_strtrim(c_array[0], "F"));
-		config->floor.g = atoi_p(c_array[1]);
-		config->floor.b = atoi_p(c_array[2]);
-	}
-	else
-	{
-		config->roof.r = atoi_p(ft_strtrim(c_array[0], "C"));
-		config->roof.g = atoi_p(c_array[1]);
-		config->roof.b = atoi_p(c_array[2]);
+		return (clean_split(c_array),FAILURE);
 	}
 	clean_split(c_array);
 	return (SUCCESS);

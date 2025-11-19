@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:27:58 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/13 13:05:18 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:02:58 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,6 @@ int	is_matching(char c)
 		return (SUCCESS);
 	return (FAILURE);
 }
-
-// int	flood_fill(t_config *config, int y, int x)
-// {
-// 	size_t	row_len;
-// 	char	**map;
-
-// 	map = config->map.grid;
-// 	if (x < 0 || y < 0 || y >= config->map.height)
-// 		return (FAILURE);
-// 	row_len = ft_strlen(map[y]);
-// 	if (x >= (int)row_len || map[y][x] == ' ')
-// 		return (FAILURE);
-// 	if (map[y][x] == '1' || map[y][x] == 'V')
-// 		return (SUCCESS);
-// 	map[y][x] = 'V';
-// 	if (!flood_fill(config, y - 1, x))
-// 		return (FAILURE);
-// 	if (!flood_fill(config, y + 1, x))
-// 		return (FAILURE);
-// 	if (!flood_fill(config, y, x - 1))
-// 		return (FAILURE);
-// 	if (!flood_fill(config, y, x + 1))
-// 		return (FAILURE);
-// 	return (SUCCESS);
-// }
 
 int	map_char_check(t_config *config)
 {

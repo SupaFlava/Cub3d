@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/18 18:09:49 by rmhazres         ###   ########.fr        #
+#    Updated: 2025/11/19 13:19:29 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRC_RENDER = src/render/image.c src/render/render.c src/render/textures.c src/re
 
 SRC_UTILS = src/utils/parsing_utils.c src/utils/memory_utils.c src/utils/cleanup_utils.c src/utils/init.c src/utils/cleanup.c \
 			src/utils/validate_utils.c src/utils/controls_utils.c src/utils/math_utils.c src/utils/set_dir.c src/utils/flood_fill.c \
-			src/utils/flood_fill_utils.c src/utils/parse_config_utils.c  src/utils/atoi_protected.c
+			src/utils/flood_fill_utils.c src/utils/parse_config_utils.c  src/utils/atoi_protected.c src/utils/setting_colors.c
 
 SRC_ASSETS =
 
