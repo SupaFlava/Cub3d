@@ -1,0 +1,15 @@
+NO ./src/textures/Brick_Wall_64x64.png
+SO ./src/textures/Brick_Wall_Cracked_64x64.png
+WE ./src/textures/Brick_Wall_Mossy_64x64.png
+EA ./src/textures/Brick_Wall_Cobbled_64x64.png
+
+C 93,142,193
+F 231,230,230
+
+111111111111
+111101111111
+111101111111
+110000001101
+100000000001
+100000N00001
+111111111111
