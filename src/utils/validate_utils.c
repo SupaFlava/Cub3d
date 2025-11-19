@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:23:52 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/13 15:40:40 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/19 11:44:40 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,16 @@ int	ft_isnumeric(char **str)
 	i = 0;
 	while (str[i])
 	{
+		j = 0;
 		if (i == 0)
+		{
 			j = 1;
-		else
-			j = 0;
+			while (str[i][j] == ' ')
+				j++;
+		}
 		while (str[i][j])
 		{
-			if (ft_isdigit(str[i][j]) || str[i][j] == ' ')
+			if (ft_isdigit(str[i][j]))
 				j++;
 			else
 				return (FAILURE);
