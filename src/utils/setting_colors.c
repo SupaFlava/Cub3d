@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   setting_colors.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 13:09:17 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/19 13:27:40 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   setting_colors.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/11/19 13:09:17 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/19 13:51:15 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	set_colors(int dir, char **arr, t_config *config)
 {
-	char *trimmed;
+	char	*trimmed;
 
 	trimmed = NULL;
 	if (dir == DIR_F)

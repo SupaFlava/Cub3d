@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/19 13:25:56 by rmhazres         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing_utils.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/09/29 12:19:01 by rmhazres      #+#    #+#                 */
+/*   Updated: 2025/11/19 13:51:06 by jbaetsen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	parse_color(t_config *config, char *colors, int dir)
 		return (clean_split(c_array), FAILURE);
 	if (!set_colors(dir, c_array, config))
 	{
-		return (clean_split(c_array),FAILURE);
+		return (clean_split(c_array), FAILURE);
 	}
 	clean_split(c_array);
 	return (SUCCESS);
