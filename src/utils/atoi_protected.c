@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 10:20:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/18 18:09:01 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/11/19 11:46:49 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	c_isspace(char c)
 int	atoi_p(const char *str)
 {
 	int	i;
-	int total;
-	int guard;
+	int	total;
+	int	guard;
 
 	i = 0;
 	guard = 0;
@@ -33,10 +33,15 @@ int	atoi_p(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (guard > 2)
-				return (-1);
-		total = total * 10 + str[i] - '0';
-		i++;
-		guard++;
+			return (-1);
+		if (str[i] == ' ')
+			i++;
+		else
+		{
+			total = total * 10 + str[i] - '0';
+			i++;
+			guard++;
+		}
 	}
 	if (guard == 0)
 		return (-1);
