@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   utils.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 12:22:42 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/19 13:05:47 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 12:22:42 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/11/19 13:32:18 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		classify_directive(char *dir);
 bool	is_map_line(char *line);
 void	set_position(t_config *config, int i, int j);
 int		flood_fill(t_config *config, int start_y, int start_x);
+int		set_colors(int dir, char **arr, t_config *config);
+
 
 // math_utils.c
 int		my_abs(int num);
