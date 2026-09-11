@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:37:10 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/11/18 17:11:37 by rmhazres         ###   ########.fr       */
+/*   Updated: 2026/09/11 11:05:31 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@
 # include "cub3d.h"
 
 // defines
+#ifdef WEB
+# define WIDTH 960
+# define HEIGHT 540
+#else
 # define WIDTH 1920
 # define HEIGHT 1080
+#endif
+
 # define FOV 60.0
 # define TILE 10
 

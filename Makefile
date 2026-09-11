@@ -6,7 +6,7 @@
 #    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 15:04:17 by jbaetsen          #+#    #+#              #
-#    Updated: 2025/11/19 13:19:29 by rmhazres         ###   ########.fr        #
+#    Updated: 2026/09/11 12:08:56 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ CC      = cc
 #this is for apple silicon please dont remove it only comment it out
 BREW_PREFIX = /opt/homebrew
 
-CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto -O3 -ffast-math \
+CFLAGS  = -Wall -Wextra -Werror -Iincludes -flto -O3 \
           -Ilibft \
           -IMLX42/include \
-		#   -I$(BREW_PREFIX)/opt/glfw/include
+		  -I$(BREW_PREFIX)/opt/glfw/include
 #this is for apple silicon please dont remove it only comment it out
 LDFLAGS = MLX42/build/libmlx42.a -Llibft -lft \
           -lglfw -ldl -pthread -lm \
 		  -L$(BREW_PREFIX)/opt/glfw/lib \
- 	 	#   -framework Cocoa -framework OpenGL -framework IOKit
+ 	      -framework Cocoa -framework OpenGL -framework IOKit
 #this is for apple silicon please dont remove it only comment it out
 
 NAME    = cub3D
@@ -62,6 +62,53 @@ LIBFT = libft/libft.a
 #        Rules          #
 # ===================== #
 
+LIBFT_WEB = libft/libft_web.a
+LIBFT_SRC := $(wildcard libft/*.c) $(wildcard libft/src/*.c)
+
+$(LIBFT_WEB): $(LIBFT_SRC)
+	@$(MAKE) -C libft fclean
+	@$(MAKE) -C libft CC=emcc AR=emar
+	@mkdir -p libft
+	@mv libft/libft.a $(LIBFT_WEB)
+
+MLX_WEB_LIB = MLX42/build_web/libmlx42_web.a
+WEB_OUT = web/cub3D.js
+
+$(MLX_WEB_LIB):
+	@cd MLX42 && emcmake cmake -B build_web
+	@cd MLX42 && cmake --build build_web --parallel
+	mv MLX42/build_web/libmlx42.a $(MLX_WEB_LIB)
+	@cp ./MLX42/include/MLX42/MLX42.h ./includes
+	@cp ./MLX42/include/MLX42/MLX42_Int.h ./includes
+
+.PHONY: web-headers
+
+web-headers:
+	@cp ./MLX42/include/MLX42/MLX42.h ./includes
+	@cp ./MLX42/include/MLX42/MLX42_Int.h ./includes
+
+web: web-headers $(WEB_OUT)
+WEB_HEADERS := $(wildcard includes/*.h)
+
+$(WEB_OUT): $(SRC) $(WEB_HEADERS) $(MLX_WEB_LIB) $(LIBFT_WEB)
+	mkdir -p web
+	emcc -DWEB -O3 -Iincludes -Ilibft -IMLX42/include -MMD -MP $(SRC) \
+		$(MLX_WEB_LIB) $(LIBFT_WEB) \
+		-o $(WEB_OUT) \
+		-msimd128 \
+		-s USE_GLFW=3 \
+		-s MIN_WEBGL_VERSION=2 -s MAX_WEBGL_VERSION=2 \
+		-s WASM=1 \
+		-s NO_EXIT_RUNTIME=1 \
+		-s EXPORTED_RUNTIME_METHODS='["ccall","cwrap"]' \
+		-s ALLOW_MEMORY_GROWTH \
+		-s INITIAL_MEMORY=67108864 \
+		-s MAXIMUM_MEMORY=1073741824 \
+		-s STACK_SIZE=2097152 \
+		-s EXPORTED_FUNCTIONS='["_main","_web_lock_cursor"]' \
+		--preload-file map@/map \
+		--preload-file src/textures@/src/textures
+
 all: submodules $(NAME)
 
 # --- Update submodules and build libraries ---
@@ -95,7 +142,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C libft fclean
-	@rm -rf mlx42/*
+	@rm -rf MLX42/build MLX42/build_web
 	@rm -rf ./includes/MLX42.h
 	@rm -rf ./includes/MLX42_Int.h
 	@echo "🗑️  Full clean done"

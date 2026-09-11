@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   init.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jbaetsen <jbaetsen@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/26 13:51:59 by jbaetsen      #+#    #+#                 */
-/*   Updated: 2025/11/13 12:44:16 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/26 13:51:59 by jbaetsen          #+#    #+#             */
+/*   Updated: 2026/09/11 09:59:59 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ int	init_game(t_game *game, t_config *config)
 		ft_printf("mlx_init failure\n");
 		return (FAILURE);
 	}
-	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
+	#ifndef WEB
+		mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
+	#endif
 	game->config = config;
 	game->map = config->map;
 	init_player(game, config);

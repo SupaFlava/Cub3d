@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cub3D</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        overflow: hidden;
+        height: 100%;
+      }
+      #game-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+	  canvas {
+		display: block;
+		outline: none;
+		width: 100%;
+		height: 100%;
+		image-rendering: pixelated;
+	  }
+      #start-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="start-overlay">
+        <p>Click to play</p>
+      </div>
+      <canvas id="canvas" width="960" height="540" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+    </div>
+    <script>
+		var Module = {
+		  canvas: document.getElementById('canvas')
+		};
+	  </script>
+    <script>
+  document.getElementById('start-overlay').addEventListener('click', function () {
+    this.style.display = 'none';
+    var canvas = document.getElementById('canvas');
+    canvas.focus();
+    canvas.requestPointerLock();
+    if (Module.ccall) {
+      Module.ccall('web_lock_cursor', null, [], []);
+    }
+  });
+    </script>
+    <script src="cub3D.js"></script>
+  </body>
+</html>

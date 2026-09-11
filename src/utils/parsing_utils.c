@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing_utils.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rmhazres <rmhazres@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2025/09/29 12:19:01 by rmhazres      #+#    #+#                 */
-/*   Updated: 2025/11/19 13:51:06 by jbaetsen      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 12:19:01 by rmhazres          #+#    #+#             */
+/*   Updated: 2026/09/10 13:23:59 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	is_map_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '1' || line[i] != '0')
+		if (line[i] != '1' && line[i] != '0')
 			return (false);
 		i++;
 	}

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: w0ffel <w0ffel@student.codam.nl>             +#+                      #
-#                                                    +#+                       #
-#    Created: 2024/11/15 15:06:19 by w0ffel        #+#    #+#                  #
-#    Updated: 2025/06/24 16:39:56 by jbaetsen      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/15 15:06:19 by w0ffel            #+#    #+#              #
+#    Updated: 2026/09/10 15:40:08 by rmhazres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ NAME = libft.a
 all:$(NAME)
 
 $(NAME): $(OBJECTS)
-	@ar rcs $@ $^
+	@$(AR) rcs $@ $^
 	@echo "$(GREEN)Compiled $@ $(RESET)"
 
 
