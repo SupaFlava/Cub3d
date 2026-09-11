@@ -50,3 +50,11 @@ Makefile.cmake
 #     Mac / Linux temp files
 # =========================
 *~
+
+
+web/cub3D.js
+web/cub3D.wasm
+web/cub3D.wasm.data
+web/cub3D.wasm.map
+web/cub3D.data
+web/cub3D.worker.js
